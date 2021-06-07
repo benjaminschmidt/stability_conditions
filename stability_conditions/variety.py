@@ -1,9 +1,9 @@
 r"""
-Module for the numerical Chow ring of some special varieties
+Module for the numerical Chow ring of some special varieties.
 
 This module is only dealing with smooth projective varieties :math:`X` whose
 numerical Chow ring :math:`N^*(X)` has rank one in each dimension. For all
-purposes of this module one should only work  with varieties for which the
+purposes of this module one should only work with varieties for which the
 Bogomolov inequality for semistable sheaves holds. This is always true in
 characteristic :math:`0`. Let :math:`H` be the class of the ample generator of
 the Neron-Severi group :math:`N^1(X)`.

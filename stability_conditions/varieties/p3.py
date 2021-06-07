@@ -1,6 +1,13 @@
 r"""
-Sage library for computations with (very weak) Bridgeland stability
-conditions.
+Module for things specifically regarding :math:`\mathbb{P}^3`.
+
+EXAMPLES::
+
+<Lots and lots of examples>
+
+.. TODO::
+    - Add examples.
+    - Write anything at all.
 """
 
 # ****************************************************************************
@@ -19,21 +26,3 @@ conditions.
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ****************************************************************************
-
-# noinspection PyUnresolvedReferences
-# from .all import *
-
-# noinspection PyUnresolvedReferences
-from . import library
-# noinspection PyUnresolvedReferences
-from . import slope
-# noinspection PyUnresolvedReferences
-from . import tilt
-# noinspection PyUnresolvedReferences
-from . import tilt_two
-# noinspection PyUnresolvedReferences
-from . import variety
-# noinspection PyUnresolvedReferences
-from .variety import Element, p, Variety
-# noinspection PyUnresolvedReferences
-from . import varieties
