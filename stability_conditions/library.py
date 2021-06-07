@@ -3,7 +3,7 @@ Collections of short functions required in stability computations.
 """
 
 # ****************************************************************************
-#       Copyright (C) 2020 Benjamin Schmidt <schmbe@gmail.com>
+#       Copyright (C) 2021 Benjamin Schmidt <schmbe@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,17 +21,20 @@ Collections of short functions required in stability computations.
 
 # noinspection PyUnresolvedReferences
 import sage.all
+# noinspection PyUnresolvedReferences
 from sage.arith.misc import xgcd
+# noinspection PyUnresolvedReferences
 from sage.functions.other import floor
+# noinspection PyUnresolvedReferences
 from sage.rings.all import Integer
 
 
 def previous_farey(x, n):
     r"""
-    Previous element in the Farey sequence for the fraction x in `F_n`.
+    Element prior to x in :math:`F_n`.
 
-    Here, `F_n` is the Farey sequence of all fractions with denominator
-    smaller than or equal to n. Check
+    Here, :math:`F_n` is the Farey sequence of all fractions with denominator
+    smaller than or equal to `n`. Check
     https://en.wikipedia.org/wiki/Farey_sequence for more details on the
     Farey sequence.
 
@@ -40,9 +43,9 @@ def previous_farey(x, n):
     - ``x`` -- rational number with denominator at most `n`
     - ``n`` -- positive integer
 
-    EXAMPLES::
+    TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: library.previous_farey(0, 1)
         -1

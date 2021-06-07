@@ -1,6 +1,6 @@
 r"""
 Module for computations in second tilt stability as conjecturally described
-by Bayer, Macri, and Toda.
+by Bayer-Macrì-Toda.
 
 EXAMPLES::
 
@@ -13,7 +13,7 @@ EXAMPLES::
 """
 
 # ****************************************************************************
-#       Copyright (C) 2020 Benjamin Schmidt <schmbe@gmail.com>
+#       Copyright (C) 2021 Benjamin Schmidt <schmbe@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -31,10 +31,15 @@ EXAMPLES::
 
 # noinspection PyUnresolvedReferences
 import sage.all
+# noinspection PyUnresolvedReferences
 from sage.calculus.functional import expand
+# noinspection PyUnresolvedReferences
 from sage.functions.other import imag_part, real_part
+# noinspection PyUnresolvedReferences
 from sage.symbolic.all import i
+# noinspection PyUnresolvedReferences
 from sage.rings.all import Integer
+# noinspection PyUnresolvedReferences
 from sage.rings.infinity import infinity
 
 from .slope import delta
@@ -47,7 +52,7 @@ def mu(v, a, b, s):
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: v = Element((1, 0, 0, 0))
             sage: tilt_two.mu(v, 1, 0, 0)
@@ -79,20 +84,20 @@ def mu(v, a, b, s):
 
 def q(v, w=None, a=0, b=0, k=Integer(1)):
     r"""
-    Computes the quadratic form `Q_{a, b, k}(v, w}`.
+    Computes the quadratic form :math:`Q_{a, b, k}(v, w)`.
 
     INPUT:
 
     - ``v`` -- Element of the numerical Chow ring
-    - ``w`` -- Element of the numerical Chow ring or None. If w is None,
-               then it assumes `w = v`. (default: None)
-    - ``a`` -- positive real number (default: 0)
-    - ``b`` -- arbitrary real number (default: 0)
-    - ``k`` -- real number with `k \geq 1` (default: `)
+    - ``w`` -- Element of the numerical Chow ring or None. If `w` is None,
+      then it assumes `w = v`. (default: `None`)
+    - ``a`` -- positive real number (default: `0`)
+    - ``b`` -- arbitrary real number (default: `0`)
+    - ``k`` -- real number with :math:`k \geq 1` (default: `1`)
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: tilt.q(Element([1, 0, -4, 9]), a=0, b=-3)
         -26
@@ -132,7 +137,7 @@ def wall(v, w, a, b, s):
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
         sage: var('a, b, s, r, c, d, e, t, x, y, z', domain = RR)
         (a, b, s, r, c, d, e, t, x, y, z)
 
@@ -172,7 +177,7 @@ def z(v, a, b, s):
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: v = Element((1, 0, 0, 0))
         sage: tilt_two.z(v, 1, 0, 0)

@@ -4,7 +4,7 @@ conditions.
 """
 
 # ****************************************************************************
-#       Copyright (C) 2020 Benjamin Schmidt <schmbe@gmail.com>
+#       Copyright (C) 2021 Benjamin Schmidt <schmbe@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,4 +21,17 @@ conditions.
 # ****************************************************************************
 
 # noinspection PyUnresolvedReferences
-from .all import *
+# from .all import *
+
+# noinspection PyUnresolvedReferences
+from . import library
+# noinspection PyUnresolvedReferences
+from . import slope
+# noinspection PyUnresolvedReferences
+from . import tilt
+# noinspection PyUnresolvedReferences
+from . import tilt_two
+# noinspection PyUnresolvedReferences
+from . import variety
+# noinspection PyUnresolvedReferences
+from .variety import Element, p, Variety

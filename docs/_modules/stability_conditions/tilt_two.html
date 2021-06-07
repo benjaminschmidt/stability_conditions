@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>stability_conditions.tilt_two &mdash; Stability Conditions (v0.1.2) 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Stability Conditions (v0.1.2)
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../stability_conditions.html">stability_conditions package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Stability Conditions (v0.1.2)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>stability_conditions.tilt_two</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for stability_conditions.tilt_two</h1><div class="highlight"><pre>
+<span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Module for computations in second tilt stability as conjecturally described</span>
+<span class="sd">by Bayer-Macrì-Toda.</span>
+
+<span class="sd">EXAMPLES::</span>
+
+<span class="sd">&lt;Lots and lots of examples&gt;</span>
+
+<span class="sd">.. TODO::</span>
+<span class="sd">    - Add examples.</span>
+<span class="sd">    - Add additional parameters for Z from Bayer-Macri-Stellari and adjust Q.</span>
+<span class="sd">    - Add some different parameters of k to tests for Q.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># ****************************************************************************</span>
+<span class="c1">#       Copyright (C) 2021 Benjamin Schmidt &lt;schmbe@gmail.com&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+<span class="c1"># ****************************************************************************</span>
+
+<span class="c1"># noinspection PyUnresolvedReferences</span>
+<span class="kn">import</span> <span class="nn">sage.all</span>
+<span class="c1"># noinspection PyUnresolvedReferences</span>
+<span class="kn">from</span> <span class="nn">sage.calculus.functional</span> <span class="k">import</span> <span class="n">expand</span>
+<span class="c1"># noinspection PyUnresolvedReferences</span>
+<span class="kn">from</span> <span class="nn">sage.functions.other</span> <span class="k">import</span> <span class="n">imag_part</span><span class="p">,</span> <span class="n">real_part</span>
+<span class="c1"># noinspection PyUnresolvedReferences</span>
+<span class="kn">from</span> <span class="nn">sage.symbolic.all</span> <span class="k">import</span> <span class="n">i</span>
+<span class="c1"># noinspection PyUnresolvedReferences</span>
+<span class="kn">from</span> <span class="nn">sage.rings.all</span> <span class="k">import</span> <span class="n">Integer</span>
+<span class="c1"># noinspection PyUnresolvedReferences</span>
+<span class="kn">from</span> <span class="nn">sage.rings.infinity</span> <span class="k">import</span> <span class="n">infinity</span>
+
+<span class="kn">from</span> <span class="nn">.slope</span> <span class="k">import</span> <span class="n">delta</span>
+<span class="kn">from</span> <span class="nn">.variety</span> <span class="k">import</span> <span class="n">ch</span>
+
+
+<div class="viewcode-block" id="mu"><a class="viewcode-back" href="../../stability_conditions.tilt_two.html#stability_conditions.tilt_two.mu">[docs]</a><span class="k">def</span> <span class="nf">mu</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the slope for second tilt stability.</span>
+
+<span class="sd">        TESTS::</span>
+
+<span class="sd">            sage: from stability_conditions import *</span>
+
+<span class="sd">            sage: v = Element((1, 0, 0, 0))</span>
+<span class="sd">            sage: tilt_two.mu(v, 1, 0, 0)</span>
+<span class="sd">            0</span>
+<span class="sd">            sage: tilt_two.mu(v, 1, -1, 1)</span>
+<span class="sd">            +Infinity</span>
+<span class="sd">            sage: tilt_two.mu(v, 2, 1, 4)</span>
+<span class="sd">            -11</span>
+
+<span class="sd">            sage: v = Element((3, -5, 1/2, 1/6, 1/24))</span>
+<span class="sd">            sage: tilt_two.mu(v, 5, 6, 3/2)</span>
+<span class="sd">            1515/94</span>
+
+<span class="sd">            sage: var(&#39;a, b, s, r, c, d, e&#39;, domain = RR)</span>
+<span class="sd">            (a, b, s, r, c, d, e)</span>
+<span class="sd">            sage: p = tilt_two.mu(Element([r, c, d, e]), a, b, s)</span>
+<span class="sd">            sage: output = 6*a^2*b*r*s + a^2*b*r - b^3*r - 6*a^2*c*s - a^2*c</span>
+<span class="sd">            sage: output += 3*b^2*c - 6*b*d + 6*e</span>
+<span class="sd">            sage: output /= a^2*r - b^2*r + 2*b*c - 2*d</span>
+<span class="sd">            sage: output /= 3</span>
+<span class="sd">            sage: bool(p == -output)</span>
+<span class="sd">            True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">central_charge</span> <span class="o">=</span> <span class="n">z</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">imag_part</span><span class="p">(</span><span class="n">central_charge</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">infinity</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">real_part</span><span class="p">(</span><span class="n">central_charge</span><span class="p">)</span> <span class="o">/</span> <span class="n">imag_part</span><span class="p">(</span><span class="n">central_charge</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="q"><a class="viewcode-back" href="../../stability_conditions.tilt_two.html#stability_conditions.tilt_two.q">[docs]</a><span class="k">def</span> <span class="nf">q</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">Integer</span><span class="p">(</span><span class="mi">1</span><span class="p">)):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the quadratic form :math:`Q_{a, b, k}(v, w)`.</span>
+
+<span class="sd">    INPUT:</span>
+
+<span class="sd">    - ``v`` -- Element of the numerical Chow ring</span>
+<span class="sd">    - ``w`` -- Element of the numerical Chow ring or None. If `w` is None,</span>
+<span class="sd">      then it assumes `w = v`. (default: `None`)</span>
+<span class="sd">    - ``a`` -- positive real number (default: `0`)</span>
+<span class="sd">    - ``b`` -- arbitrary real number (default: `0`)</span>
+<span class="sd">    - ``k`` -- real number with :math:`k \geq 1` (default: `1`)</span>
+
+<span class="sd">    TESTS::</span>
+
+<span class="sd">        sage: from stability_conditions import *</span>
+
+<span class="sd">        sage: tilt.q(Element([1, 0, -4, 9]), a=0, b=-3)</span>
+<span class="sd">        -26</span>
+
+<span class="sd">        sage: v = Element([2, -1, -1/2, 5/6])</span>
+<span class="sd">        sage: w = Element([3, -1, -1/2, -1/6])</span>
+<span class="sd">        sage: tilt.q(v, w, a=4, b=5)</span>
+<span class="sd">        174</span>
+<span class="sd">        sage: tilt.q(v, w, a=4, b=5)</span>
+<span class="sd">        174</span>
+
+<span class="sd">        sage: var(&#39;s, t&#39;, domain = RR)</span>
+<span class="sd">        (s, t)</span>
+<span class="sd">        sage: p = tilt.q(Element([3, -2, 0, 2/3]), a=s + 1, b=t - 1)</span>
+<span class="sd">        sage: bool(p == 4*s^2 + 4*t^2 + 8*s + 4*t + 4)</span>
+<span class="sd">        True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">w</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">q</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">v_tw</span> <span class="o">=</span> <span class="n">ch</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">w_tw</span> <span class="o">=</span> <span class="n">ch</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">delta</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">v_tw</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">w_tw</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">v_tw</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">w_tw</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">v_tw</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">w_tw</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="wall"><a class="viewcode-back" href="../../stability_conditions.tilt_two.html#stability_conditions.tilt_two.wall">[docs]</a><span class="k">def</span> <span class="nf">wall</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns an equation whose solutions describe the wall between `v` and `w`.</span>
+
+<span class="sd">    INPUT:</span>
+
+<span class="sd">    - ``v`` - Element</span>
+<span class="sd">    - ``w`` - Element</span>
+<span class="sd">    - ``a`` - symbolic expression</span>
+<span class="sd">    - ``b`` - symbolic expression</span>
+<span class="sd">    - ``s`` - symbolic expression</span>
+
+<span class="sd">    TESTS::</span>
+
+<span class="sd">        sage: from stability_conditions import *</span>
+<span class="sd">        sage: var(&#39;a, b, s, r, c, d, e, t, x, y, z&#39;, domain = RR)</span>
+<span class="sd">        (a, b, s, r, c, d, e, t, x, y, z)</span>
+
+<span class="sd">        sage: v = Element((1, 0, -4, 8))</span>
+<span class="sd">        sage: w = Element((1, -1, 1/2, -7/6))</span>
+<span class="sd">        sage: p = tilt_two.wall(v, w, a, b, s)</span>
+<span class="sd">        sage: output = -1/2*a^4*s - 1/2*a^2*b^2*s - 1/12*a^4 + 1/6*a^2*b^2</span>
+<span class="sd">        sage: output += - 1/12*b^4 - 9/2*a^2*b*s + 3/2*a^2*b - 3/2*b^3</span>
+<span class="sd">        sage: output += - 4*a^2*s + 47/12*a^2 - 79/12*b^2 - 8*b + 2/3</span>
+<span class="sd">        sage: bool(p == output)</span>
+<span class="sd">        True</span>
+
+<span class="sd">        sage: v = Element((r, c, d, e))</span>
+<span class="sd">        sage: w = Element((t, x, y, z))</span>
+<span class="sd">        sage: p = tilt_two.wall(v, w, a, b, s)</span>
+<span class="sd">        sage: output = -1/2*a^4*c*s*t - 1/2*a^2*b^2*c*s*t + 1/2*a^4*r*s*x</span>
+<span class="sd">        sage: output += 1/2*a^2*b^2*r*s*x - 1/12*a^4*c*t + 1/6*a^2*b^2*c*t</span>
+<span class="sd">        sage: output += - 1/12*b^4*c*t + a^2*b*d*s*t + 1/12*a^4*r*x</span>
+<span class="sd">        sage: output += - 1/6*a^2*b^2*r*x + 1/12*b^4*r*x - a^2*b*r*s*y</span>
+<span class="sd">        sage: output += - 1/3*a^2*b*d*t + 1/3*b^3*d*t - a^2*d*s*x</span>
+<span class="sd">        sage: output += 1/3*a^2*b*r*y - 1/3*b^3*r*y + a^2*c*s*y + 1/2*a^2*e*t</span>
+<span class="sd">        sage: output += - 1/2*b^2*e*t - 1/6*a^2*d*x - 1/2*b^2*d*x</span>
+<span class="sd">        sage: output += 1/6*a^2*c*y + 1/2*b^2*c*y - 1/2*a^2*r*z + 1/2*b^2*r*z</span>
+<span class="sd">        sage: output += b*e*x - b*c*z - e*y + d*z</span>
+<span class="sd">        sage: bool(p == output)</span>
+<span class="sd">        True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">charge1</span> <span class="o">=</span> <span class="n">z</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">charge2</span> <span class="o">=</span> <span class="n">z</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">expand</span><span class="p">((</span><span class="n">real_part</span><span class="p">(</span><span class="n">charge1</span><span class="p">)</span> <span class="o">*</span> <span class="n">imag_part</span><span class="p">(</span><span class="n">charge2</span><span class="p">)</span>
+                   <span class="o">-</span> <span class="n">imag_part</span><span class="p">(</span><span class="n">charge1</span><span class="p">)</span> <span class="o">*</span> <span class="n">real_part</span><span class="p">(</span><span class="n">charge2</span><span class="p">)))</span></div>
+
+
+<div class="viewcode-block" id="z"><a class="viewcode-back" href="../../stability_conditions.tilt_two.html#stability_conditions.tilt_two.z">[docs]</a><span class="k">def</span> <span class="nf">z</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the central charge for second tilt stability.</span>
+
+<span class="sd">    TESTS::</span>
+
+<span class="sd">        sage: from stability_conditions import *</span>
+
+<span class="sd">        sage: v = Element((1, 0, 0, 0))</span>
+<span class="sd">        sage: tilt_two.z(v, 1, 0, 0)</span>
+<span class="sd">        -1/2*I</span>
+<span class="sd">        sage: tilt_two.z(v, 1, -1, 1)</span>
+<span class="sd">        1</span>
+<span class="sd">        sage: tilt_two.z(v, 2, 1, 4)</span>
+<span class="sd">        -3/2*I - 33/2</span>
+
+<span class="sd">        sage: v = Element((3, -5, 1/2, 1/6, 1/24))</span>
+<span class="sd">        sage: tilt_two.z(v, 5, 6, 3/2)</span>
+<span class="sd">        47*I - 1515/2</span>
+
+<span class="sd">        sage: var(&#39;a, b, s, r, c, d, e&#39;, domain = RR)</span>
+<span class="sd">        (a, b, s, r, c, d, e)</span>
+<span class="sd">        sage: p = tilt_two.z(Element([r, c, d, e]), a, b, s)</span>
+<span class="sd">        sage: output = -a^2*b*r*s - 1/6*a^2*b*r + 1/6*b^3*r + a^2*c*s</span>
+<span class="sd">        sage: output += 1/6*a^2*c - 1/2*b^2*c - 1/2*I*a^2*r + 1/2*I*b^2*r</span>
+<span class="sd">        sage: output += - I*b*c + b*d + I*d - e</span>
+<span class="sd">        sage: bool(p ==  output)</span>
+<span class="sd">        True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">twisted_ch</span> <span class="o">=</span> <span class="n">ch</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">twisted_ch</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">Integer</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">Integer</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span><span class="o">*</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">twisted_ch</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="n">twisted_ch</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">twisted_ch</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Benjamin Schmidt.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

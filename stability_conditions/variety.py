@@ -1,12 +1,12 @@
 r"""
 Module for the numerical Chow ring of some special varieties
 
-This module is only dealing with smooth projective varieties `X` whose
-numerical Chow ring `N^*(X)` has rank one in each dimension. For all
+This module is only dealing with smooth projective varieties :math:`X` whose
+numerical Chow ring :math:`N^*(X)` has rank one in each dimension. For all
 purposes of this module one should only work  with varieties for which the
 Bogomolov inequality for semistable sheaves holds. This is always true in
-characteristic `0`. Let `H` be the class of the ample generator of the
-Neron-Severi group `N^1(X)`.
+characteristic :math:`0`. Let :math:`H` be the class of the ample generator of
+the Neron-Severi group :math:`N^1(X)`.
 
 EXAMPLES::
 
@@ -19,7 +19,7 @@ EXAMPLES::
 """
 
 # ****************************************************************************
-#       Copyright (C) 2020 Benjamin Schmidt <schmbe@gmail.com>
+#       Copyright (C) 2021 Benjamin Schmidt <schmbe@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,8 +37,11 @@ EXAMPLES::
 
 # noinspection PyUnresolvedReferences
 import sage.all
+# noinspection PyUnresolvedReferences
 from sage.functions.other import ceil, factorial, floor
+# noinspection PyUnresolvedReferences
 from sage.rings.all import Integer
+# noinspection PyUnresolvedReferences
 from sage.structure.all import SageObject
 
 
@@ -48,8 +51,8 @@ class Element(SageObject):
 
     INPUT:
 
-    - ``vec`` -- list of rational numbers. vec[i] is the coefficient in front
-                 of `H^i`.
+    - ``vec`` -- list of rational numbers. vec[i] is the coefficient in
+      front of :math:`H^i`.
     """
     def __init__(self, vec):
         self.vec = tuple(vec)
@@ -60,7 +63,7 @@ class Element(SageObject):
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: Element([1, 0, -4, 9]) + Element([1, -1/2, 1/2, -1])
             (2, -1/2, -7/2, 8)
@@ -79,28 +82,13 @@ class Element(SageObject):
 
         return Element([self[j] + other[j] for j in range(len(self))])
 
-    def __truediv__(self, k):
-        r"""
-        Divides this object by a rational number k.
-
-        TESTS::
-
-            sage: from stability_conditions.all import *
-            sage: Element([10, 2, -1, -5])/5
-            (2, 2/5, -1/5, -1)
-
-            sage: Element([])/100
-            ()
-        """
-        return self*(1/k)
-
     def __eq__(self, other):
         r"""
         Two elements are equal if they have identical coefficients.
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: Element([1, 2, 3]) == Element([1, 2, 3])
             True
@@ -124,11 +112,11 @@ class Element(SageObject):
 
     def __getitem__(self, j):
         r"""
-        Returns the coefficient in front of `H^j`.
+        Returns the coefficient in front of :math:`H^j`.
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: v = Element([3/2, 2, 1])
             sage: v[0]
@@ -139,12 +127,12 @@ class Element(SageObject):
         return self.vec[j]
 
     def __hash__(self):
-        """
+        r"""
         Returns a hash value for this object.
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: v = Element((1, 2, 3))
             sage: w = Element((1, 2, 3))
@@ -172,12 +160,12 @@ class Element(SageObject):
         return hash(self.vec)
 
     def __len__(self):
-        """
+        r"""
         Returns the length of this object.
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: len(Element([8, 3/2, 4, 5]))
             4
@@ -189,8 +177,11 @@ class Element(SageObject):
 
     def __ne__(self, other):
         r"""
+        Returns the opposite of self == other.
+
         TESTS::
-            sage: from stability_conditions.all import *
+
+            sage: from stability_conditions import *
 
             sage: Element([1, 2, 3]) != Element([1, 2, 3])
             False
@@ -215,7 +206,7 @@ class Element(SageObject):
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
             sage: Element([1, 0, -1]) * Element([1, -1, 1/2])
             (1, -1, -1/2)
 
@@ -247,7 +238,7 @@ class Element(SageObject):
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: -Element([2, -1/2, 3, 5/6])
             (-2, 1/2, -3, -5/6)
@@ -263,7 +254,7 @@ class Element(SageObject):
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: +Element([1, 1/2, 1/3, 1/4, 1/5])
             (1, 1/2, 1/3, 1/4, 1/5)
@@ -275,7 +266,7 @@ class Element(SageObject):
 
     def __pow__(self, k):
         r"""
-        Returns this object to power k.
+        Returns this object to the power k.
 
         INPUT:
 
@@ -283,7 +274,7 @@ class Element(SageObject):
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
             sage: Element([1, -1, 1/2])**6
             (1, -6, 18)
 
@@ -330,7 +321,7 @@ class Element(SageObject):
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
             sage: 2 * Element([0, 1, -3/2, 7/6])
             (0, 2, -3, 7/3)
 
@@ -350,7 +341,7 @@ class Element(SageObject):
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: Element([1, 0, -4, 9]) - Element([1, -1/2, 1/2, -1])
             (0, 1/2, -9/2, 10)
@@ -365,13 +356,28 @@ class Element(SageObject):
         """
         return self + (-other)
 
+    def __truediv__(self, k):
+        r"""
+        Divides this object by a rational number `k`.
+
+        TESTS::
+
+            sage: from stability_conditions import *
+            sage: Element([10, 2, -1, -5])/5
+            (2, 2/5, -1/5, -1)
+
+            sage: Element([])/100
+            ()
+        """
+        return self*(1/k)
+
     def _repr_(self):
         r"""
         String representation of this object.
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: Element([1, 2, 3])
             (1, 2, 3)
@@ -382,8 +388,8 @@ class Element(SageObject):
         r"""
         Computes Chern classes from Chern characters.
 
-        More precisely, if this object is `\operatorname{ch}(E)` for some
-        object `E`, then this method computes `c(E)`.
+        More precisely, if this object is :math:`\operatorname{ch}(E)` for
+        some object :math:`E`, then this method computes :math:`c(E)`.
 
         INPUT:
 
@@ -392,17 +398,20 @@ class Element(SageObject):
         OUTPUT:
 
         A rational number describing the k-th Chern class or the total
-        Chern class, if k is None. Note that by convention `c_0 = 1`.
+        Chern class, if k is None. Note that by convention :math:`c_0 = 1`.
 
         ALGORITHM:
 
         We are using the Newton Identities that say
-        `k c_k = \sum_{l = 1}^k (-1)^{l - 1} l! c_{k - l} \ch_l.`
+
+        .. math:: k c_k = \sum_{l = 1}^k (-1)^{l - 1} l! c_{k - l}
+           \operatorname{ch}_l.
+
         (https://en.wikipedia.org/wiki/Newton%27s_identities)
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: v = Element([1, -1, 1/2, -1/6])
             sage: v.c(1)
@@ -442,10 +451,11 @@ class Element(SageObject):
         r"""
         Computes Chern characters from Chern classes.
 
-        More precisely, if this object is `c(E)` for some object `E`, then this
-        method computes `\operatorname{ch}(E)`. Note that the Chern character
-        encodes the rank, while the total Chern class does not. Therefore, you
-        can set the rank `rk`. On default we assume rank one.
+        More precisely, if this object is :math:`c(E)` for some object
+        :math:`E`, then this method computes :math:`\operatorname{ch}(E)`.
+        Note that the Chern character encodes the rank, while the total Chern
+        class does not. Therefore, you can set the rank `rk`. On default we
+        assume rank one.
 
         INPUT:
 
@@ -460,13 +470,15 @@ class Element(SageObject):
         ALGORITHM:
 
         We are using the Newton Identities that say
-        `k! \ch_k = (-1)^{k - 1} k c_k -
-                    \sum_{l = 1}^{k - 1} (-1)^{k + l} l! c_{k - l} \ch_l.`
+
+        .. math:: k! \operatorname{ch}_k = (-1)^{k - 1} k c_k -
+           \sum_{l = 1}^{k - 1} (-1)^{k + l} l! c_{k - l} \operatorname{ch}_l.
+
         (https://en.wikipedia.org/wiki/Newton%27s_identities)
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: v = Element([1, -1, 0, 0])
             sage: v.ch(0)
@@ -513,11 +525,12 @@ class Element(SageObject):
 
     def dual(self):
         r"""
-        If this object is ch(E), then this returns `ch(E^{\vee})`.
+        If this object is :math:`\operatorname{ch}(E)`, then this returns
+        :math:`\operatorname{ch}(E^{\vee})`.
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
             sage: Element([5, -54, 6/10, 345, 34/5, 67/2]).dual()
             (5, 54, 3/5, -345, 34/5, -67/2)
 
@@ -537,16 +550,16 @@ class Variety(SageObject):
     INPUT:
 
     - ``dim_var`` -- positive integer describing the dimension of the variety.
-    - ``generators`` -- list of rational numbers. gens[i]H^i generates `N^i(X)`
-                        for `i` between `0` and dim. By assumption
-                        gens[dim] H^dim is the class of a point. Therefore,
-                        1/gens[dim] has to be an integer equal to H^dim.
-    - ``td`` -- list of rational numbers describing the Todd class of `X`.
-                `td[i]H^i = \operatorname{td}_i(X)`.
+    - ``generators`` -- list of rational numbers. :math:`gens[i]H^i`
+      generates :math:`N^i(X)` for `i` between `0` and dim. By assumption
+      :math:`gens[dim] H^{dim}` is the class of a point. Therefore,
+      1/gens[dim] has to be an integer equal to :math:`H^{dim}`.
+    - ``td`` -- list of rational numbers describing the Todd class of
+      :math:`X` given as :math:`td[i]H^i = \operatorname{td}_i(X)`.
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: Variety(-1, [], [])
         Traceback (most recent call last):
@@ -610,9 +623,11 @@ class Variety(SageObject):
 
     def _repr_(self):
         r"""
+        Returns a string that shows the constructor for this object.
+
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: Variety(2, [1, 1, 1], [1, 3/2, 1])
             Variety(2, (1, 1, 1), (1, 3/2, 1))
@@ -621,11 +636,11 @@ class Variety(SageObject):
 
     def o(self, m):
         r"""
-        Returns the Chern character of the line bundle `\mathcal{O}(mH)`.
+        Returns the Chern character of the line bundle :math:`\mathcal{O}(mH)`.
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: X = Variety(2, [1, 1, 1], [1, 3/2, 1])
             sage: X.o(-5)
@@ -638,7 +653,8 @@ class Variety(SageObject):
         return o(m, self.dim)
 
     def chi(self, v, w=None):
-        r"""Returns the Euler characteristic `\chi(v, w)` or `chi(v)`.
+        r"""
+        Returns the Euler characteristic :math:`\chi(v, w)` or :math:`\chi(v)`.
 
         INPUT:
 
@@ -647,12 +663,12 @@ class Variety(SageObject):
 
         OUTPUT:
 
-        If w == None, this returns the Euler characteristic `\chi(v, w)`.
-        Otherwise, it returns `\chi(v)`.
+        If w == None, this returns the Euler characteristic
+        :math:`\chi(v, w)`. Otherwise, it returns :math:`\chi(v)`.
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: X = Variety(3, [1, 1, 1, 1], [1, 2, 11/6, 1])
             sage: v = Element([1, -1, 1/2, -1/6])
@@ -687,12 +703,12 @@ class Variety(SageObject):
         r"""Checks whether the Element v could occur as a Chern character.
 
         This method returns True if the rank, the Euler characteristic
-        `\chi(v)`, and the Chern classes corresponding to `v = \ch(E)` are all
-        integral.
+        :math:`\chi(v)`, and the Chern classes corresponding to
+        :math:`v = \operatorname{ch}(E)` are all integral.
 
-        TESTS:
+        TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: X = Variety(2, [1, 1, 1], [1, 3/2, 1])
             sage: v = Element([1, 1, 1/2])
@@ -743,27 +759,27 @@ class Variety(SageObject):
     def floor(self, *args):
         r"""Rounds down Chern characters.
 
-        Let n = len(*args) - 1 and assume that for some object `E` we have
-        `\ch_i(E) = *args[i]` for all i in between 0 and `n - 1`. This method
-        then returns the largest rational number `x < *args[n]` such that
-        `\ch_n(E) = x' is a possible value.
+        Let n = len(args) - 1 and assume that for some object :math:`E` we
+        have :math:`\operatorname{ch}_i(E) = args[i]` for all `i` in between
+        `0` and `n - 1`. This method then returns the largest rational number
+        :math:`x < args[n]` such that :math:`\operatorname{ch}_n(E) = x` is
+        a possible value.
 
-
-        More precisely, if this function simply rounds down based on the
+        Basically, this function simply rounds down based on the
         fact that Chern classes are integral.
 
         INPUT:
 
-        - ``*args`` -- list of rational numbers with length smaller than or
-                       equal to the dimension of the variety plus one.
+        - ``args`` -- list of rational numbers with length smaller than or
+          equal to the dimension of the variety plus one.
 
         WARNING:
 
-        It is not checked whether the values in *args are valid inputs.
+        It is not checked whether the values in args are valid inputs.
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: X = Variety(2, [1, 1, 1], [1, 3/2, 1])
             sage: X.floor(1, 2, 3, 4)
@@ -815,13 +831,14 @@ class Variety(SageObject):
 
 def ch(v, b):
     r"""
-    Computes the twisted Chern character `\operatorname{ch}^{b}(v)`.
+    Computes the twisted Chern character :math:`\operatorname{ch}^{b}(v)`.
 
     The twisted Chern character is defined as
-    ``\operatorname{ch}(v) e^{-bH}.``
+    :math:`\operatorname{ch}(v) e^{-bH}`.
 
     TESTS::
-        sage: from stability_conditions.all import *
+
+        sage: from stability_conditions import *
 
         sage: variety.ch(Element([1, 0, 0]), 1)
         (1, -1, 1/2)
@@ -842,7 +859,8 @@ def ch(v, b):
 
 def o(m, n):
     r"""
-    Returns the Chern character of the line bundle `\mathcal{O}(mH)`.
+    Returns the Chern character of the line bundle :math:`\mathcal{O}(mH)` on
+    a variety of dimension `n`.
 
     INPUT:
 
@@ -868,13 +886,13 @@ def p(n):
 
     ALGORITHM:
 
-    We use that the Todd class of `\mathbb{P}^n` is given by
-    `\left(\frac{H}{1 - e^{-H}}\right)^{n + 1}`, where `H` is the class of
-    a hyperplane.
+    We use that the Todd class of :math:`\mathbb{P}^n` is given by
+    :math:`\left(\frac{H}{1 - e^{-H}}\right)^{n + 1}`, where :math:`H` is
+    the class of a hyperplane.
 
     TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: p(1)
             Variety(1, (1, 1), (1, 1))

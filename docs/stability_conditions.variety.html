@@ -1,0 +1,991 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>stability_conditions.variety module &mdash; Stability Conditions (v0.1.2) 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="stability_conditions.tilt_two module" href="stability_conditions.tilt_two.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Stability Conditions (v0.1.2)
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="stability_conditions.html">stability_conditions package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="stability_conditions.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="stability_conditions.library.html">stability_conditions.library module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stability_conditions.slope.html">stability_conditions.slope module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stability_conditions.tilt.html">stability_conditions.tilt module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stability_conditions.tilt_two.html">stability_conditions.tilt_two module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">stability_conditions.variety module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Stability Conditions (v0.1.2)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="stability_conditions.html">stability_conditions package</a> &raquo;</li>
+        
+      <li>stability_conditions.variety module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/stability_conditions.variety.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-stability_conditions.variety">
+<span id="stability-conditions-variety-module"></span><h1>stability_conditions.variety module<a class="headerlink" href="#module-stability_conditions.variety" title="Permalink to this headline">¶</a></h1>
+<p>Module for the numerical Chow ring of some special varieties</p>
+<p>This module is only dealing with smooth projective varieties <span class="math notranslate nohighlight">\(X\)</span> whose
+numerical Chow ring <span class="math notranslate nohighlight">\(N^*(X)\)</span> has rank one in each dimension. For all
+purposes of this module one should only work  with varieties for which the
+Bogomolov inequality for semistable sheaves holds. This is always true in
+characteristic <span class="math notranslate nohighlight">\(0\)</span>. Let <span class="math notranslate nohighlight">\(H\)</span> be the class of the ample generator of
+the Neron-Severi group <span class="math notranslate nohighlight">\(N^1(X)\)</span>.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Lots</span> <span class="ow">and</span> <span class="n">lots</span> <span class="n">of</span> <span class="n">examples</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt id="stability_conditions.variety.Element">
+<em class="property">class </em><code class="sig-prename descclassname">stability_conditions.variety.</code><code class="sig-name descname">Element</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vec</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sage.structure.sage_object.SageObject</span></code></p>
+<p>An element in the numerical Chow ring of a variety.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vec</span></code> – list of rational numbers. vec[i] is the coefficient in
+front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
+</ul>
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__add__">
+<code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__add__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__add__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns this object plus other.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span> <span class="o">+</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([])</span> <span class="o">+</span> <span class="n">Element</span><span class="p">([])</span>
+<span class="p">()</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">+</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Two</span> <span class="n">Elements</span> <span class="n">need</span> <span class="n">to</span> <span class="n">have</span> <span class="n">the</span> <span class="n">same</span> <span class="n">length</span> <span class="k">for</span> <span class="n">adding</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__eq__">
+<code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__eq__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two elements are equal if they have identical coefficients.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="n">Element</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([])</span> <span class="o">==</span> <span class="n">Element</span><span class="p">([])</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__getitem__">
+<code class="sig-name descname">__getitem__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__getitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coefficient in front of <span class="math notranslate nohighlight">\(H^j\)</span>.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="mi">3</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__hash__">
+<code class="sig-name descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__hash__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a hash value for this object.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span> <span class="o">==</span> <span class="n">w</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span> <span class="o">==</span> <span class="n">w</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span> <span class="o">==</span> <span class="n">w</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(())</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(())</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span> <span class="o">==</span> <span class="n">w</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span> <span class="o">==</span> <span class="nb">hash</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vec</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__len__">
+<code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__len__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__len__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the length of this object.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">Element</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+<span class="mi">4</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">Element</span><span class="p">([]))</span>
+<span class="mi">0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__mul__">
+<code class="sig-name descname">__mul__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__mul__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__mul__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns this object multiplied with other.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([])</span> <span class="o">*</span> <span class="n">Element</span><span class="p">([])</span>
+<span class="p">()</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">x</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span><span class="o">*</span><span class="n">x</span>
+<span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__ne__">
+<code class="sig-name descname">__ne__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__ne__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__ne__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the opposite of self == other.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">!=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">!=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">!=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([])</span> <span class="o">!=</span> <span class="n">Element</span><span class="p">([])</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">!=</span> <span class="mi">1</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__neg__">
+<code class="sig-name descname">__neg__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__neg__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__neg__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the additive inverse of this object.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="o">-</span><span class="n">Element</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span>
+<span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="o">-</span><span class="n">Element</span><span class="p">([])</span>
+<span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__pos__">
+<code class="sig-name descname">__pos__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__pos__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__pos__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new copy of this object.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="o">+</span><span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="p">])</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="o">+</span><span class="n">Element</span><span class="p">([])</span>
+<span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__pow__">
+<code class="sig-name descname">__pow__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__pow__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__pow__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns this object to the power k.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">k</span></code> - positive integer.</p></li>
+</ul>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span><span class="o">**</span><span class="mi">6</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">7</span>
+<span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">896</span><span class="p">,</span> <span class="mi">3136</span><span class="p">,</span> <span class="mi">7616</span><span class="p">,</span> <span class="mi">15008</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([])</span><span class="o">**</span><span class="mi">100</span>
+<span class="p">()</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">256</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">256</span><span class="p">,</span> <span class="o">-</span><span class="mi">19</span><span class="o">/</span><span class="mi">2048</span><span class="p">,</span> <span class="o">-</span><span class="mi">151</span><span class="o">/</span><span class="mi">4096</span><span class="p">,</span> <span class="o">-</span><span class="mi">2957</span><span class="o">/</span><span class="mi">65536</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Element</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">invertible</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__rmul__">
+<code class="sig-name descname">__rmul__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__rmul__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__rmul__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns other multiplied with this object.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">Element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">Element</span><span class="p">([])</span>
+<span class="p">()</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">x</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__sub__">
+<code class="sig-name descname">__sub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__sub__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__sub__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns this object minus other.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span> <span class="o">-</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([])</span> <span class="o">-</span> <span class="n">Element</span><span class="p">([])</span>
+<span class="p">()</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">-</span> <span class="n">Element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Two</span> <span class="n">Elements</span> <span class="n">need</span> <span class="n">to</span> <span class="n">have</span> <span class="n">the</span> <span class="n">same</span> <span class="n">length</span> <span class="k">for</span> <span class="n">adding</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.__truediv__">
+<code class="sig-name descname">__truediv__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__truediv__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__truediv__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Divides this object by a rational number <cite>k</cite>.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">])</span><span class="o">/</span><span class="mi">5</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([])</span><span class="o">/</span><span class="mi">100</span>
+<span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stability_conditions.variety.Element.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#stability_conditions.variety.Element.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element._repr_">
+<code class="sig-name descname">_repr_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element._repr_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element._repr_" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representation of this object.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.c">
+<code class="sig-name descname">c</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.c"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes Chern classes from Chern characters.</p>
+<p>More precisely, if this object is <span class="math notranslate nohighlight">\(\operatorname{ch}(E)\)</span> for
+some object <span class="math notranslate nohighlight">\(E\)</span>, then this method computes <span class="math notranslate nohighlight">\(c(E)\)</span>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">k</span></code> – integer between 0 and len(self) or None (default: <cite>None</cite>).</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>A rational number describing the k-th Chern class or the total
+Chern class, if k is None. Note that by convention <span class="math notranslate nohighlight">\(c_0 = 1\)</span>.</p>
+<p>ALGORITHM:</p>
+<p>We are using the Newton Identities that say</p>
+<div class="math notranslate nohighlight">
+\[k c_k = \sum_{l = 1}^k (-1)^{l - 1} l! c_{k - l}
+\operatorname{ch}_l.\]</div>
+<p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Newton%27s_identities">https://en.wikipedia.org/wiki/Newton%27s_identities</a>)</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">c</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">0</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">c</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">0</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">c</span><span class="p">()</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">c</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">c</span><span class="p">()</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.ch">
+<code class="sig-name descname">ch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">rk</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.ch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.ch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes Chern characters from Chern classes.</p>
+<p>More precisely, if this object is <span class="math notranslate nohighlight">\(c(E)\)</span> for some object
+<span class="math notranslate nohighlight">\(E\)</span>, then this method computes <span class="math notranslate nohighlight">\(\operatorname{ch}(E)\)</span>.
+Note that the Chern character encodes the rank, while the total Chern
+class does not. Therefore, you can set the rank <cite>rk</cite>. On default we
+assume rank one.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">k</span></code> – integer between 0 and len(self) or None (default: <cite>None</cite>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rk</span></code> – rank of the object (default: <cite>1</cite>).</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>A rational number describing the k-th Chern character or the total
+Chern character, if k == None.</p>
+<p>ALGORITHM:</p>
+<p>We are using the Newton Identities that say</p>
+<div class="math notranslate nohighlight">
+\[k! \operatorname{ch}_k = (-1)^{k - 1} k c_k -
+\sum_{l = 1}^{k - 1} (-1)^{k + l} l! c_{k - l} \operatorname{ch}_l.\]</div>
+<p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Newton%27s_identities">https://en.wikipedia.org/wiki/Newton%27s_identities</a>)</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">rk</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">ch</span><span class="p">()</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">rk</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="n">rk</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Element.dual">
+<code class="sig-name descname">dual</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.dual"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.dual" title="Permalink to this definition">¶</a></dt>
+<dd><p>If this object is <span class="math notranslate nohighlight">\(\operatorname{ch}(E)\)</span>, then this returns
+<span class="math notranslate nohighlight">\(\operatorname{ch}(E^{\vee})\)</span>.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">54</span><span class="p">,</span> <span class="mi">6</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">345</span><span class="p">,</span> <span class="mi">34</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">67</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">dual</span><span class="p">()</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">345</span><span class="p">,</span> <span class="mi">34</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">67</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Element</span><span class="p">([])</span><span class="o">.</span><span class="n">dual</span><span class="p">()</span>
+<span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="stability_conditions.variety.Variety">
+<em class="property">class </em><code class="sig-prename descclassname">stability_conditions.variety.</code><code class="sig-name descname">Variety</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dim_var</span></em>, <em class="sig-param"><span class="n">generators</span></em>, <em class="sig-param"><span class="n">td</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sage.structure.sage_object.SageObject</span></code></p>
+<p>A smooth projective variety.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dim_var</span></code> – positive integer describing the dimension of the variety.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">generators</span></code> – list of rational numbers. <span class="math notranslate nohighlight">\(gens[i]H^i\)</span>
+generates <span class="math notranslate nohighlight">\(N^i(X)\)</span> for <cite>i</cite> between <cite>0</cite> and dim. By assumption
+<span class="math notranslate nohighlight">\(gens[dim] H^{dim}\)</span> is the class of a point. Therefore,
+1/gens[dim] has to be an integer equal to <span class="math notranslate nohighlight">\(H^{dim}\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">td</span></code> – list of rational numbers describing the Todd class of
+<span class="math notranslate nohighlight">\(X\)</span> given as <span class="math notranslate nohighlight">\(td[i]H^i = \operatorname{td}_i(X)\)</span>.</p></li>
+</ul>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sage: from stability_conditions import *
+
+sage: Variety(-1, [], [])
+Traceback (most recent call last):
+...
+ValueError: Varieties must have positive dimension.
+
+sage: Variety(2, [1, 1], [1, 3/2, 1])
+Traceback (most recent call last):
+...
+ValueError: Incorrect number of generators for the numerical Chow
+group.
+
+sage: Variety(3, [2, 1, 1, 1], [1, 2, 11/6, 1])
+Traceback (most recent call last):
+...
+ValueError: By definition `1` has to generate `N^0(X)`.
+
+sage: Variety(3, [1, 2, 1, 1], [1, 2, 11/6, 1])
+Traceback (most recent call last):
+...
+ValueError: By definition `H` has to generate `N^1(X)`.
+
+sage: Variety(3, [1, 1, 1, 2/3], [1, 2, 11/6, 1])
+Traceback (most recent call last):
+...
+ValueError: By definition 1/gens[dim] = H^dim is an integer.
+
+sage: Variety(2, [1, 1, 1], [2, 2, 11/6])
+Traceback (most recent call last):
+...
+ValueError: `\td_0(X)` is always `1`.
+
+sage: Variety(2, [1, 1, 1], [1, 3/2])
+Traceback (most recent call last):
+...
+ValueError: Todd class does not have the correct length.
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="stability_conditions.variety.Variety.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dim_var</span></em>, <em class="sig-param"><span class="n">generators</span></em>, <em class="sig-param"><span class="n">td</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stability_conditions.variety.Variety.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#stability_conditions.variety.Variety.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Variety._repr_">
+<code class="sig-name descname">_repr_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety._repr_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety._repr_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string that shows the constructor for this object.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">Variety</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Variety.chi">
+<code class="sig-name descname">chi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">w</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety.chi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety.chi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Euler characteristic <span class="math notranslate nohighlight">\(\chi(v, w)\)</span> or <span class="math notranslate nohighlight">\(\chi(v)\)</span>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> – Element of the numerical Chow ring of this variety.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">w</span></code> – Element of the numerical Chow ring of this variety or None.</p></li>
+</ul>
+<p>OUTPUT:</p>
+<p>If w == None, this returns the Euler characteristic
+<span class="math notranslate nohighlight">\(\chi(v, w)\)</span>. Otherwise, it returns <span class="math notranslate nohighlight">\(\chi(v)\)</span>.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">125</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">chi</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">chi</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="mi">5</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">chi</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">o</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="mi">3</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">chi</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="mi">3</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Variety.floor">
+<code class="sig-name descname">floor</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety.floor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety.floor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rounds down Chern characters.</p>
+<p>Let n = len(args) - 1 and assume that for some object <span class="math notranslate nohighlight">\(E\)</span> we
+have <span class="math notranslate nohighlight">\(\operatorname{ch}_i(E) = args[i]\)</span> for all <cite>i</cite> in between
+<cite>0</cite> and <cite>n - 1</cite>. This method then returns the largest rational number
+<span class="math notranslate nohighlight">\(x &lt; args[n]\)</span> such that <span class="math notranslate nohighlight">\(\operatorname{ch}_n(E) = x\)</span> is
+a possible value.</p>
+<p>Basically, this function simply rounds down based on the
+fact that Chern classes are integral.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> – list of rational numbers with length smaller than or
+equal to the dimension of the variety plus one.</p></li>
+</ul>
+<p>WARNING:</p>
+<p>It is not checked whether the values in args are valid inputs.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">IndexError</span><span class="p">:</span> <span class="n">Too</span> <span class="n">many</span> <span class="n">arguments</span> <span class="n">given</span> <span class="n">the</span> <span class="n">dimension</span> <span class="n">of</span> <span class="n">the</span> <span class="n">variety</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">floor</span><span class="p">()</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">IndexError</span><span class="p">:</span> <span class="n">There</span> <span class="n">has</span> <span class="n">to</span> <span class="n">be</span> <span class="n">at</span> <span class="n">least</span> <span class="n">one</span> <span class="n">argument</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">12</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">13</span><span class="p">)</span>
+<span class="mi">0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Variety.o">
+<code class="sig-name descname">o</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety.o"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety.o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Chern character of the line bundle <span class="math notranslate nohighlight">\(\mathcal{O}(mH)\)</span>.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">o</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">o</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.variety.Variety.valid">
+<code class="sig-name descname">valid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety.valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety.valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the Element v could occur as a Chern character.</p>
+<p>This method returns True if the rank, the Euler characteristic
+<span class="math notranslate nohighlight">\(\chi(v)\)</span>, and the Chern classes corresponding to
+<span class="math notranslate nohighlight">\(v = \operatorname{ch}(E)\)</span> are all integral.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">valid</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.variety.ch">
+<code class="sig-prename descclassname">stability_conditions.variety.</code><code class="sig-name descname">ch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#ch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.ch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the twisted Chern character <span class="math notranslate nohighlight">\(\operatorname{ch}^{b}(v)\)</span>.</p>
+<p>The twisted Chern character is defined as
+<span class="math notranslate nohighlight">\(\operatorname{ch}(v) e^{-bH}\)</span>.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">variety</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">variety</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="n">Element</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">]),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">15</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">31</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">variety</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="n">Element</span><span class="p">([]),</span> <span class="mi">101</span><span class="p">)</span>
+<span class="p">()</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">RR</span><span class="p">)</span>
+<span class="n">b</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">variety</span><span class="o">.</span><span class="n">ch</span><span class="p">(</span><span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">b</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">b</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="o">*</span><span class="n">b</span><span class="o">^</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="o">*</span><span class="n">b</span><span class="o">^</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">120</span><span class="o">*</span><span class="n">b</span><span class="o">^</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.variety.o">
+<code class="sig-prename descclassname">stability_conditions.variety.</code><code class="sig-name descname">o</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#o"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Chern character of the line bundle <span class="math notranslate nohighlight">\(\mathcal{O}(mH)\)</span> on
+a variety of dimension <cite>n</cite>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code> – integer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> – positive integer describing the dimension of the variety</p></li>
+</ul>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions.variety</span> <span class="k">import</span> <span class="n">o</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">o</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">o</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.variety.p">
+<code class="sig-prename descclassname">stability_conditions.variety.</code><code class="sig-name descname">p</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#p"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns projective space of dimension <cite>n</cite>.</p>
+<p>ALGORITHM:</p>
+<p>We use that the Todd class of <span class="math notranslate nohighlight">\(\mathbb{P}^n\)</span> is given by
+<span class="math notranslate nohighlight">\(\left(\frac{H}{1 - e^{-H}}\right)^{n + 1}\)</span>, where <span class="math notranslate nohighlight">\(H\)</span> is
+the class of a hyperplane.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Variety</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Variety</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">p</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">p</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">Variety</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">35</span><span class="o">/</span><span class="mi">12</span><span class="p">,</span> <span class="mi">25</span><span class="o">/</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">p</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>
+<span class="n">Variety</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+<span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">581</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">441</span><span class="p">,</span>
+<span class="mi">1070657</span><span class="o">/</span><span class="mi">720</span><span class="p">,</span> <span class="mi">158319</span><span class="o">/</span><span class="mi">40</span><span class="p">,</span> <span class="mi">37400899</span><span class="o">/</span><span class="mi">4320</span><span class="p">,</span> <span class="mi">767921</span><span class="o">/</span><span class="mi">48</span><span class="p">,</span>
+<span class="mi">2201402821</span><span class="o">/</span><span class="mi">86400</span><span class="p">,</span> <span class="mi">56805833</span><span class="o">/</span><span class="mi">1600</span><span class="p">,</span> <span class="mi">749183964913</span><span class="o">/</span><span class="mi">17107200</span><span class="p">,</span>
+<span class="mi">339766721</span><span class="o">/</span><span class="mi">7040</span><span class="p">,</span> <span class="mi">3577239914712089</span><span class="o">/</span><span class="mi">74724249600</span><span class="p">,</span>
+<span class="mi">127498710046229</span><span class="o">/</span><span class="mi">2965248000</span><span class="p">,</span> <span class="mi">2019789295599781</span><span class="o">/</span><span class="mi">57480192000</span><span class="p">,</span>
+<span class="mi">10370744131087</span><span class="o">/</span><span class="mi">395366400</span><span class="p">,</span> <span class="mi">62157476672898653</span><span class="o">/</span><span class="mi">3464487936000</span><span class="p">,</span>
+<span class="mi">34433122825921</span><span class="o">/</span><span class="mi">3055104000</span><span class="p">,</span>
+<span class="mi">742857089765534754163</span><span class="o">/</span><span class="mi">114042281633280000</span><span class="p">,</span>
+<span class="mi">1882907719410379703</span><span class="o">/</span><span class="mi">543058483968000</span><span class="p">,</span>
+<span class="mi">1015770864598729418381</span><span class="o">/</span><span class="mi">597364332364800000</span><span class="p">,</span>
+<span class="mi">1213894246448392783</span><span class="o">/</span><span class="mi">1580328921600000</span><span class="p">,</span>
+<span class="mi">2558719956867520777483</span><span class="o">/</span><span class="mi">8014638125894400000</span><span class="p">,</span>
+<span class="mi">86109807874052383</span><span class="o">/</span><span class="mi">706758212160000</span><span class="p">,</span>
+<span class="mi">103452650387006862847</span><span class="o">/</span><span class="mi">2431106898187968000</span><span class="p">,</span>
+<span class="mi">816088653136373</span><span class="o">/</span><span class="mi">60295309974900</span><span class="p">,</span> <span class="mi">312536252003</span><span class="o">/</span><span class="mi">80313433200</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="stability_conditions.tilt_two.html" class="btn btn-neutral float-left" title="stability_conditions.tilt_two module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Benjamin Schmidt.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

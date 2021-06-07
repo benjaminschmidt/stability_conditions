@@ -1,0 +1,1282 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>stability_conditions.tilt module &mdash; Stability Conditions (v0.1.2) 0.1.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="stability_conditions.tilt_two module" href="stability_conditions.tilt_two.html" />
+    <link rel="prev" title="stability_conditions.slope module" href="stability_conditions.slope.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Stability Conditions (v0.1.2)
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="stability_conditions.html">stability_conditions package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="stability_conditions.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="stability_conditions.library.html">stability_conditions.library module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stability_conditions.slope.html">stability_conditions.slope module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">stability_conditions.tilt module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stability_conditions.tilt_two.html">stability_conditions.tilt_two module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stability_conditions.variety.html">stability_conditions.variety module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Stability Conditions (v0.1.2)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="stability_conditions.html">stability_conditions package</a> &raquo;</li>
+        
+      <li>stability_conditions.tilt module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/stability_conditions.tilt.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-stability_conditions.tilt">
+<span id="stability-conditions-tilt-module"></span><h1>stability_conditions.tilt module<a class="headerlink" href="#module-stability_conditions.tilt" title="Permalink to this headline">¶</a></h1>
+<p>Module for computations in tilt stability</p>
+<p>This module contains various functionality for computations in tilt
+stability as introduced by Bridgeland, Arcara-Bertram,
+and Bayer-Macrì-Toda.</p>
+<p>EXAMPLES:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Lots</span> <span class="ow">and</span> <span class="n">lots</span> <span class="n">of</span> <span class="n">examples</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt id="stability_conditions.tilt.TiltWall">
+<em class="property">class </em><code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">TiltWall</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">p</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">vertical</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">empty</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#TiltWall"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.TiltWall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sage.structure.sage_object.SageObject</span></code></p>
+<p>A wall in tilt stability.</p>
+<p>Walls are either semicircles centered along the <span class="math notranslate nohighlight">\(\beta\)</span>-axis with
+center <span class="math notranslate nohighlight">\(\beta = s\)</span> and radius squared <cite>p</cite>, vertical rays given by
+<span class="math notranslate nohighlight">\(\beta = s\)</span>, or empty.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code> – center if the wall is a semicircle, constant <span class="math notranslate nohighlight">\(\beta\)</span>
+value if the wall is vertical, or arbitrary if the wall is
+empty. (default: None)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span></code> – radius squared of a semicircle, None if the wall is vertical,
+or arbitrary if the wall is empty. (default: <cite>None</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vertical</span></code> – boolean describing whether the wall is vertical.
+(default: <cite>False</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">empty</span></code> – boolean describing whether the wall is empty.
+(default: <cite>False</cite>)</p></li>
+</ul>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Semicircular</span> <span class="n">walls</span> <span class="n">must</span> <span class="n">have</span> <span class="n">radius</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Semicircular</span> <span class="n">walls</span> <span class="n">must</span> <span class="n">have</span> <span class="n">center</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Vertical</span> <span class="n">walls</span> <span class="n">have</span> <span class="n">no</span> <span class="n">radius</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Vertical</span> <span class="n">walls</span> <span class="n">must</span> <span class="n">have</span> <span class="n">s</span> <span class="ow">not</span> <span class="kc">None</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Vertical</span> <span class="n">walls</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">empty</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">is_empty</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="n">p</span><span class="o">=-</span><span class="mi">1</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">is_empty</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">is_empty</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">is_empty</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">is_vertical</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">is_vertical</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">is_vertical</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="stability_conditions.tilt.TiltWall.__eq__">
+<code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#TiltWall.__eq__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.TiltWall.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Walls are identical if they consist of exactly the same points.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall2</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall3</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">==</span> <span class="n">wall2</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">==</span> <span class="n">wall3</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall5</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">==</span> <span class="n">wall4</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">==</span> <span class="n">wall5</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">==</span> <span class="n">wall6</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">==</span> <span class="n">wall6</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">==</span> <span class="n">wall7</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall8</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">==</span> <span class="n">wall8</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.tilt.TiltWall.__ge__">
+<code class="sig-name descname">__ge__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#TiltWall.__ge__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.TiltWall.__ge__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implemented as other &lt; self or self == other.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall2</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall3</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">&gt;=</span> <span class="n">wall2</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">&gt;=</span> <span class="n">wall3</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall5</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">&gt;=</span> <span class="n">wall1</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">&gt;=</span> <span class="n">wall4</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">&gt;=</span> <span class="n">wall5</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall8</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall9</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">&gt;=</span> <span class="n">wall1</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">&gt;=</span> <span class="n">wall6</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall8</span> <span class="o">&gt;=</span> <span class="n">wall6</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">&gt;=</span> <span class="n">wall9</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall9</span> <span class="o">&gt;=</span> <span class="n">wall6</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">&gt;=</span> <span class="n">wall8</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.tilt.TiltWall.__gt__">
+<code class="sig-name descname">__gt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#TiltWall.__gt__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.TiltWall.__gt__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implemented as other &lt; self.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall2</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall3</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">&gt;</span> <span class="n">wall2</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">&gt;</span> <span class="n">wall3</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall5</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">&gt;</span> <span class="n">wall1</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">&gt;</span> <span class="n">wall4</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">&gt;</span> <span class="n">wall5</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall8</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall9</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">&gt;</span> <span class="n">wall1</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">&gt;</span> <span class="n">wall6</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall8</span> <span class="o">&gt;</span> <span class="n">wall6</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">&gt;</span> <span class="n">wall9</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall9</span> <span class="o">&gt;</span> <span class="n">wall6</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">&gt;</span> <span class="n">wall8</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.tilt.TiltWall.__hash__">
+<code class="sig-name descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#TiltWall.__hash__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.TiltWall.__hash__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a hash value for this object.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall2</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall3</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall2</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall3</span><span class="p">)</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall5</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall4</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall4</span><span class="p">)</span> <span class="o">==</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall5</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall6</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall4</span><span class="p">)</span> <span class="o">==</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall6</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall6</span><span class="p">)</span> <span class="o">==</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall7</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall8</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall6</span><span class="p">)</span> <span class="o">==</span> <span class="nb">hash</span><span class="p">(</span><span class="n">wall8</span><span class="p">)</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.tilt.TiltWall.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">p</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">vertical</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">empty</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#TiltWall.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.TiltWall.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.tilt.TiltWall.__le__">
+<code class="sig-name descname">__le__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#TiltWall.__le__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.TiltWall.__le__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implemented as self &lt; other or self == other.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall2</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall3</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">&lt;=</span> <span class="n">wall2</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">&lt;=</span> <span class="n">wall3</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall5</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">&lt;=</span> <span class="n">wall1</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">&lt;=</span> <span class="n">wall4</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">&lt;=</span> <span class="n">wall5</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall8</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall9</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">&lt;=</span> <span class="n">wall1</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">&lt;=</span> <span class="n">wall6</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall8</span> <span class="o">&lt;=</span> <span class="n">wall6</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">&lt;=</span> <span class="n">wall9</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall9</span> <span class="o">&lt;=</span> <span class="n">wall6</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">&lt;=</span> <span class="n">wall8</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.tilt.TiltWall.__lt__">
+<code class="sig-name descname">__lt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#TiltWall.__lt__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.TiltWall.__lt__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether this wall is strictly contained in the wall <cite>other</cite>.</p>
+<p>Semicircular walls are compared by inclusion in the enclosed
+semidisk of the larger wall. Vertical walls are considered to be
+larger than all semicircular walls that they do not intersect for
+<span class="math notranslate nohighlight">\(\alpha &gt; 0\)</span>. Empty walls are considered smaller than all
+non-empty walls.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall2</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall3</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">&lt;</span> <span class="n">wall2</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">&lt;</span> <span class="n">wall3</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall5</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">&lt;</span> <span class="n">wall1</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">&lt;</span> <span class="n">wall4</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">&lt;</span> <span class="n">wall5</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall8</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall9</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">&lt;</span> <span class="n">wall1</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">&lt;</span> <span class="n">wall6</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall8</span> <span class="o">&lt;</span> <span class="n">wall6</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">&lt;</span> <span class="n">wall9</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall9</span> <span class="o">&lt;</span> <span class="n">wall6</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">&lt;</span> <span class="n">wall8</span>
+<span class="kc">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.tilt.TiltWall.__ne__">
+<code class="sig-name descname">__ne__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#TiltWall.__ne__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.TiltWall.__ne__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implemented as the opposite of self == other.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall2</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall3</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">!=</span> <span class="n">wall2</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">!=</span> <span class="n">wall3</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall5</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">!=</span> <span class="n">wall4</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">!=</span> <span class="n">wall5</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall7</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">!=</span> <span class="n">wall6</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall4</span> <span class="o">!=</span> <span class="n">wall6</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">!=</span> <span class="n">wall7</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall8</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall6</span> <span class="o">!=</span> <span class="n">wall8</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="stability_conditions.tilt.TiltWall.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#stability_conditions.tilt.TiltWall.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.tilt.TiltWall._latex_">
+<code class="sig-name descname">_latex_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#TiltWall._latex_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.TiltWall._latex_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a latex expression for the defining equation of the wall.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">latex</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> \
+                          <span class="n">empty</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+\<span class="n">beta</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">latex</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> \
+                          <span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+\<span class="n">emptyset</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">latex</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+\<span class="n">alpha</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> \<span class="n">left</span><span class="p">(</span>\<span class="n">beta</span> <span class="o">-</span> <span class="mi">1</span>\<span class="n">right</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">latex</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+\<span class="n">alpha</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> \<span class="n">left</span><span class="p">(</span>\<span class="n">beta</span> <span class="o">+</span> <span class="mi">1</span>\<span class="n">right</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">latex</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+\<span class="n">alpha</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> \<span class="n">beta</span><span class="o">^</span><span class="mi">2</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">latex</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+\<span class="n">emptyset</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.tilt.TiltWall._repr_">
+<code class="sig-name descname">_repr_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#TiltWall._repr_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.TiltWall._repr_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the object as a string in the syntax that would be used to
+create it newly.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.tilt.TiltWall.equation">
+<code class="sig-name descname">equation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#TiltWall.equation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.TiltWall.equation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Substitutes <span class="math notranslate nohighlight">\(a = \alpha\)</span> and <span class="math notranslate nohighlight">\(b = \beta\)</span> into the
+equation of the wall.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="s1">&#39;a, b&#39;</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">RR</span><span class="p">)</span>
+<span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">equation</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">equation</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">equation</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">a</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.tilt.bar_beta">
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">bar_beta</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#bar_beta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.bar_beta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\overline{\beta}(v) :=
+\begin{cases}
+\frac{v_1 - \sqrt{\Delta(v)}}{v_0} &amp;\text{, if } v_0 \neq 0 \\
+\frac{v_2}{v_1} &amp;\text{, if } v_0 = 0.
+\end{cases}\end{split}\]</div>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="s1">&#39;r, c, d&#39;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">RR</span><span class="p">)</span>
+<span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">bar_beta</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">r</span><span class="p">))</span><span class="o">/</span><span class="n">r</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">bar_beta</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="n">d</span><span class="o">/</span><span class="n">c</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">bar_beta</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">bar_beta</span><span class="p">(</span><span class="o">-</span><span class="n">v</span><span class="p">)</span>
+<span class="mi">2</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">bar_beta</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">bar_beta</span><span class="p">(</span><span class="o">-</span><span class="n">v</span><span class="p">)</span>
+<span class="mi">0</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">bar_beta</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">bar_beta</span><span class="p">(</span><span class="o">-</span><span class="n">v</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.tilt.beta_minus">
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">beta_minus</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#beta_minus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.beta_minus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the smallest solutions to the equation
+<span class="math notranslate nohighlight">\(\nu_{0, \beta}(v) = 0\)</span>.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="s1">&#39;r, c, d&#39;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">RR</span><span class="p">)</span>
+<span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">beta_minus</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">r</span><span class="p">))</span><span class="o">/</span><span class="n">r</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">The</span> <span class="n">rank</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">have</span> <span class="n">a</span> <span class="n">sign</span> <span class="ow">or</span> <span class="n">be</span> <span class="n">zero</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">assume</span><span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">beta_minus</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">r</span><span class="p">))</span><span class="o">/</span><span class="n">r</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">forget</span><span class="p">()</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">assume</span><span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">beta_minus</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">r</span><span class="p">))</span><span class="o">/</span><span class="n">r</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">beta_minus</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="n">d</span><span class="o">/</span><span class="n">c</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">beta_minus</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">2</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">beta_minus</span><span class="p">(</span><span class="o">-</span><span class="n">v</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">beta_minus</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">forget</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.tilt.beta_plus">
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">beta_plus</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#beta_plus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.beta_plus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the largest solutions to the equation
+<span class="math notranslate nohighlight">\(\nu_{0, \beta}(v) = 0\)</span>.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="s1">&#39;r, c, d&#39;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">RR</span><span class="p">)</span>
+<span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">beta_plus</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">r</span><span class="p">))</span><span class="o">/</span><span class="n">r</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">The</span> <span class="n">rank</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">have</span> <span class="n">a</span> <span class="n">sign</span> <span class="ow">or</span> <span class="n">be</span> <span class="n">zero</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">assume</span><span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">beta_plus</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">r</span><span class="p">))</span><span class="o">/</span><span class="n">r</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">forget</span><span class="p">()</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">assume</span><span class="p">(</span><span class="n">r</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">beta_plus</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">c</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="o">*</span><span class="n">r</span><span class="p">))</span><span class="o">/</span><span class="n">r</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">tilt</span><span class="o">.</span><span class="n">beta_plus</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="n">d</span><span class="o">/</span><span class="n">c</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">beta_plus</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="mi">2</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">beta_plus</span><span class="p">(</span><span class="o">-</span><span class="n">v</span><span class="p">)</span>
+<span class="mi">0</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">beta_plus</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">forget</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.tilt.hyperbola">
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">hyperbola</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#hyperbola"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.hyperbola" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the real part of the central charge of tilt stability.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">hyperbola</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">0</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">hyperbola</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="s1">&#39;a, b, r, c, d&#39;</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">RR</span><span class="p">)</span>
+<span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">p</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">hyperbola</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)),</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">^</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">b</span><span class="o">^</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">c</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.tilt.nu">
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">nu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#nu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.nu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the slope <span class="math notranslate nohighlight">\(\nu_{a, b}(v)\)</span>.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">nu</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="o">+</span><span class="n">Infinity</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">nu</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="mi">0</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">nu</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="mi">3</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">nu</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">47</span><span class="o">/</span><span class="mi">23</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="s1">&#39;a, b, r, c, d&#39;</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">RR</span><span class="p">)</span>
+<span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">p</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">nu</span><span class="p">(</span><span class="n">Element</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">]),</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="o">^</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span> <span class="o">-</span> <span class="n">b</span><span class="o">^</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">c</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">r</span> <span class="o">-</span> <span class="n">c</span><span class="p">))</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.tilt.q">
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">q</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">w</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">a</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">b</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#q"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.q" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the quadratic form <span class="math notranslate nohighlight">\(Q_{a, b}(v, w)\)</span>.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> – Element of the numerical Chow ring</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">w</span></code> – Element of the numerical Chow ring or None. If <cite>w</cite> is None,</dt><dd><p>then it assumes <cite>w = v</cite>. (default: <cite>None</cite>)</p>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code> – positive real number (default: <cite>0</cite>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> – arbitrary real number (default: <cite>0</cite>)</p></li>
+</ul>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]),</span> <span class="n">a</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">b</span><span class="o">=-</span><span class="mi">3</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">26</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="mi">174</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="mi">174</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="s1">&#39;s, t&#39;</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">RR</span><span class="p">)</span>
+<span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">p</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">q</span><span class="p">(</span><span class="n">Element</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">]),</span> <span class="n">a</span><span class="o">=</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="mi">4</span><span class="o">*</span><span class="n">s</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">t</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">8</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.tilt.q_wall">
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">q_wall</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#q_wall"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.q_wall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the numerical wall defined by <span class="math notranslate nohighlight">\(Q_{a, b}(v) = 0\)</span>.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">q_wall</span><span class="p">(</span><span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]))</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">q_wall</span><span class="p">(</span><span class="n">Element</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">]))</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">q_wall</span><span class="p">(</span><span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="o">-</span><span class="mi">431</span><span class="o">/</span><span class="mi">3</span><span class="p">]))</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">49</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">17</span><span class="o">/</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">q_wall</span><span class="p">(</span><span class="n">Element</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="o">/</span><span class="mi">3</span><span class="p">]))</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.tilt.wall">
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">wall</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">w</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#wall"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.wall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns wall between <cite>v</cite> and <cite>w</cite>.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">24</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">wall</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">wall</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">wall</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">wall</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">wall</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">wall</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="n">TiltWall</span><span class="p">(</span><span class="n">empty</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.tilt.walls_left">
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">walls_left</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">var</span></em>, <em class="sig-param"><span class="n">s</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">b</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#walls_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.walls_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes walls left of the vertical wall in tilt stability.</p>
+<p>This function assumes v[0] != 0. It computes those walls for <cite>v</cite>
+that are larger than or equal to the numerical wall with center
+<span class="math notranslate nohighlight">\(\beta = s\)</span>. If <cite>s</cite> is None, it computes those walls that intersect
+the vertical ray <span class="math notranslate nohighlight">\(\beta = b\)</span>. If both <cite>b</cite> and <cite>s</cite> are None and
+<span class="math notranslate nohighlight">\(\beta^{-}(v)\)</span> is rational, it computes all walls to the left of the
+vertical wall.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> – Element in the numerical Chow ring.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">var</span></code> – Variety.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code> – rational number or None (default: <cite>None</cite>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> – rational number or None (default: <cite>None</cite>).</p></li>
+</ul>
+<p>If both <cite>s</cite> and <cite>b</cite> are different from None, then <cite>b</cite> is ignored.</p>
+<p>OUTPUT: Returns a dictionary where keys are TiltWall objects and the
+items are sets of those potentially destabilizing semistable
+subobjects or quotients which have positive rank and whose slope is
+smaller than the slope of v.</p>
+<p>ALGORITHM:</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">5</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">9</span><span class="o">/</span><span class="mi">4</span><span class="p">):</span> <span class="p">{</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))}}</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_left</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="n">output</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">5</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">9</span><span class="o">/</span><span class="mi">4</span><span class="p">):</span> <span class="p">{</span><span class="n">w</span><span class="p">}}</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_left</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">b</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">output</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_left</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="p">{}</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span> <span class="o">=</span>  <span class="p">{</span><span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">):</span> <span class="p">{</span><span class="n">w</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">w</span><span class="p">}}</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_left</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">p</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">s</span><span class="o">=-</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="n">output</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">onlyWall</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_left</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">s</span><span class="o">=-</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="n">onlyWall</span><span class="p">:</span> <span class="p">{</span><span class="n">w</span><span class="p">}}</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_left</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">There</span> <span class="n">are</span> <span class="n">infinitely</span> <span class="n">many</span> <span class="n">such</span> <span class="n">walls</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_left</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Use</span> <span class="n">the</span> <span class="n">appropriate</span> <span class="n">function</span> <span class="k">for</span> <span class="n">rank</span> <span class="n">zero</span> <span class="n">objects</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_left</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">There</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">numerical</span> <span class="n">wall</span> <span class="k">with</span> <span class="n">this</span> <span class="n">center</span> <span class="n">on</span> <span class="n">this</span>
+<span class="n">side</span> <span class="n">of</span> <span class="n">the</span> <span class="n">vertical</span> <span class="n">wall</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.tilt.walls_right">
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">walls_right</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">var</span></em>, <em class="sig-param"><span class="n">s</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">b</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#walls_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.walls_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes walls right of the vertical wall in tilt stability.</p>
+<p>This function assumes v[0] != 0. It computes those walls for <cite>-v</cite>
+that are larger than or equal to the numerical wall with center
+<span class="math notranslate nohighlight">\(\beta = s\)</span>. If <cite>s</cite> is None, it computes those walls that intersect
+the vertical ray <span class="math notranslate nohighlight">\(\beta = b\)</span>. If both <cite>b</cite> and <cite>s</cite> are None and
+<span class="math notranslate nohighlight">\(\beta^{-}(v)\)</span> is rational, it computes all walls to the left of the
+vertical wall.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> – Element in the numerical Chow ring.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">var</span></code> – Variety.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code> – rational number or None (default: <cite>None</cite>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> – rational number or None (default: <cite>None</cite>).</p></li>
+</ul>
+<p>If both <cite>s</cite> and <cite>b</cite> are different from None, then <cite>b</cite> is ignored.</p>
+<p>OUTPUT: Returns a dictionary where keys are TiltWall objects and the
+items are sets of those potentially destabilizing semistable
+subobjects or quotients which have negative rank and whose slope is
+smaller than the slope of -v.</p>
+<p>ALGORITHM:</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">9</span><span class="o">/</span><span class="mi">4</span><span class="p">):</span> <span class="p">{</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))}}</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_right</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="n">output</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">9</span><span class="o">/</span><span class="mi">4</span><span class="p">):</span> <span class="p">{</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))}}</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_right</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">output</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">only_wall</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">only_wall</span><span class="p">:</span> <span class="p">{</span><span class="n">w</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">w</span><span class="p">}}</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_right</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="o">==</span> <span class="n">output</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_right</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{}</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">only_wall</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_right</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="n">only_wall</span><span class="p">:</span> <span class="p">{</span><span class="n">w</span><span class="p">}}</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_right</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">There</span> <span class="n">are</span> <span class="n">infinitely</span> <span class="n">many</span> <span class="n">such</span> <span class="n">walls</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_right</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Use</span> <span class="n">the</span> <span class="n">appropriate</span> <span class="n">function</span> <span class="k">for</span> <span class="n">rank</span> <span class="n">zero</span> <span class="n">objects</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_right</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">There</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">numerical</span> <span class="n">wall</span> <span class="k">with</span> <span class="n">this</span> <span class="n">center</span> <span class="n">on</span> <span class="n">this</span>
+<span class="n">side</span> <span class="n">of</span> <span class="n">the</span> <span class="n">vertical</span> <span class="n">wall</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">wall</span><span class="p">:</span> <span class="p">{</span><span class="n">w</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">w</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">w</span><span class="p">}}</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_right</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)),</span> <span class="n">var</span><span class="p">)</span> <span class="o">==</span> <span class="n">output</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.tilt.walls_torsion">
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">walls_torsion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">var</span></em>, <em class="sig-param"><span class="n">p</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">b</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#walls_torsion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.walls_torsion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute walls for v in tilt stability if v[0] == 0.</p>
+<p>This function computes those walls for <cite>v</cite> that are larger than or
+equal to the numerical wall with radius squared <cite>p</cite>. If <cite>p</cite> is None,
+it computes those walls that intersect the vertical ray <span class="math notranslate nohighlight">\(\beta = b\)</span>.
+If both <cite>b</cite> and <cite>p</cite> are None it computes all walls to the left of
+the vertical wall.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> – Element in the numerical Chow ring.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">var</span></code> – Variety.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span></code> – rational number or None (default: <cite>None</cite>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> – rational number or None (default: <cite>None</cite>).</p></li>
+</ul>
+<p>If both <cite>p</cite> and <cite>b</cite> are different from None, then <cite>b</cite> is ignored. If
+<cite>p &lt; 0</cite>, then the function assumes p is 0.</p>
+<p>OUTPUT: Returns a dictionary where keys are TiltWall objects and the
+items are sets of those potentially destabilizing semistable
+subobjects or quotients which have positive rank.</p>
+<p>ALGORITHM:</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">only_wall</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_torsion</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="p">{</span><span class="n">only_wall</span><span class="p">:</span> <span class="p">{</span><span class="n">w</span><span class="p">}}</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_torsion</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">{}</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">only_wall</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_torsion</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="n">only_wall</span><span class="p">:</span> <span class="p">{</span><span class="n">w</span><span class="p">}}</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall2</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall3</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">wall1</span><span class="p">:</span> <span class="nb">set</span><span class="p">(),</span> <span class="n">wall2</span><span class="p">:</span> <span class="nb">set</span><span class="p">(),</span> <span class="n">wall3</span><span class="p">:</span> <span class="nb">set</span><span class="p">()}</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="p">[</span><span class="n">wall1</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="p">[</span><span class="n">wall2</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="p">[</span><span class="n">wall3</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">17</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="p">[</span><span class="n">wall3</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="p">[</span><span class="n">wall3</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_torsion</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="n">output</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall1</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">9</span><span class="o">/</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">wall2</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">wall1</span><span class="p">:</span> <span class="nb">set</span><span class="p">(),</span> <span class="n">wall2</span><span class="p">:</span> <span class="nb">set</span><span class="p">()}</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="p">[</span><span class="n">wall1</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="p">[</span><span class="n">wall2</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="p">[</span><span class="n">wall2</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="p">[</span><span class="n">wall2</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="p">[</span><span class="n">wall2</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_torsion</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">16</span><span class="p">)</span> <span class="o">==</span> <span class="n">output</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_torsion</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Use</span> <span class="n">the</span> <span class="n">appropriate</span> <span class="n">function</span> <span class="k">for</span> <span class="n">non</span><span class="o">-</span><span class="n">torsion</span> <span class="n">objects</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.tilt.walls_vertical">
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">walls_vertical</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">var</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#walls_vertical"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.walls_vertical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes vertical walls for <cite>v</cite> in tilt stability.</p>
+<p>This function assumes v[0] != 0.</p>
+<p>OUTPUT: Returns a set of potentially destabilizing semistable
+subobjects or quotients <cite>w</cite>. It gives exactly half of these objects
+as follows. If <cite>w</cite> has rank zero, then instead <cite>-v - w</cite> is in the
+set. Assume that both <cite>w</cite> and <cite>-v - w</cite> have negative rank. If <cite>-w</cite>
+would not numerically destabilize a sheaf with class <cite>-v</cite> in
+Gieseker stability, then <cite>w</cite> is in the set. If it does, then
+<cite>v + w</cite> would numerically destabilize a sheaf with class <cite>-v</cite> in
+Gieseker stability and the <cite>-v - w</cite> is added to the set.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> – Element in the numerical Chow ring.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">var</span></code> – Variety.</p></li>
+</ul>
+<p>ALGORITHM:</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_vertical</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="n">output</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_vertical</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="n">output</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_vertical</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="n">output</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">output</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_vertical</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)),</span> <span class="n">var</span><span class="p">)</span> <span class="o">==</span> <span class="n">output</span>
+<span class="kc">True</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">walls_vertical</span><span class="p">(</span><span class="n">Element</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">Use</span> <span class="n">the</span> <span class="n">appropriate</span> <span class="n">function</span> <span class="k">for</span> <span class="n">rank</span> <span class="n">zero</span> <span class="n">objects</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="stability_conditions.tilt.z">
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">z</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the central charge <span class="math notranslate nohighlight">\(Z_{a, b}(v)\)</span> for tilt stability.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">I</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="o">-</span><span class="n">I</span> <span class="o">+</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">24</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">tilt</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">23</span><span class="o">*</span><span class="n">I</span> <span class="o">-</span> <span class="mi">47</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="s1">&#39;a, b, r, c, d&#39;</span><span class="p">,</span> <span class="n">domain</span> <span class="o">=</span> <span class="n">RR</span><span class="p">)</span>
+<span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">p</span> <span class="o">=</span> <span class="n">tilt</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">Element</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">]),</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">^</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">b</span><span class="o">^</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">c</span> <span class="o">-</span> <span class="n">I</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">r</span> <span class="o">+</span> <span class="n">I</span><span class="o">*</span><span class="n">c</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="stability_conditions.tilt_two.html" class="btn btn-neutral float-right" title="stability_conditions.tilt_two module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="stability_conditions.slope.html" class="btn btn-neutral float-left" title="stability_conditions.slope module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Benjamin Schmidt.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

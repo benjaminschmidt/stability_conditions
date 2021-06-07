@@ -3,7 +3,7 @@ Module for computations in tilt stability
 
 This module contains various functionality for computations in tilt
 stability as introduced by Bridgeland, Arcara-Bertram,
-and Bayer-Macri-Toda.
+and Bayer-Macrì-Toda.
 
 EXAMPLES::
 
@@ -17,7 +17,7 @@ EXAMPLES::
 """
 
 # ****************************************************************************
-#       Copyright (C) 2020 Benjamin Schmidt <schmbe@gmail.com>
+#       Copyright (C) 2021 Benjamin Schmidt <schmbe@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -35,12 +35,19 @@ EXAMPLES::
 
 # noinspection PyUnresolvedReferences
 import sage.all
+# noinspection PyUnresolvedReferences
 from sage.arith.misc import gcd
+# noinspection PyUnresolvedReferences
 from sage.functions.other import floor, imag_part, real_part, sqrt
+# noinspection PyUnresolvedReferences
 from sage.rings.infinity import infinity
+# noinspection PyUnresolvedReferences
 from sage.rings.all import Integer
+# noinspection PyUnresolvedReferences
 from sage.rings.rational_field import QQ
+# noinspection PyUnresolvedReferences
 from sage.structure.all import SageObject
+# noinspection PyUnresolvedReferences
 from sage.symbolic.all import i
 
 from .library import previous_farey
@@ -52,27 +59,27 @@ class TiltWall(SageObject):
     r"""
     A wall in tilt stability.
 
-    Walls are either semicircles centered along the `\beta`-axis with center
-    `\beta = s` and radius squared `p`, vertical rays given by `\beta = s`,
-    or empty.
+    Walls are either semicircles centered along the :math:`\beta`-axis with
+    center :math:`\beta = s` and radius squared `p`, vertical rays given by
+    :math:`\beta = s`, or empty.
 
 
     INPUT:
 
-    - ``s`` -- center if the wall is a semicircle, constant `\beta` value
-               if the wall is vertical, or arbitrary if the wall is empty.
-               (default: None)
-    - ``p`` -- radius squared of a semicircle, None if the wall is vertical, or
-               arbitrary if the wall is empty. (default: None)
+    - ``s`` -- center if the wall is a semicircle, constant :math:`\beta`
+      value if the wall is vertical, or arbitrary if the wall is
+      empty. (default: None)
+    - ``p`` -- radius squared of a semicircle, None if the wall is vertical,
+      or arbitrary if the wall is empty. (default: `None`)
     - ``vertical`` -- boolean describing whether the wall is vertical.
-                      (default: False)
+      (default: `False`)
     - ``empty`` -- boolean describing whether the wall is empty.
-                   (default: False)
+      (default: `False`)
 
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: tilt.TiltWall(s=None, p=None, vertical=False, empty=False)
         Traceback (most recent call last):
@@ -153,7 +160,7 @@ class TiltWall(SageObject):
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: wall1 = tilt.TiltWall(s=1, vertical=True)
             sage: wall2 = tilt.TiltWall(s=1, vertical=True)
@@ -196,7 +203,7 @@ class TiltWall(SageObject):
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: wall1 = tilt.TiltWall(s=1, vertical=True)
             sage: wall2 = tilt.TiltWall(s=1, vertical=True)
@@ -240,7 +247,7 @@ class TiltWall(SageObject):
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: wall1 = tilt.TiltWall(s=1, vertical=True)
             sage: wall2 = tilt.TiltWall(s=1, vertical=True)
@@ -279,12 +286,12 @@ class TiltWall(SageObject):
         return other < self
 
     def __hash__(self):
-        """
+        r"""
         Returns a hash value for this object.
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: wall1 = tilt.TiltWall(s=1, vertical=True)
             sage: wall2 = tilt.TiltWall(s=1, vertical=True)
@@ -318,11 +325,11 @@ class TiltWall(SageObject):
 
     def __le__(self, other):
         r"""
-        Implemented as strictly smaller or equal.
+        Implemented as self < other or self == other.
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: wall1 = tilt.TiltWall(s=1, vertical=True)
             sage: wall2 = tilt.TiltWall(s=1, vertical=True)
@@ -368,12 +375,12 @@ class TiltWall(SageObject):
         Semicircular walls are compared by inclusion in the enclosed
         semidisk of the larger wall. Vertical walls are considered to be
         larger than all semicircular walls that they do not intersect for
-        `\alpha > 0`. Empty walls are considered smaller than all non-empty
-        walls.\left(
+        :math:`\alpha > 0`. Empty walls are considered smaller than all
+        non-empty walls.
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: wall1 = tilt.TiltWall(s=1, vertical=True)
             sage: wall2 = tilt.TiltWall(s=1, vertical=True)
@@ -453,9 +460,11 @@ class TiltWall(SageObject):
 
     def __ne__(self, other):
         r"""
+        Implemented as the opposite of self == other.
+
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: wall1 = tilt.TiltWall(s=1, vertical=True)
             sage: wall2 = tilt.TiltWall(s=1, vertical=True)
@@ -489,9 +498,12 @@ class TiltWall(SageObject):
 
     def _repr_(self):
         r"""
+        Returns the object as a string in the syntax that would be used to
+        create it newly.
+
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: tilt.TiltWall(s=-1/2, p=None, vertical=True, empty=False)
             TiltWall(s=-1/2, vertical=True)
@@ -514,9 +526,11 @@ class TiltWall(SageObject):
 
     def _latex_(self):
         r"""
+        Returns a latex expression for the defining equation of the wall.
+
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: latex(tilt.TiltWall(s=-1/2, p=None, vertical=True, \
                                       empty=False))
@@ -553,11 +567,12 @@ class TiltWall(SageObject):
 
     def equation(self, a, b):
         r"""
-        Returns the equation of the wall with `a = \alpha` and `b = \beta`.
+        Substitutes :math:`a = \alpha` and :math:`b = \beta` into the
+        equation of the wall.
 
         TESTS::
 
-            sage: from stability_conditions.all import *
+            sage: from stability_conditions import *
 
             sage: var('a, b', domain = RR)
             (a, b)
@@ -578,13 +593,18 @@ class TiltWall(SageObject):
 
 def bar_beta(v):
     r"""
-    Returns the number `\overline{\beta}(v)`.
+    Returns the number
 
-    See [BMS16] page 16 for a definition.
+    .. math:: \overline{\beta}(v) :=
+              \begin{cases}
+              \frac{v_1 - \sqrt{\Delta(v)}}{v_0} &\text{, if } v_0 \neq 0 \\
+              \frac{v_2}{v_1} &\text{, if } v_0 = 0.
+              \end{cases}
 
     TESTS::
-        sage: from stability_conditions.all import *
-        sage: var('r, c, d', domain = RR)
+
+        sage: from stability_conditions import *
+        sage: var('r, c, d', domain=RR)
         (r, c, d)
 
         sage: v = Element([r, c, d])
@@ -621,11 +641,14 @@ def bar_beta(v):
 
 def beta_minus(v):
     r"""
-    Returns the smallest solutions to the equation `\nu_{0, \beta}(v) = 0`.
+    Returns the smallest solutions to the equation
+    :math:`\nu_{0, \beta}(v) = 0`.
+
 
     TESTS::
-        sage: from stability_conditions.all import *
-        sage: var('r, c, d', domain = RR)
+
+        sage: from stability_conditions import *
+        sage: var('r, c, d', domain=RR)
         (r, c, d)
 
         sage: v = Element([r, c, d])
@@ -673,11 +696,13 @@ def beta_minus(v):
 
 def beta_plus(v):
     r"""
-    Returns the largest solutions to the equation `\nu_{0, \beta}(v) = 0`.
+    Returns the largest solutions to the equation
+    :math:`\nu_{0, \beta}(v) = 0`.
 
     TESTS::
-        sage: from stability_conditions.all import *
-        sage: var('r, c, d', domain = RR)
+
+        sage: from stability_conditions import *
+        sage: var('r, c, d', domain=RR)
         (r, c, d)
 
         sage: v = Element([r, c, d])
@@ -728,7 +753,8 @@ def hyperbola(v, a, b):
     Computes the real part of the central charge of tilt stability.
 
     TESTS::
-        sage: from stability_conditions.all import *
+
+        sage: from stability_conditions import *
 
         sage: v = Element((1, -1, 1/2, 5, 5, 5))
         sage: tilt.hyperbola(v, 1, -2)
@@ -747,11 +773,11 @@ def hyperbola(v, a, b):
 
 def nu(v, a, b):
     r"""
-    Computes the slope `\nu_{a, b}(v)`.`
+    Computes the slope :math:`\nu_{a, b}(v)`.
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: v = Element([1, 0, 0])
         sage: tilt.nu(v, 1, 0)
@@ -779,19 +805,19 @@ def nu(v, a, b):
 
 def q(v, w=None, a=0, b=0):
     r"""
-    Computes the quadratic form `Q_{a, b}(v, w}`.
+    Computes the quadratic form :math:`Q_{a, b}(v, w)`.
 
     INPUT:
 
     - ``v`` -- Element of the numerical Chow ring
-    - ``w`` -- Element of the numerical Chow ring or None. If w is None,
-               then it assumes `w = v`. (default: None)
-    - ``a`` -- positive real number (default: 0)
-    - ``b`` -- arbitrary real number (default: 0)
+    - ``w`` -- Element of the numerical Chow ring or None. If `w` is None,
+               then it assumes `w = v`. (default: `None`)
+    - ``a`` -- positive real number (default: `0`)
+    - ``b`` -- arbitrary real number (default: `0`)
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: tilt.q(Element([1, 0, -4, 9]), a=0, b=-3)
         -26
@@ -819,11 +845,11 @@ def q(v, w=None, a=0, b=0):
 
 def q_wall(v):
     r"""
-    Computes the numerical wall defined by `Q_{a, b}(v) = 0`.
+    Computes the numerical wall defined by :math:`Q_{a, b}(v) = 0`.
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: tilt.q_wall(Element([1, 0, -4, 8]))
         TiltWall(s=-3, p=1)
@@ -842,11 +868,11 @@ def q_wall(v):
 
 def wall(v, w):
     r"""
-    Returns wall between v and w.
+    Returns wall between `v` and `w`.
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: v = Element([1, 0, -4, 8])
         sage: w = Element([0, -8, 24])
@@ -896,17 +922,17 @@ def walls_left(v, var, s=None, b=None):
 
     This function assumes v[0] != 0. It computes those walls for `v`
     that are larger than or equal to the numerical wall with center
-    `\beta = s`. If `s` is None, it computes those walls that intersect
-    the vertical ray `\beta = b`. If both `b` and `s` are None and
-    `\beta^{-}(v)` is rational it computes all walls to the left of the
+    :math:`\beta = s`. If `s` is None, it computes those walls that intersect
+    the vertical ray :math:`\beta = b`. If both `b` and `s` are None and
+    :math:`\beta^{-}(v)` is rational, it computes all walls to the left of the
     vertical wall.
 
     INPUT:
 
     - ``v`` -- Element in the numerical Chow ring.
     - ``var`` -- Variety.
-    - ``s`` -- rational number or None (default: None).
-    - ``b`` -- rational number or None (default: None).
+    - ``s`` -- rational number or None (default: `None`).
+    - ``b`` -- rational number or None (default: `None`).
 
     If both `s` and `b` are different from None, then `b` is ignored.
 
@@ -919,7 +945,7 @@ def walls_left(v, var, s=None, b=None):
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: output = {tilt.TiltWall(s=-5/2, p=9/4): {Element((1, -1, 1/2))}}
         sage: tilt.walls_left(Element((1, 0, -2)), p(2)) == output
@@ -1033,17 +1059,17 @@ def walls_right(v, var, s=None, b=None):
 
     This function assumes v[0] != 0. It computes those walls for `-v`
     that are larger than or equal to the numerical wall with center
-    `\beta = s`. If `s` is None, it computes those walls that intersect
-    the vertical ray `\beta = b`. If both `b` and `s` are None and
-    `\beta^{-}(v)` is rational it computes all walls to the left of the
+    :math:`\beta = s`. If `s` is None, it computes those walls that intersect
+    the vertical ray :math:`\beta = b`. If both `b` and `s` are None and
+    :math:`\beta^{-}(v)` is rational, it computes all walls to the left of the
     vertical wall.
 
     INPUT:
 
     - ``v`` -- Element in the numerical Chow ring.
     - ``var`` -- Variety.
-    - ``s`` -- rational number or None (default: None).
-    - ``b`` -- rational number or None (default: None).
+    - ``s`` -- rational number or None (default: `None`).
+    - ``b`` -- rational number or None (default: `None`).
 
     If both `s` and `b` are different from None, then `b` is ignored.
 
@@ -1056,7 +1082,7 @@ def walls_right(v, var, s=None, b=None):
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: output = {tilt.TiltWall(s=5/2, p=9/4): {-Element((1, 1, 1/2))}}
         sage: tilt.walls_right(Element((1, 0, -2)), p(2)) == output
@@ -1131,7 +1157,7 @@ def walls_torsion(v, var, p=None, b=None):
 
     This function computes those walls for `v` that are larger than or
     equal to the numerical wall with radius squared `p`. If `p` is None,
-    it computes those walls that intersect the vertical ray `\beta = b`.
+    it computes those walls that intersect the vertical ray :math:`\beta = b`.
     If both `b` and `p` are None it computes all walls to the left of
     the vertical wall.
 
@@ -1139,8 +1165,8 @@ def walls_torsion(v, var, p=None, b=None):
 
     - ``v`` -- Element in the numerical Chow ring.
     - ``var`` -- Variety.
-    - ``p`` -- rational number or None (default: None).
-    - ``b`` -- rational number or None (default: None).
+    - ``p`` -- rational number or None (default: `None`).
+    - ``b`` -- rational number or None (default: `None`).
 
     If both `p` and `b` are different from None, then `b` is ignored. If
     `p < 0`, then the function assumes p is 0.
@@ -1153,7 +1179,7 @@ def walls_torsion(v, var, p=None, b=None):
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: v = Element((0, 1, -1/2))
         sage: w = Element((1, 0, 0))
@@ -1278,7 +1304,7 @@ def walls_vertical(v, var):
     OUTPUT: Returns a set of potentially destabilizing semistable
     subobjects or quotients `w`. It gives exactly half of these objects
     as follows. If `w` has rank zero, then instead `-v - w` is in the
-    set. Assume that both `w` and `-v - w` have negative rank. If `-w'
+    set. Assume that both `w` and `-v - w` have negative rank. If `-w`
     would not numerically destabilize a sheaf with class `-v` in
     Gieseker stability, then `w` is in the set. If it does, then
     `v + w` would numerically destabilize a sheaf with class `-v` in
@@ -1293,7 +1319,7 @@ def walls_vertical(v, var):
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: output = set()
         sage: output.add(-Element((2, 0, -1)))
@@ -1364,11 +1390,11 @@ def walls_vertical(v, var):
 
 def z(v, a, b):
     r"""
-    Computes the central charge for tilt stability.
+    Computes the central charge :math:`Z_{a, b}(v)` for tilt stability.
 
     TESTS::
 
-        sage: from stability_conditions.all import *
+        sage: from stability_conditions import *
 
         sage: v = Element([1, 0, 0])
         sage: tilt.z(v, 1, 0)
