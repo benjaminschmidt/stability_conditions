@@ -16,6 +16,7 @@ EXAMPLES::
     - Check speed issues on wall computation for (0, 3, -1/2) on p(2)
     - Write bounds class.
     - Incorporate bounds class into wall computations.
+    - Add tests for checking imports.
 """
 
 # ****************************************************************************
@@ -54,7 +55,7 @@ from sage.symbolic.all import i
 
 from .library import previous_farey
 from .slope import delta, mu
-from stability_conditions.varieties.variety import ch, Element
+from .varieties.variety import ch, Element
 
 
 class Bounds(SageObject):

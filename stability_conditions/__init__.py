@@ -2,12 +2,35 @@ r"""
 Sage library for computations with (very weak) Bridgeland stability
 conditions.
 
+
+.. TODO::
+
+    - Add examples.
+    - Add tests for checking imports.
+
+
 EXAMPLES::
 
 <Lots and lots of examples>
 
-.. TODO::
-    - Add examples.
+
+TESTS::
+
+    Check whether imports are working.
+
+    sage: from stability_conditions import *
+
+    sage: type(library)
+    <class 'module'>
+
+    sage: type(slope)
+    <class 'module'>
+
+    sage: type(tilt)
+    <class 'module'>
+
+    sage: type(tilt_two)
+    <class 'module'>
 """
 
 # ****************************************************************************
@@ -30,17 +53,10 @@ EXAMPLES::
 # noinspection PyUnresolvedReferences
 # from .all import *
 
-# noinspection PyUnresolvedReferences
 from . import library
-# noinspection PyUnresolvedReferences
 from . import slope
-# noinspection PyUnresolvedReferences
 from . import tilt
-# noinspection PyUnresolvedReferences
 from . import tilt_two
-# noinspection PyUnresolvedReferences
 from .varieties import variety
-# noinspection PyUnresolvedReferences
 from .varieties.variety import Element, p, Variety
-# noinspection PyUnresolvedReferences
 from . import varieties

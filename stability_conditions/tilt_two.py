@@ -10,6 +10,7 @@ EXAMPLES::
     - Add examples.
     - Add additional parameters for Z from Bayer-Macri-Stellari and adjust Q.
     - Add some different parameters of k to tests for Q.
+    - Add tests for checking imports.
 """
 
 # ****************************************************************************
@@ -43,7 +44,7 @@ from sage.rings.all import Integer
 from sage.rings.infinity import infinity
 
 from .slope import delta
-from stability_conditions.varieties.variety import ch
+from .varieties.variety import ch
 
 
 def mu(v, a, b, s):

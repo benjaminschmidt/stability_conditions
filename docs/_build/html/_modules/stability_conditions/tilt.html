@@ -170,6 +170,7 @@
 <span class="sd">    - Check speed issues on wall computation for (0, 3, -1/2) on p(2)</span>
 <span class="sd">    - Write bounds class.</span>
 <span class="sd">    - Incorporate bounds class into wall computations.</span>
+<span class="sd">    - Add tests for checking imports.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1"># ****************************************************************************</span>
@@ -208,7 +209,7 @@
 
 <span class="kn">from</span> <span class="nn">.library</span> <span class="k">import</span> <span class="n">previous_farey</span>
 <span class="kn">from</span> <span class="nn">.slope</span> <span class="k">import</span> <span class="n">delta</span><span class="p">,</span> <span class="n">mu</span>
-<span class="kn">from</span> <span class="nn">stability_conditions.varieties.variety</span> <span class="k">import</span> <span class="n">ch</span><span class="p">,</span> <span class="n">Element</span>
+<span class="kn">from</span> <span class="nn">.varieties.variety</span> <span class="k">import</span> <span class="n">ch</span><span class="p">,</span> <span class="n">Element</span>
 
 
 <div class="viewcode-block" id="Bounds"><a class="viewcode-back" href="../../stability_conditions.tilt.html#stability_conditions.tilt.Bounds">[docs]</a><span class="k">class</span> <span class="nc">Bounds</span><span class="p">(</span><span class="n">SageObject</span><span class="p">):</span>
