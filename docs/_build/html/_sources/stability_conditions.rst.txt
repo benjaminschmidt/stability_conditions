@@ -7,6 +7,14 @@ stability\_conditions package
    :private-members:
    :special-members:
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   stability_conditions.varieties
+
 Submodules
 ----------
 
@@ -17,4 +25,3 @@ Submodules
    stability_conditions.slope
    stability_conditions.tilt
    stability_conditions.tilt_two
-   stability_conditions.variety

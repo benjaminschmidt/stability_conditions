@@ -7,12 +7,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>stability_conditions.variety &mdash; Stability Conditions (v0.1.2) 0.1.2 documentation</title>
+  <title>stability_conditions.varieties.variety &mdash; Stability Conditions (v0.1.2) 0.1.2 documentation</title>
   
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
 
   
   
@@ -24,22 +24,22 @@
 
   
   <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -53,7 +53,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> Stability Conditions (v0.1.2)
+            <a href="../../../index.html" class="icon icon-home"> Stability Conditions (v0.1.2)
           
 
           
@@ -66,7 +66,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -85,7 +85,7 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../stability_conditions.html">stability_conditions package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stability_conditions.html">stability_conditions package</a></li>
 </ul>
 
             
@@ -101,7 +101,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">Stability Conditions (v0.1.2)</a>
+          <a href="../../../index.html">Stability Conditions (v0.1.2)</a>
         
       </nav>
 
@@ -132,11 +132,11 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="../index.html">Module code</a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>stability_conditions.variety</li>
+      <li>stability_conditions.varieties.variety</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -151,7 +151,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for stability_conditions.variety</h1><div class="highlight"><pre>
+  <h1>Source code for stability_conditions.varieties.variety</h1><div class="highlight"><pre>
 <span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Module for the numerical Chow ring of some special varieties.</span>
 
@@ -199,7 +199,7 @@
 <span class="kn">from</span> <span class="nn">sage.structure.all</span> <span class="k">import</span> <span class="n">SageObject</span>
 
 
-<div class="viewcode-block" id="Element"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element">[docs]</a><span class="k">class</span> <span class="nc">Element</span><span class="p">(</span><span class="n">SageObject</span><span class="p">):</span>
+<div class="viewcode-block" id="Element"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element">[docs]</a><span class="k">class</span> <span class="nc">Element</span><span class="p">(</span><span class="n">SageObject</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An element in the numerical Chow ring of a variety.</span>
 
@@ -208,10 +208,10 @@
 <span class="sd">    - ``vec`` -- list of rational numbers. vec[i] is the coefficient in</span>
 <span class="sd">      front of :math:`H^i`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Element.__init__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__init__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vec</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Element.__add__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__add__">[docs]</a>    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__add__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__add__">[docs]</a>    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns this object plus other.</span>
 
@@ -236,7 +236,7 @@
 
         <span class="k">return</span> <span class="n">Element</span><span class="p">([</span><span class="bp">self</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">other</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))])</span></div>
 
-<div class="viewcode-block" id="Element.__eq__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__eq__">[docs]</a>    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__eq__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__eq__">[docs]</a>    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Two elements are equal if they have identical coefficients.</span>
 
@@ -264,7 +264,7 @@
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="Element.__getitem__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__getitem__">[docs]</a>    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__getitem__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__getitem__">[docs]</a>    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the coefficient in front of :math:`H^j`.</span>
 
@@ -280,7 +280,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="p">[</span><span class="n">j</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Element.__hash__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__hash__">[docs]</a>    <span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__hash__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__hash__">[docs]</a>    <span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a hash value for this object.</span>
 
@@ -313,7 +313,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Element.__len__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__len__">[docs]</a>    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__len__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__len__">[docs]</a>    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the length of this object.</span>
 
@@ -329,7 +329,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Element.__ne__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__ne__">[docs]</a>    <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__ne__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__ne__">[docs]</a>    <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the opposite of self == other.</span>
 
@@ -354,7 +354,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">other</span></div>
 
-<div class="viewcode-block" id="Element.__mul__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__mul__">[docs]</a>    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__mul__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__mul__">[docs]</a>    <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns this object multiplied with other.</span>
 
@@ -386,7 +386,7 @@
 
         <span class="k">return</span> <span class="n">Element</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Element.__neg__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__neg__">[docs]</a>    <span class="k">def</span> <span class="nf">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__neg__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__neg__">[docs]</a>    <span class="k">def</span> <span class="nf">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the additive inverse of this object.</span>
 
@@ -402,7 +402,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Element</span><span class="p">([</span><span class="o">-</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="Element.__pos__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__pos__">[docs]</a>    <span class="k">def</span> <span class="nf">__pos__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__pos__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__pos__">[docs]</a>    <span class="k">def</span> <span class="nf">__pos__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a new copy of this object.</span>
 
@@ -418,7 +418,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Element</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Element.__pow__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__pow__">[docs]</a>    <span class="k">def</span> <span class="nf">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__pow__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__pow__">[docs]</a>    <span class="k">def</span> <span class="nf">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns this object to the power k.</span>
 
@@ -469,7 +469,7 @@
         <span class="k">elif</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Element.__rmul__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__rmul__">[docs]</a>    <span class="k">def</span> <span class="nf">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__rmul__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__rmul__">[docs]</a>    <span class="k">def</span> <span class="nf">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns other multiplied with this object.</span>
 
@@ -489,7 +489,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Element.__sub__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__sub__">[docs]</a>    <span class="k">def</span> <span class="nf">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__sub__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__sub__">[docs]</a>    <span class="k">def</span> <span class="nf">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns this object minus other.</span>
 
@@ -510,7 +510,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="n">other</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Element.__truediv__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.__truediv__">[docs]</a>    <span class="k">def</span> <span class="nf">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.__truediv__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.__truediv__">[docs]</a>    <span class="k">def</span> <span class="nf">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Divides this object by a rational number `k`.</span>
 
@@ -525,7 +525,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">k</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Element._repr_"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element._repr_">[docs]</a>    <span class="k">def</span> <span class="nf">_repr_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Element._repr_"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element._repr_">[docs]</a>    <span class="k">def</span> <span class="nf">_repr_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        String representation of this object.</span>
 
@@ -538,7 +538,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">vec</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Element.c"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.c">[docs]</a>    <span class="k">def</span> <span class="nf">c</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.c"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.c">[docs]</a>    <span class="k">def</span> <span class="nf">c</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes Chern classes from Chern characters.</span>
 
@@ -601,7 +601,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">c</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Element.ch"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.ch">[docs]</a>    <span class="k">def</span> <span class="nf">ch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rk</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.ch"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.ch">[docs]</a>    <span class="k">def</span> <span class="nf">ch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rk</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes Chern characters from Chern classes.</span>
 
@@ -677,7 +677,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">chern</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Element.dual"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Element.dual">[docs]</a>    <span class="k">def</span> <span class="nf">dual</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Element.dual"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Element.dual">[docs]</a>    <span class="k">def</span> <span class="nf">dual</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        If this object is :math:`\operatorname{ch}(E)`, then this returns</span>
 <span class="sd">        :math:`\operatorname{ch}(E^{\vee})`.</span>
@@ -697,7 +697,7 @@
     <span class="c1">#     pass</span>
 
 
-<div class="viewcode-block" id="Variety"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Variety">[docs]</a><span class="k">class</span> <span class="nc">Variety</span><span class="p">(</span><span class="n">SageObject</span><span class="p">):</span>
+<div class="viewcode-block" id="Variety"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Variety">[docs]</a><span class="k">class</span> <span class="nc">Variety</span><span class="p">(</span><span class="n">SageObject</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A smooth projective variety.</span>
 
@@ -752,7 +752,7 @@
 <span class="sd">        ValueError: Todd class does not have the correct length.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Variety.__init__"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Variety.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim_var</span><span class="p">,</span> <span class="n">generators</span><span class="p">,</span> <span class="n">td</span><span class="p">):</span>
+<div class="viewcode-block" id="Variety.__init__"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Variety.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim_var</span><span class="p">,</span> <span class="n">generators</span><span class="p">,</span> <span class="n">td</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">dim_var</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Varieties must have positive dimension.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim_var</span>
@@ -775,7 +775,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Todd class does not have the correct length.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">td</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">td</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Variety._repr_"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Variety._repr_">[docs]</a>    <span class="k">def</span> <span class="nf">_repr_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Variety._repr_"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Variety._repr_">[docs]</a>    <span class="k">def</span> <span class="nf">_repr_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a string that shows the constructor for this object.</span>
 
@@ -788,7 +788,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s2">&quot;Variety(</span><span class="si">%d</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gens</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">td</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Variety.o"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Variety.o">[docs]</a>    <span class="k">def</span> <span class="nf">o</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+<div class="viewcode-block" id="Variety.o"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Variety.o">[docs]</a>    <span class="k">def</span> <span class="nf">o</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the Chern character of the line bundle :math:`\mathcal{O}(mH)`.</span>
 
@@ -806,7 +806,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">o</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Variety.chi"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Variety.chi">[docs]</a>    <span class="k">def</span> <span class="nf">chi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Variety.chi"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Variety.chi">[docs]</a>    <span class="k">def</span> <span class="nf">chi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the Euler characteristic :math:`\chi(v, w)` or :math:`\chi(v)`.</span>
 
@@ -853,7 +853,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dual</span><span class="p">()</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">td</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">]</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">gens</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Variety.valid"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Variety.valid">[docs]</a>    <span class="k">def</span> <span class="nf">valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<div class="viewcode-block" id="Variety.valid"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Variety.valid">[docs]</a>    <span class="k">def</span> <span class="nf">valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Checks whether the Element v could occur as a Chern character.</span>
 
 <span class="sd">        This method returns True if the rank, the Euler characteristic</span>
@@ -910,7 +910,7 @@
 
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="Variety.floor"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.Variety.floor">[docs]</a>    <span class="k">def</span> <span class="nf">floor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="Variety.floor"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.Variety.floor">[docs]</a>    <span class="k">def</span> <span class="nf">floor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rounds down Chern characters.</span>
 
 <span class="sd">        Let n = len(args) - 1 and assume that for some object :math:`E` we</span>
@@ -983,7 +983,7 @@
     <span class="c1">#     pass</span>
 
 
-<div class="viewcode-block" id="ch"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.ch">[docs]</a><span class="k">def</span> <span class="nf">ch</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="viewcode-block" id="ch"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.ch">[docs]</a><span class="k">def</span> <span class="nf">ch</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the twisted Chern character :math:`\operatorname{ch}^{b}(v)`.</span>
 
@@ -1011,7 +1011,7 @@
     <span class="k">return</span> <span class="n">v</span> <span class="o">*</span> <span class="n">o</span><span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="o"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.o">[docs]</a><span class="k">def</span> <span class="nf">o</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="viewcode-block" id="o"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.o">[docs]</a><span class="k">def</span> <span class="nf">o</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the Chern character of the line bundle :math:`\mathcal{O}(mH)` on</span>
 <span class="sd">    a variety of dimension `n`.</span>
@@ -1023,7 +1023,7 @@
 
 <span class="sd">    TESTS::</span>
 
-<span class="sd">        sage: from stability_conditions.variety import o</span>
+<span class="sd">        sage: from stability_conditions.varieties import o</span>
 
 <span class="sd">        sage: o(-5, 2)</span>
 <span class="sd">        (1, -5, 25/2)</span>
@@ -1034,7 +1034,7 @@
     <span class="k">return</span> <span class="n">Element</span><span class="p">([</span><span class="n">m</span><span class="o">**</span><span class="n">j</span><span class="o">/</span><span class="n">factorial</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)])</span></div>
 
 
-<div class="viewcode-block" id="p"><a class="viewcode-back" href="../../stability_conditions.variety.html#stability_conditions.variety.p">[docs]</a><span class="k">def</span> <span class="nf">p</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="viewcode-block" id="p"><a class="viewcode-back" href="../../../stability_conditions.varieties.variety.html#stability_conditions.varieties.variety.p">[docs]</a><span class="k">def</span> <span class="nf">p</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns projective space of dimension `n`.</span>
 

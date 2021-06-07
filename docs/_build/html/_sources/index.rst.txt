@@ -10,7 +10,7 @@ The project can be found at
 https://github.com/benjaminschmidt/stability_conditions.
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 5
 
    stability_conditions
 

@@ -1,5 +1,20 @@
 r"""
-Collection of modules dealing with specific varieties.
+Module for the numerical Chow ring of some special varieties. Additionally,
+contains submodules for with additional features for specific varieties.
+
+This module is only dealing with smooth projective varieties :math:`X` whose
+numerical Chow ring :math:`N^*(X)` has rank one in each dimension. For all
+purposes of this module one should only work with varieties for which the
+Bogomolov inequality for semistable sheaves holds. This is always true in
+characteristic :math:`0`. Let :math:`H` be the class of the ample generator of
+the Neron-Severi group :math:`N^1(X)`.
+
+EXAMPLES::
+
+<Lots and lots of examples>
+
+.. TODO::
+    - Add examples.
 """
 
 # ****************************************************************************
@@ -18,3 +33,10 @@ Collection of modules dealing with specific varieties.
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ****************************************************************************
+
+from . import p3
+from .variety import Element
+from .variety import Variety
+from .variety import ch
+from .variety import o
+from .variety import p

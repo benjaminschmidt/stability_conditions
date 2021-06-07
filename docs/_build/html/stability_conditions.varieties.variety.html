@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>stability_conditions.variety module &mdash; Stability Conditions (v0.1.2) 0.1.2 documentation</title>
+  <title>stability_conditions.varieties.variety module &mdash; Stability Conditions (v0.1.2) 0.1.2 documentation</title>
   
 
   
@@ -40,7 +40,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="stability_conditions.tilt_two module" href="stability_conditions.tilt_two.html" /> 
+    <link rel="next" title="stability_conditions.library module" href="stability_conditions.library.html" />
+    <link rel="prev" title="stability_conditions.varieties.p3 module" href="stability_conditions.varieties.p3.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,15 +88,14 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="stability_conditions.html">stability_conditions package</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="stability_conditions.html#subpackages">Subpackages</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="stability_conditions.html#submodules">Submodules</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="stability_conditions.library.html">stability_conditions.library module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="stability_conditions.slope.html">stability_conditions.slope module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="stability_conditions.tilt.html">stability_conditions.tilt module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="stability_conditions.tilt_two.html">stability_conditions.tilt_two module</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">stability_conditions.variety module</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="stability_conditions.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="stability_conditions.varieties.html">stability_conditions.varieties package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="stability_conditions.varieties.html#submodules">Submodules</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="stability_conditions.html#submodules">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -148,13 +148,15 @@
         
           <li><a href="stability_conditions.html">stability_conditions package</a> &raquo;</li>
         
-      <li>stability_conditions.variety module</li>
+          <li><a href="stability_conditions.varieties.html">stability_conditions.varieties package</a> &raquo;</li>
+        
+      <li>stability_conditions.varieties.variety module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/stability_conditions.variety.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/stability_conditions.varieties.variety.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,8 +169,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-stability_conditions.variety">
-<span id="stability-conditions-variety-module"></span><h1>stability_conditions.variety module<a class="headerlink" href="#module-stability_conditions.variety" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-stability_conditions.varieties.variety">
+<span id="stability-conditions-varieties-variety-module"></span><h1>stability_conditions.varieties.variety module<a class="headerlink" href="#module-stability_conditions.varieties.variety" title="Permalink to this headline">¶</a></h1>
 <p>Module for the numerical Chow ring of some special varieties.</p>
 <p>This module is only dealing with smooth projective varieties <span class="math notranslate nohighlight">\(X\)</span> whose
 numerical Chow ring <span class="math notranslate nohighlight">\(N^*(X)\)</span> has rank one in each dimension. For all
@@ -181,8 +183,8 @@ the Neron-Severi group <span class="math notranslate nohighlight">\(N^1(X)\)</sp
 </pre></div>
 </div>
 <dl class="py class">
-<dt id="stability_conditions.variety.Element">
-<em class="property">class </em><code class="sig-prename descclassname">stability_conditions.variety.</code><code class="sig-name descname">Element</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vec</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element">
+<em class="property">class </em><code class="sig-prename descclassname">stability_conditions.varieties.variety.</code><code class="sig-name descname">Element</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vec</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sage.structure.sage_object.SageObject</span></code></p>
 <p>An element in the numerical Chow ring of a variety.</p>
 <p>INPUT:</p>
@@ -191,8 +193,8 @@ the Neron-Severi group <span class="math notranslate nohighlight">\(N^1(X)\)</sp
 front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </ul>
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__add__">
-<code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__add__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__add__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__add__">
+<code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__add__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__add__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns this object plus other.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -212,8 +214,8 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__eq__">
-<code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__eq__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__eq__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__eq__">
+<code class="sig-name descname">__eq__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__eq__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__eq__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Two elements are equal if they have identical coefficients.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -237,8 +239,8 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__getitem__">
-<code class="sig-name descname">__getitem__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__getitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__getitem__">
+<code class="sig-name descname">__getitem__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__getitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__getitem__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the coefficient in front of <span class="math notranslate nohighlight">\(H^j\)</span>.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -253,8 +255,8 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__hash__">
-<code class="sig-name descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__hash__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__hash__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__hash__">
+<code class="sig-name descname">__hash__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__hash__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__hash__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a hash value for this object.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -286,14 +288,14 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vec</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vec</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__len__">
-<code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__len__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__len__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__len__">
+<code class="sig-name descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__len__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__len__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the length of this object.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -308,8 +310,8 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__mul__">
-<code class="sig-name descname">__mul__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__mul__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__mul__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__mul__">
+<code class="sig-name descname">__mul__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__mul__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__mul__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns this object multiplied with other.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -331,8 +333,8 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__ne__">
-<code class="sig-name descname">__ne__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__ne__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__ne__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__ne__">
+<code class="sig-name descname">__ne__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__ne__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__ne__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the opposite of self == other.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -356,8 +358,8 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__neg__">
-<code class="sig-name descname">__neg__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__neg__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__neg__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__neg__">
+<code class="sig-name descname">__neg__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__neg__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__neg__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the additive inverse of this object.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -372,8 +374,8 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__pos__">
-<code class="sig-name descname">__pos__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__pos__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__pos__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__pos__">
+<code class="sig-name descname">__pos__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__pos__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__pos__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a new copy of this object.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -388,8 +390,8 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__pow__">
-<code class="sig-name descname">__pow__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__pow__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__pow__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__pow__">
+<code class="sig-name descname">__pow__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__pow__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__pow__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns this object to the power k.</p>
 <p>INPUT:</p>
 <ul class="simple">
@@ -424,8 +426,8 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__rmul__">
-<code class="sig-name descname">__rmul__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__rmul__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__rmul__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__rmul__">
+<code class="sig-name descname">__rmul__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__rmul__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__rmul__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns other multiplied with this object.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -444,8 +446,8 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__sub__">
-<code class="sig-name descname">__sub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__sub__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__sub__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__sub__">
+<code class="sig-name descname">__sub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__sub__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__sub__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns this object minus other.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -465,8 +467,8 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.__truediv__">
-<code class="sig-name descname">__truediv__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.__truediv__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.__truediv__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__truediv__">
+<code class="sig-name descname">__truediv__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.__truediv__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__truediv__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Divides this object by a rational number <cite>k</cite>.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -480,14 +482,14 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stability_conditions.variety.Element.__weakref__">
-<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#stability_conditions.variety.Element.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#stability_conditions.varieties.variety.Element.__weakref__" title="Permalink to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element._repr_">
-<code class="sig-name descname">_repr_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element._repr_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element._repr_" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element._repr_">
+<code class="sig-name descname">_repr_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element._repr_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element._repr_" title="Permalink to this definition">¶</a></dt>
 <dd><p>String representation of this object.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -499,8 +501,8 @@ front of <span class="math notranslate nohighlight">\(H^i\)</span>.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.c">
-<code class="sig-name descname">c</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.c"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.c" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.c">
+<code class="sig-name descname">c</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.c"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.c" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes Chern classes from Chern characters.</p>
 <p>More precisely, if this object is <span class="math notranslate nohighlight">\(\operatorname{ch}(E)\)</span> for
 some object <span class="math notranslate nohighlight">\(E\)</span>, then this method computes <span class="math notranslate nohighlight">\(c(E)\)</span>.</p>
@@ -542,8 +544,8 @@ Chern class, if k is None. Note that by convention <span class="math notranslate
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.ch">
-<code class="sig-name descname">ch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">rk</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.ch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.ch" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.ch">
+<code class="sig-name descname">ch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">rk</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.ch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.ch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes Chern characters from Chern classes.</p>
 <p>More precisely, if this object is <span class="math notranslate nohighlight">\(c(E)\)</span> for some object
 <span class="math notranslate nohighlight">\(E\)</span>, then this method computes <span class="math notranslate nohighlight">\(\operatorname{ch}(E)\)</span>.
@@ -597,8 +599,8 @@ Chern character, if k == None.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Element.dual">
-<code class="sig-name descname">dual</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Element.dual"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Element.dual" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Element.dual">
+<code class="sig-name descname">dual</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Element.dual"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Element.dual" title="Permalink to this definition">¶</a></dt>
 <dd><p>If this object is <span class="math notranslate nohighlight">\(\operatorname{ch}(E)\)</span>, then this returns
 <span class="math notranslate nohighlight">\(\operatorname{ch}(E^{\vee})\)</span>.</p>
 <p>TESTS:</p>
@@ -615,8 +617,8 @@ Chern character, if k == None.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="stability_conditions.variety.Variety">
-<em class="property">class </em><code class="sig-prename descclassname">stability_conditions.variety.</code><code class="sig-name descname">Variety</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dim_var</span></em>, <em class="sig-param"><span class="n">generators</span></em>, <em class="sig-param"><span class="n">td</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Variety">
+<em class="property">class </em><code class="sig-prename descclassname">stability_conditions.varieties.variety.</code><code class="sig-name descname">Variety</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dim_var</span></em>, <em class="sig-param"><span class="n">generators</span></em>, <em class="sig-param"><span class="n">td</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Variety"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Variety" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sage.structure.sage_object.SageObject</span></code></p>
 <p>A smooth projective variety.</p>
 <p>INPUT:</p>
@@ -670,20 +672,20 @@ ValueError: Todd class does not have the correct length.
 </pre></div>
 </div>
 <dl class="py method">
-<dt id="stability_conditions.variety.Variety.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dim_var</span></em>, <em class="sig-param"><span class="n">generators</span></em>, <em class="sig-param"><span class="n">td</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety.__init__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Variety.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dim_var</span></em>, <em class="sig-param"><span class="n">generators</span></em>, <em class="sig-param"><span class="n">td</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Variety.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Variety.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stability_conditions.variety.Variety.__weakref__">
-<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#stability_conditions.variety.Variety.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Variety.__weakref__">
+<code class="sig-name descname">__weakref__</code><a class="headerlink" href="#stability_conditions.varieties.variety.Variety.__weakref__" title="Permalink to this definition">¶</a></dt>
 <dd><p>list of weak references to the object (if defined)</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Variety._repr_">
-<code class="sig-name descname">_repr_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety._repr_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety._repr_" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Variety._repr_">
+<code class="sig-name descname">_repr_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Variety._repr_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Variety._repr_" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a string that shows the constructor for this object.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -695,8 +697,8 @@ ValueError: Todd class does not have the correct length.
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Variety.chi">
-<code class="sig-name descname">chi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">w</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety.chi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety.chi" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Variety.chi">
+<code class="sig-name descname">chi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">w</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Variety.chi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Variety.chi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the Euler characteristic <span class="math notranslate nohighlight">\(\chi(v, w)\)</span> or <span class="math notranslate nohighlight">\(\chi(v)\)</span>.</p>
 <p>INPUT:</p>
 <ul class="simple">
@@ -735,8 +737,8 @@ ValueError: Todd class does not have the correct length.
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Variety.floor">
-<code class="sig-name descname">floor</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety.floor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety.floor" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Variety.floor">
+<code class="sig-name descname">floor</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Variety.floor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Variety.floor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rounds down Chern characters.</p>
 <p>Let n = len(args) - 1 and assume that for some object <span class="math notranslate nohighlight">\(E\)</span> we
 have <span class="math notranslate nohighlight">\(\operatorname{ch}_i(E) = args[i]\)</span> for all <cite>i</cite> in between
@@ -783,8 +785,8 @@ equal to the dimension of the variety plus one.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Variety.o">
-<code class="sig-name descname">o</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety.o"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety.o" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Variety.o">
+<code class="sig-name descname">o</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Variety.o"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Variety.o" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the Chern character of the line bundle <span class="math notranslate nohighlight">\(\mathcal{O}(mH)\)</span>.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
@@ -801,8 +803,8 @@ equal to the dimension of the variety plus one.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="stability_conditions.variety.Variety.valid">
-<code class="sig-name descname">valid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#Variety.valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.Variety.valid" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.Variety.valid">
+<code class="sig-name descname">valid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Variety.valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Variety.valid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks whether the Element v could occur as a Chern character.</p>
 <p>This method returns True if the rank, the Euler characteristic
 <span class="math notranslate nohighlight">\(\chi(v)\)</span>, and the Chern classes corresponding to
@@ -849,8 +851,8 @@ equal to the dimension of the variety plus one.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="stability_conditions.variety.ch">
-<code class="sig-prename descclassname">stability_conditions.variety.</code><code class="sig-name descname">ch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#ch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.ch" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.ch">
+<code class="sig-prename descclassname">stability_conditions.varieties.variety.</code><code class="sig-name descname">ch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#ch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.ch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the twisted Chern character <span class="math notranslate nohighlight">\(\operatorname{ch}^{b}(v)\)</span>.</p>
 <p>The twisted Chern character is defined as
 <span class="math notranslate nohighlight">\(\operatorname{ch}(v) e^{-bH}\)</span>.</p>
@@ -875,8 +877,8 @@ equal to the dimension of the variety plus one.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="stability_conditions.variety.o">
-<code class="sig-prename descclassname">stability_conditions.variety.</code><code class="sig-name descname">o</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#o"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.o" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.o">
+<code class="sig-prename descclassname">stability_conditions.varieties.variety.</code><code class="sig-name descname">o</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#o"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.o" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the Chern character of the line bundle <span class="math notranslate nohighlight">\(\mathcal{O}(mH)\)</span> on
 a variety of dimension <cite>n</cite>.</p>
 <p>INPUT:</p>
@@ -885,7 +887,7 @@ a variety of dimension <cite>n</cite>.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> – positive integer describing the dimension of the variety</p></li>
 </ul>
 <p>TESTS:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions.variety</span> <span class="k">import</span> <span class="n">o</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions.varieties</span> <span class="k">import</span> <span class="n">o</span>
 
 <span class="n">sage</span><span class="p">:</span> <span class="n">o</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
@@ -897,8 +899,8 @@ a variety of dimension <cite>n</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="stability_conditions.variety.p">
-<code class="sig-prename descclassname">stability_conditions.variety.</code><code class="sig-name descname">p</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/variety.html#p"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.variety.p" title="Permalink to this definition">¶</a></dt>
+<dt id="stability_conditions.varieties.variety.p">
+<code class="sig-prename descclassname">stability_conditions.varieties.variety.</code><code class="sig-name descname">p</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#p"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.p" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns projective space of dimension <cite>n</cite>.</p>
 <p>ALGORITHM:</p>
 <p>We use that the Todd class of <span class="math notranslate nohighlight">\(\mathbb{P}^n\)</span> is given by
@@ -948,7 +950,8 @@ the class of a hyperplane.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="stability_conditions.tilt_two.html" class="btn btn-neutral float-left" title="stability_conditions.tilt_two module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="stability_conditions.library.html" class="btn btn-neutral float-right" title="stability_conditions.library module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="stability_conditions.varieties.p3.html" class="btn btn-neutral float-left" title="stability_conditions.varieties.p3 module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

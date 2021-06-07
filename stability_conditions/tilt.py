@@ -14,6 +14,8 @@ EXAMPLES::
     - Document algorithms for wall computations: explain max rank calc., etc.
     - Document attributes of TiltWall.
     - Check speed issues on wall computation for (0, 3, -1/2) on p(2)
+    - Write bounds class.
+    - Incorporate bounds class into wall computations.
 """
 
 # ****************************************************************************
@@ -52,7 +54,18 @@ from sage.symbolic.all import i
 
 from .library import previous_farey
 from .slope import delta, mu
-from .variety import ch, Element
+from stability_conditions.varieties.variety import ch, Element
+
+
+class Bounds(SageObject):
+    r"""
+        Class for managing Chern character bounds.
+
+        This basic class is just using the Bogomolov inequality. For more
+        advanced behavior one can derive a class from this one and overwrite
+        required funtions. Examples of this can be found in the varieties
+        subpackage.
+    """
 
 
 class TiltWall(SageObject):

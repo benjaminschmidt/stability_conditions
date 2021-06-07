@@ -1,6 +1,13 @@
 r"""
 Sage library for computations with (very weak) Bridgeland stability
 conditions.
+
+EXAMPLES::
+
+<Lots and lots of examples>
+
+.. TODO::
+    - Add examples.
 """
 
 # ****************************************************************************
@@ -32,8 +39,8 @@ from . import tilt
 # noinspection PyUnresolvedReferences
 from . import tilt_two
 # noinspection PyUnresolvedReferences
-from . import variety
+from .varieties import variety
 # noinspection PyUnresolvedReferences
-from .variety import Element, p, Variety
+from .varieties.variety import Element, p, Variety
 # noinspection PyUnresolvedReferences
 from . import varieties

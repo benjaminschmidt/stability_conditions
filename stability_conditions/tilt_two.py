@@ -43,7 +43,7 @@ from sage.rings.all import Integer
 from sage.rings.infinity import infinity
 
 from .slope import delta
-from .variety import ch
+from stability_conditions.varieties.variety import ch
 
 
 def mu(v, a, b, s):

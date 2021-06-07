@@ -869,7 +869,7 @@ def o(m, n):
 
     TESTS::
 
-        sage: from stability_conditions.variety import o
+        sage: from stability_conditions.varieties import o
 
         sage: o(-5, 2)
         (1, -5, 25/2)

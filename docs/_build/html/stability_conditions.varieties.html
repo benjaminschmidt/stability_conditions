@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>stability_conditions package &mdash; Stability Conditions (v0.1.2) 0.1.2 documentation</title>
+  <title>stability_conditions.varieties package &mdash; Stability Conditions (v0.1.2) 0.1.2 documentation</title>
   
 
   
@@ -40,8 +40,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="stability_conditions.varieties package" href="stability_conditions.varieties.html" />
-    <link rel="prev" title="Documentation to stability_conditions" href="index.html" /> 
+    <link rel="next" title="stability_conditions.varieties.p3 module" href="stability_conditions.varieties.p3.html" />
+    <link rel="prev" title="stability_conditions package" href="stability_conditions.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,18 +87,15 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">stability_conditions package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="stability_conditions.varieties.html">stability_conditions.varieties package</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="stability_conditions.html">stability_conditions package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="stability_conditions.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">stability_conditions.varieties package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="stability_conditions.library.html">stability_conditions.library module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="stability_conditions.slope.html">stability_conditions.slope module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="stability_conditions.tilt.html">stability_conditions.tilt module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="stability_conditions.tilt_two.html">stability_conditions.tilt_two module</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="stability_conditions.html#submodules">Submodules</a></li>
 </ul>
 </li>
 </ul>
@@ -149,13 +146,15 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>stability_conditions package</li>
+          <li><a href="stability_conditions.html">stability_conditions package</a> &raquo;</li>
+        
+      <li>stability_conditions.varieties package</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/stability_conditions.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/stability_conditions.varieties.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,37 +167,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-stability_conditions">
-<span id="stability-conditions-package"></span><h1>stability_conditions package<a class="headerlink" href="#module-stability_conditions" title="Permalink to this headline">¶</a></h1>
-<p>Sage library for computations with (very weak) Bridgeland stability
-conditions.</p>
+  <div class="section" id="module-stability_conditions.varieties">
+<span id="stability-conditions-varieties-package"></span><h1>stability_conditions.varieties package<a class="headerlink" href="#module-stability_conditions.varieties" title="Permalink to this headline">¶</a></h1>
+<p>Module for the numerical Chow ring of some special varieties. Additionally,
+contains submodules for with additional features for specific varieties.</p>
+<p>This module is only dealing with smooth projective varieties <span class="math notranslate nohighlight">\(X\)</span> whose
+numerical Chow ring <span class="math notranslate nohighlight">\(N^*(X)\)</span> has rank one in each dimension. For all
+purposes of this module one should only work with varieties for which the
+Bogomolov inequality for semistable sheaves holds. This is always true in
+characteristic <span class="math notranslate nohighlight">\(0\)</span>. Let <span class="math notranslate nohighlight">\(H\)</span> be the class of the ample generator of
+the Neron-Severi group <span class="math notranslate nohighlight">\(N^1(X)\)</span>.</p>
 <p>EXAMPLES:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Lots</span> <span class="ow">and</span> <span class="n">lots</span> <span class="n">of</span> <span class="n">examples</span><span class="o">&gt;</span>
 </pre></div>
-</div>
-<div class="section" id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="stability_conditions.varieties.html">stability_conditions.varieties package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="stability_conditions.varieties.html#submodules">Submodules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="stability_conditions.varieties.p3.html">stability_conditions.varieties.p3 module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="stability_conditions.varieties.variety.html">stability_conditions.varieties.variety module</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="stability_conditions.library.html">stability_conditions.library module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stability_conditions.slope.html">stability_conditions.slope module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stability_conditions.tilt.html">stability_conditions.tilt module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stability_conditions.tilt_two.html">stability_conditions.tilt_two module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stability_conditions.varieties.p3.html">stability_conditions.varieties.p3 module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stability_conditions.varieties.variety.html">stability_conditions.varieties.variety module</a></li>
 </ul>
 </div>
 </div>
@@ -210,8 +198,8 @@ conditions.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="stability_conditions.varieties.html" class="btn btn-neutral float-right" title="stability_conditions.varieties package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="Documentation to stability_conditions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="stability_conditions.varieties.p3.html" class="btn btn-neutral float-right" title="stability_conditions.varieties.p3 module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="stability_conditions.html" class="btn btn-neutral float-left" title="stability_conditions package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
