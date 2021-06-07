@@ -6,6 +6,9 @@
 Documentation to stability_conditions
 =====================================
 
+The project can be found at
+https://github.com/benjaminschmidt/stability_conditions.
+
 .. toctree::
    :maxdepth: 4
 
