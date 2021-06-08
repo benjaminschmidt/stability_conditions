@@ -1,5 +1,6 @@
 r"""
-Modules for computations about slope stability.
+Modules for computations about slope stability. We refer to [HL10] for the
+mathematical background.
 
 EXAMPLES::
 

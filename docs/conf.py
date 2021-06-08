@@ -38,6 +38,10 @@ extensions = [
     'sphinx.ext.todo',
 ]
 
+html_theme_options = {
+    'navigation_depth': 5,
+}
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 

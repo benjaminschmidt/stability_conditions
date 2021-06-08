@@ -6,8 +6,6 @@ conditions.
 .. TODO::
 
     - Add examples.
-    - Add tests for checking imports.
-
 
 EXAMPLES::
 
@@ -19,18 +17,6 @@ TESTS::
     Check whether imports are working.
 
     sage: from stability_conditions import *
-
-    sage: type(library)
-    <class 'module'>
-
-    sage: type(slope)
-    <class 'module'>
-
-    sage: type(tilt)
-    <class 'module'>
-
-    sage: type(tilt_two)
-    <class 'module'>
 """
 
 # ****************************************************************************

@@ -1,6 +1,6 @@
 r"""
 Module for computations in second tilt stability as conjecturally described
-by Bayer-Macrì-Toda.
+in [BMT14].
 
 EXAMPLES::
 
@@ -10,7 +10,6 @@ EXAMPLES::
     - Add examples.
     - Add additional parameters for Z from Bayer-Macri-Stellari and adjust Q.
     - Add some different parameters of k to tests for Q.
-    - Add tests for checking imports.
 """
 
 # ****************************************************************************

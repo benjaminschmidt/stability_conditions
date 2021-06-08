@@ -2,8 +2,8 @@ r"""
 Module for computations in tilt stability
 
 This module contains various functionality for computations in tilt
-stability as introduced by Bridgeland, Arcara-Bertram,
-and Bayer-Macrì-Toda.
+stability as introduced in [Bri08] and further generalized in [AB13] and
+[BMT14].
 
 EXAMPLES::
 
@@ -16,7 +16,6 @@ EXAMPLES::
     - Check speed issues on wall computation for (0, 3, -1/2) on p(2)
     - Write bounds class.
     - Incorporate bounds class into wall computations.
-    - Add tests for checking imports.
 """
 
 # ****************************************************************************
