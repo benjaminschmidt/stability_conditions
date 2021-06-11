@@ -13,5 +13,6 @@ Submodules
 .. toctree::
    :maxdepth: 4
 
+   stability_conditions.varieties.bounds
    stability_conditions.varieties.p3
    stability_conditions.varieties.variety

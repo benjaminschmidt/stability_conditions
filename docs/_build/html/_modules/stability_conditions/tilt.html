@@ -168,7 +168,6 @@
 <span class="sd">    - Document algorithms for wall computations: explain max rank calc., etc.</span>
 <span class="sd">    - Document attributes of TiltWall.</span>
 <span class="sd">    - Check speed issues on wall computation for (0, 3, -1/2) on p(2)</span>
-<span class="sd">    - Write bounds class.</span>
 <span class="sd">    - Incorporate bounds class into wall computations.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -209,17 +208,6 @@
 <span class="kn">from</span> <span class="nn">.library</span> <span class="k">import</span> <span class="n">previous_farey</span>
 <span class="kn">from</span> <span class="nn">.slope</span> <span class="k">import</span> <span class="n">delta</span><span class="p">,</span> <span class="n">mu</span>
 <span class="kn">from</span> <span class="nn">.varieties.variety</span> <span class="k">import</span> <span class="n">ch</span><span class="p">,</span> <span class="n">Element</span>
-
-
-<div class="viewcode-block" id="Bounds"><a class="viewcode-back" href="../../stability_conditions.tilt.html#stability_conditions.tilt.Bounds">[docs]</a><span class="k">class</span> <span class="nc">Bounds</span><span class="p">(</span><span class="n">SageObject</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Class for managing Chern character bounds.</span>
-
-<span class="sd">        This basic class is just using the Bogomolov inequality. For more</span>
-<span class="sd">        advanced behavior one can derive a class from this one and overwrite</span>
-<span class="sd">        required funtions. Examples of this can be found in the varieties</span>
-<span class="sd">        subpackage.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
 
 
 <div class="viewcode-block" id="TiltWall"><a class="viewcode-back" href="../../stability_conditions.tilt.html#stability_conditions.tilt.TiltWall">[docs]</a><span class="k">class</span> <span class="nc">TiltWall</span><span class="p">(</span><span class="n">SageObject</span><span class="p">):</span>

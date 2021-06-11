@@ -91,6 +91,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="stability_conditions.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="stability_conditions.varieties.html">stability_conditions.varieties package</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="stability_conditions.varieties.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="stability_conditions.varieties.bounds.html">stability_conditions.varieties.bounds module</a></li>
 <li class="toctree-l5"><a class="reference internal" href="stability_conditions.varieties.p3.html">stability_conditions.varieties.p3 module</a></li>
 <li class="toctree-l5 current"><a class="current reference internal" href="#">stability_conditions.varieties.variety module</a></li>
 </ul>
@@ -701,6 +702,54 @@ ValueError: Todd class does not have the correct length.
 </dd></dl>
 
 <dl class="py method">
+<dt id="stability_conditions.varieties.variety.Variety.ceil">
+<code class="sig-name descname">ceil</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Variety.ceil"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Variety.ceil" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rounds up Chern characters.</p>
+<p>Let n = len(args) - 1 and assume that for some object <span class="math notranslate nohighlight">\(E\)</span> we
+have <span class="math notranslate nohighlight">\(\operatorname{ch}_i(E) = args[i]\)</span> for all <cite>i</cite> in between
+<cite>0</cite> and <cite>n - 1</cite>. This method then returns the smallest rational number
+<span class="math notranslate nohighlight">\(x &gt; args[n]\)</span> such that <span class="math notranslate nohighlight">\(\operatorname{ch}_n(E) = x\)</span> is
+a possible value.</p>
+<p>Basically, this function simply rounds up based on the
+fact that Chern classes are integral.</p>
+<p>INPUT:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> – list of rational numbers with length smaller than or
+equal to the dimension of the variety plus one.</p></li>
+</ul>
+<p>WARNING:</p>
+<p>It is not checked whether the values in args are valid inputs.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">IndexError</span><span class="p">:</span> <span class="n">Too</span> <span class="n">many</span> <span class="n">arguments</span> <span class="n">given</span> <span class="n">the</span> <span class="n">dimension</span> <span class="n">of</span> <span class="n">the</span> <span class="n">variety</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">ceil</span><span class="p">()</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">IndexError</span><span class="p">:</span> <span class="n">There</span> <span class="n">has</span> <span class="n">to</span> <span class="n">be</span> <span class="n">at</span> <span class="n">least</span> <span class="n">one</span> <span class="n">argument</span><span class="o">.</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">6</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">13</span><span class="p">)</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">12</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt id="stability_conditions.varieties.variety.Variety.chi">
 <code class="sig-name descname">chi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">w</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/variety.html#Variety.chi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.variety.Variety.chi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the Euler characteristic <span class="math notranslate nohighlight">\(\chi(v, w)\)</span> or <span class="math notranslate nohighlight">\(\chi(v)\)</span>.</p>
@@ -891,7 +940,7 @@ a variety of dimension <cite>n</cite>.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">n</span></code> – positive integer describing the dimension of the variety</p></li>
 </ul>
 <p>TESTS:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions.varieties</span> <span class="k">import</span> <span class="n">o</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions.varieties.variety</span> <span class="k">import</span> <span class="n">o</span>
 
 <span class="n">sage</span><span class="p">:</span> <span class="n">o</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
