@@ -168,7 +168,7 @@
 <span class="sd">    - Document algorithms for wall computations: explain max rank calc., etc.</span>
 <span class="sd">    - Document attributes of TiltWall.</span>
 <span class="sd">    - Check speed issues on wall computation for (0, 3, -1/2) on p(2)</span>
-<span class="sd">    - Incorporate bounds class into wall computations.</span>
+<span class="sd">    - Check wall computations with other custom bounds classes.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1"># ****************************************************************************</span>
@@ -207,6 +207,7 @@
 
 <span class="kn">from</span> <span class="nn">.library</span> <span class="k">import</span> <span class="n">previous_farey</span>
 <span class="kn">from</span> <span class="nn">.slope</span> <span class="k">import</span> <span class="n">delta</span><span class="p">,</span> <span class="n">mu</span>
+<span class="kn">from</span> <span class="nn">.varieties.bounds</span> <span class="k">import</span> <span class="n">Bounds</span>
 <span class="kn">from</span> <span class="nn">.varieties.variety</span> <span class="k">import</span> <span class="n">ch</span><span class="p">,</span> <span class="n">Element</span>
 
 
@@ -1071,7 +1072,7 @@
     <span class="k">return</span> <span class="n">TiltWall</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="walls_left"><a class="viewcode-back" href="../../stability_conditions.tilt.html#stability_conditions.tilt.walls_left">[docs]</a><span class="k">def</span> <span class="nf">walls_left</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="walls_left"><a class="viewcode-back" href="../../stability_conditions.tilt.html#stability_conditions.tilt.walls_left">[docs]</a><span class="k">def</span> <span class="nf">walls_left</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes walls left of the vertical wall in tilt stability.</span>
 
@@ -1082,12 +1083,19 @@
 <span class="sd">    :math:`\beta^{-}(v)` is rational, it computes all walls to the left of the</span>
 <span class="sd">    vertical wall.</span>
 
+<span class="sd">    If `bounds` is None, then we will simply use the Bogomolov inequality to</span>
+<span class="sd">    bound the second Chern characters of destabilizing subobjects. For more</span>
+<span class="sd">    sophisticated bounds, one can use a different custom `Bounds` class. See</span>
+<span class="sd">    the documentation for the `bounds` module for more details.</span>
+
 <span class="sd">    INPUT:</span>
 
 <span class="sd">    - ``v`` -- Element in the numerical Chow ring.</span>
 <span class="sd">    - ``var`` -- Variety.</span>
 <span class="sd">    - ``s`` -- rational number or None (default: `None`).</span>
 <span class="sd">    - ``b`` -- rational number or None (default: `None`).</span>
+<span class="sd">    - ``bounds`` -- Instance of bounds class that specifies Chern character</span>
+<span class="sd">      bounds.</span>
 
 <span class="sd">    If both `s` and `b` are different from None, then `b` is ignored.</span>
 
@@ -1097,6 +1105,12 @@
 <span class="sd">    smaller than the slope of v.</span>
 
 <span class="sd">    ALGORITHM:</span>
+
+<span class="sd">    WARNING:</span>
+
+<span class="sd">    If ``bounds`` is None, then a new instance of it is created. If you use a</span>
+<span class="sd">    lot of wall computations, it might be wise to create an instance manually</span>
+<span class="sd">    once and keep passing it as a parameter.</span>
 
 <span class="sd">    TESTS::</span>
 
@@ -1151,6 +1165,9 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
 
+    <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="n">Bounds</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+
     <span class="c1"># First we determine s if necessary and check the input.</span>
     <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1185,7 +1202,7 @@
         <span class="n">r</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">denominator</span><span class="p">()</span>
         <span class="n">c</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">numerator</span><span class="p">()</span>
         <span class="k">while</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">r_max</span><span class="p">:</span>
-            <span class="n">d</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">r</span><span class="p">)</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">bounds</span><span class="o">.</span><span class="n">ch_max</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
             <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">])</span>
             <span class="n">u</span> <span class="o">=</span> <span class="n">v</span> <span class="o">-</span> <span class="n">w</span>
             <span class="n">current_wall</span> <span class="o">=</span> <span class="n">wall</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
@@ -1193,7 +1210,7 @@
                 <span class="k">if</span> <span class="p">((</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">current_wall</span><span class="o">.</span><span class="n">s</span> <span class="o">&lt;=</span> <span class="n">mu</span><span class="p">(</span><span class="n">u</span><span class="p">))</span> <span class="ow">or</span>
                         <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span>
                         <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">current_wall</span><span class="o">.</span><span class="n">s</span> <span class="o">&gt;=</span> <span class="n">mu</span><span class="p">(</span><span class="n">u</span><span class="p">))):</span>
-                    <span class="k">if</span> <span class="n">delta</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="o">*</span><span class="n">u</span><span class="p">):</span>
                         <span class="k">if</span> <span class="n">current_wall</span> <span class="ow">in</span> <span class="n">walls</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
                             <span class="n">walls</span><span class="p">[</span><span class="n">current_wall</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
                         <span class="k">else</span><span class="p">:</span>
@@ -1208,7 +1225,7 @@
     <span class="k">return</span> <span class="n">walls</span></div>
 
 
-<div class="viewcode-block" id="walls_right"><a class="viewcode-back" href="../../stability_conditions.tilt.html#stability_conditions.tilt.walls_right">[docs]</a><span class="k">def</span> <span class="nf">walls_right</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="walls_right"><a class="viewcode-back" href="../../stability_conditions.tilt.html#stability_conditions.tilt.walls_right">[docs]</a><span class="k">def</span> <span class="nf">walls_right</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes walls right of the vertical wall in tilt stability.</span>
 
@@ -1219,12 +1236,19 @@
 <span class="sd">    :math:`\beta^{-}(v)` is rational, it computes all walls to the left of the</span>
 <span class="sd">    vertical wall.</span>
 
+<span class="sd">    If `bounds` is None, then we will simply use the Bogomolov inequality to</span>
+<span class="sd">    bound the second Chern characters of destabilizing subobjects. For more</span>
+<span class="sd">    sophisticated bounds, one can use a different custom `Bounds` class. See</span>
+<span class="sd">    the documentation for the `bounds` module for more details.</span>
+
 <span class="sd">    INPUT:</span>
 
 <span class="sd">    - ``v`` -- Element in the numerical Chow ring.</span>
 <span class="sd">    - ``var`` -- Variety.</span>
 <span class="sd">    - ``s`` -- rational number or None (default: `None`).</span>
 <span class="sd">    - ``b`` -- rational number or None (default: `None`).</span>
+<span class="sd">    - ``bounds`` -- Instance of bounds class that specifies Chern character</span>
+<span class="sd">      bounds.</span>
 
 <span class="sd">    If both `s` and `b` are different from None, then `b` is ignored.</span>
 
@@ -1286,15 +1310,18 @@
 <span class="sd">        sage: tilt.walls_right(Element((3, -1, -1/2)), var) == output</span>
 <span class="sd">        True</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="n">Bounds</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">walls_dual</span> <span class="o">=</span> <span class="n">walls_left</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dual</span><span class="p">(),</span> <span class="n">var</span><span class="p">)</span>
+            <span class="n">walls_dual</span> <span class="o">=</span> <span class="n">walls_left</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dual</span><span class="p">(),</span> <span class="n">var</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">walls_dual</span> <span class="o">=</span> <span class="n">walls_left</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dual</span><span class="p">(),</span> <span class="n">var</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="n">b</span><span class="p">)</span>
+            <span class="n">walls_dual</span> <span class="o">=</span> <span class="n">walls_left</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dual</span><span class="p">(),</span> <span class="n">var</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="n">b</span><span class="p">,</span> <span class="n">bounds</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">b</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">walls_dual</span> <span class="o">=</span> <span class="n">walls_left</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dual</span><span class="p">(),</span> <span class="n">var</span><span class="p">,</span> <span class="o">-</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">walls_dual</span> <span class="o">=</span> <span class="n">walls_left</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dual</span><span class="p">(),</span> <span class="n">var</span><span class="p">,</span> <span class="o">-</span><span class="n">s</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">walls_dual</span> <span class="o">=</span> <span class="n">walls_left</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dual</span><span class="p">(),</span> <span class="n">var</span><span class="p">,</span> <span class="o">-</span><span class="n">s</span><span class="p">,</span> <span class="o">-</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">walls_dual</span> <span class="o">=</span> <span class="n">walls_left</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">dual</span><span class="p">(),</span> <span class="n">var</span><span class="p">,</span> <span class="o">-</span><span class="n">s</span><span class="p">,</span> <span class="o">-</span><span class="n">b</span><span class="p">,</span> <span class="n">bounds</span><span class="p">)</span>
 
     <span class="n">walls</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">walls_dual</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -1306,7 +1333,7 @@
     <span class="k">return</span> <span class="n">walls</span></div>
 
 
-<div class="viewcode-block" id="walls_torsion"><a class="viewcode-back" href="../../stability_conditions.tilt.html#stability_conditions.tilt.walls_torsion">[docs]</a><span class="k">def</span> <span class="nf">walls_torsion</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="walls_torsion"><a class="viewcode-back" href="../../stability_conditions.tilt.html#stability_conditions.tilt.walls_torsion">[docs]</a><span class="k">def</span> <span class="nf">walls_torsion</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute walls for v in tilt stability if v[0] == 0.</span>
 
@@ -1316,12 +1343,19 @@
 <span class="sd">    If both `b` and `p` are None it computes all walls to the left of</span>
 <span class="sd">    the vertical wall.</span>
 
+<span class="sd">    If `bounds` is None, then we will simply use the Bogomolov inequality to</span>
+<span class="sd">    bound the second Chern characters of destabilizing subobjects. For more</span>
+<span class="sd">    sophisticated bounds, one can use a different custom `Bounds` class. See</span>
+<span class="sd">    the documentation for the `bounds` module for more details.</span>
+
 <span class="sd">    INPUT:</span>
 
 <span class="sd">    - ``v`` -- Element in the numerical Chow ring.</span>
 <span class="sd">    - ``var`` -- Variety.</span>
 <span class="sd">    - ``p`` -- rational number or None (default: `None`).</span>
 <span class="sd">    - ``b`` -- rational number or None (default: `None`).</span>
+<span class="sd">    - ``bounds`` -- Instance of bounds class that specifies Chern character</span>
+<span class="sd">      bounds.</span>
 
 <span class="sd">    If both `p` and `b` are different from None, then `b` is ignored. If</span>
 <span class="sd">    `p &lt; 0`, then the function assumes p is 0.</span>
@@ -1393,8 +1427,11 @@
     <span class="k">elif</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{}</span>
 
+    <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="n">Bounds</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">walls_torsion</span><span class="p">(</span><span class="n">Element</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]),</span> <span class="n">var</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">walls_torsion</span><span class="p">(</span><span class="n">Element</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]),</span> <span class="n">var</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">bounds</span><span class="p">)</span>
 
     <span class="c1"># Determine p if necessary.</span>
     <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1430,12 +1467,12 @@
         <span class="n">r</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">denominator</span><span class="p">()</span>
         <span class="n">c</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">numerator</span><span class="p">()</span>
         <span class="k">while</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">r_max</span><span class="p">:</span>
-            <span class="n">d</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">r</span><span class="p">)</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">bounds</span><span class="o">.</span><span class="n">ch_max</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
             <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
             <span class="n">u</span> <span class="o">=</span> <span class="n">v</span> <span class="o">-</span> <span class="n">w</span>
             <span class="n">current_wall</span> <span class="o">=</span> <span class="n">wall</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
             <span class="k">while</span> <span class="n">min_wall</span> <span class="o">&lt;=</span> <span class="n">current_wall</span> <span class="ow">and</span> <span class="n">current_wall</span><span class="o">.</span><span class="n">p</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">s</span> <span class="o">&gt;=</span> <span class="n">mu</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="ow">and</span> <span class="n">delta</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">s</span> <span class="o">&gt;=</span> <span class="n">mu</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="ow">and</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="o">*</span><span class="n">u</span><span class="p">):</span>
                     <span class="k">if</span> <span class="n">current_wall</span> <span class="ow">in</span> <span class="n">walls</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
                         <span class="n">walls</span><span class="p">[</span><span class="n">current_wall</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
                     <span class="k">else</span><span class="p">:</span>
@@ -1450,7 +1487,7 @@
     <span class="k">return</span> <span class="n">walls</span></div>
 
 
-<div class="viewcode-block" id="walls_vertical"><a class="viewcode-back" href="../../stability_conditions.tilt.html#stability_conditions.tilt.walls_vertical">[docs]</a><span class="k">def</span> <span class="nf">walls_vertical</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+<div class="viewcode-block" id="walls_vertical"><a class="viewcode-back" href="../../stability_conditions.tilt.html#stability_conditions.tilt.walls_vertical">[docs]</a><span class="k">def</span> <span class="nf">walls_vertical</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes vertical walls for `v` in tilt stability.</span>
 
@@ -1463,12 +1500,19 @@
 <span class="sd">    would not numerically destabilize a sheaf with class `-v` in</span>
 <span class="sd">    Gieseker stability, then `w` is in the set. If it does, then</span>
 <span class="sd">    `v + w` would numerically destabilize a sheaf with class `-v` in</span>
-<span class="sd">    Gieseker stability and the `-v - w` is added to the set.</span>
+<span class="sd">    Gieseker stability and `-v - w` is added to the set.</span>
+
+<span class="sd">    If `bounds` is None, then we will simply use the Bogomolov inequality to</span>
+<span class="sd">    bound the second Chern characters of destabilizing subobjects. For more</span>
+<span class="sd">    sophisticated bounds, one can use a different custom `Bounds` class. See</span>
+<span class="sd">    the documentation for the `bounds` module for more details.</span>
 
 <span class="sd">    INPUT:</span>
 
 <span class="sd">    - ``v`` -- Element in the numerical Chow ring.</span>
 <span class="sd">    - ``var`` -- Variety.</span>
+<span class="sd">    - ``bounds`` -- Instance of bounds class that specifies Chern character</span>
+<span class="sd">      bounds.</span>
 
 <span class="sd">    ALGORITHM:</span>
 
@@ -1527,18 +1571,40 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
 
+    <span class="k">if</span> <span class="n">bounds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="n">Bounds</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+
     <span class="n">walls</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">floor</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">mu</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">denominator</span><span class="p">())</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="n">mu</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">denominator</span><span class="p">()</span> <span class="o">*</span> <span class="n">n</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">mu</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">numerator</span><span class="p">()</span> <span class="o">*</span> <span class="n">n</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">s</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-        <span class="n">y_max</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">s</span>
-        <span class="k">while</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">y_max</span><span class="p">:</span>
-            <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-            <span class="k">if</span> <span class="n">delta</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">delta</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">gcd</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">mu</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">denominator</span><span class="p">()</span> <span class="o">*</span> <span class="n">n</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">mu</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">numerator</span><span class="p">()</span> <span class="o">*</span> <span class="n">n</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">bounds</span><span class="o">.</span><span class="n">ch_max</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">v</span> <span class="o">-</span> <span class="n">w</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="o">==</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="k">while</span> <span class="n">d</span> <span class="o">&gt;=</span> <span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">c</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">r</span><span class="p">:</span>
                 <span class="n">walls</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">w</span><span class="p">)</span>
-            <span class="n">y</span> <span class="o">+=</span> <span class="n">var</span><span class="o">.</span><span class="n">gens</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">d</span> <span class="o">-=</span> <span class="n">var</span><span class="o">.</span><span class="n">gens</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">while</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="o">*</span><span class="n">u</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">delta</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">delta</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">/</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">walls</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="n">w</span><span class="p">)</span>
+                <span class="n">d</span> <span class="o">-=</span> <span class="n">var</span><span class="o">.</span><span class="n">gens</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="n">Element</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
+                <span class="n">u</span> <span class="o">=</span> <span class="n">v</span> <span class="o">-</span> <span class="n">w</span>
+
+    <span class="c1"># for n in range(1, gcd(v[0], v[1]) + 1):</span>
+    <span class="c1">#     s = mu(v).denominator() * n</span>
+    <span class="c1">#     x = mu(v).numerator() * n</span>
+    <span class="c1">#     y = v[2] - v[1] ** 2 / 2 / v[0] + x ** 2 / 2 / s</span>
+    <span class="c1">#     y = var.floor(s, x, y)</span>
+    <span class="c1">#     y_max = bounds.ch_max(s, x)</span>
+    <span class="c1">#     while y &lt;= y_max:</span>
+    <span class="c1">#         w = Element((s, x, y))</span>
+    <span class="c1">#         if delta(w) / s ** 2 &lt;= delta(v) / v[0] ** 2:</span>
+    <span class="c1">#             walls.add(-w)</span>
+    <span class="c1">#         y += var.gens[2]</span>
 
     <span class="k">return</span> <span class="n">walls</span></div>
 

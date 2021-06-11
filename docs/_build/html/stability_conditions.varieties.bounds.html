@@ -287,7 +287,7 @@ ranks are probably a bad idea to input.</p>
 <dd><p>Returns the maximal i-th Chern character, where i = len(args).</p>
 <p>INPUT:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> – list of the first Chern character up to i - 1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> – list of the first Chern characters up to i - 1.</p></li>
 </ul>
 <p>WARNING:</p>
 <p>This basic implementation only works up to the second Chern character.
@@ -331,7 +331,7 @@ probably a bad idea to input.</p>
 <dd><p>Returns the minimal i-th Chern character, where i = len(args).</p>
 <p>INPUT:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> – list of the first Chern character up to i - 1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> – list of the first Chern characters up to i - 1.</p></li>
 </ul>
 <p>WARNING:</p>
 <p>This basic implementation only works up to the second Chern character.
@@ -362,6 +362,55 @@ probably a bad idea to input.</p>
 <span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">ch_min</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="mi">0</span>
 <span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">ch_min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="o">...</span>
+<span class="ne">NotImplementedError</span><span class="p">:</span> <span class="n">Third</span> <span class="n">Chern</span> <span class="n">character</span> <span class="ow">or</span> <span class="n">higher</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="stability_conditions.varieties.bounds.Bounds.satisfies_bounds">
+<code class="sig-name descname">satisfies_bounds</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/varieties/bounds.html#Bounds.satisfies_bounds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.varieties.bounds.Bounds.satisfies_bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a list of Chern characters checks whether the last one satisfies
+the bounds of this class for the previous values.</p>
+<p>INPUT:
+- <code class="docutils literal notranslate"><span class="pre">args</span></code> – list of Chern characters</p>
+<p>WARNING:</p>
+<p>This basic implementation only works up to the second Chern character.
+It simply uses the Bogomolov inequality. For more advanced
+functionality check classes derived from this one. It also does not
+check whether the inputs are valid, e.g., fractional ranks are
+probably a bad idea to input.</p>
+<p>TESTS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span> <span class="o">=</span> <span class="n">varieties</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">Bounds</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="kc">False</span>
+
+<span class="n">sage</span><span class="p">:</span> <span class="n">X</span> <span class="o">=</span> <span class="n">Variety</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span> <span class="o">=</span> <span class="n">varieties</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">Bounds</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="n">sage</span><span class="p">:</span> <span class="n">bounds</span><span class="o">.</span><span class="n">satisfies_bounds</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
 <span class="o">...</span>
 <span class="ne">NotImplementedError</span><span class="p">:</span> <span class="n">Third</span> <span class="n">Chern</span> <span class="n">character</span> <span class="ow">or</span> <span class="n">higher</span><span class="o">.</span>

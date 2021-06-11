@@ -14,7 +14,7 @@ EXAMPLES::
     - Document algorithms for wall computations: explain max rank calc., etc.
     - Document attributes of TiltWall.
     - Check speed issues on wall computation for (0, 3, -1/2) on p(2)
-    - Incorporate bounds class into wall computations.
+    - Check wall computations with other custom bounds classes.
 """
 
 # ****************************************************************************
@@ -53,6 +53,7 @@ from sage.symbolic.all import i
 
 from .library import previous_farey
 from .slope import delta, mu
+from .varieties.bounds import Bounds
 from .varieties.variety import ch, Element
 
 
@@ -917,7 +918,7 @@ def wall(v, w):
     return TiltWall(s, p)
 
 
-def walls_left(v, var, s=None, b=None):
+def walls_left(v, var, s=None, b=None, bounds=None):
     r"""
     Computes walls left of the vertical wall in tilt stability.
 
@@ -928,12 +929,19 @@ def walls_left(v, var, s=None, b=None):
     :math:`\beta^{-}(v)` is rational, it computes all walls to the left of the
     vertical wall.
 
+    If `bounds` is None, then we will simply use the Bogomolov inequality to
+    bound the second Chern characters of destabilizing subobjects. For more
+    sophisticated bounds, one can use a different custom `Bounds` class. See
+    the documentation for the `bounds` module for more details.
+
     INPUT:
 
     - ``v`` -- Element in the numerical Chow ring.
     - ``var`` -- Variety.
     - ``s`` -- rational number or None (default: `None`).
     - ``b`` -- rational number or None (default: `None`).
+    - ``bounds`` -- Instance of bounds class that specifies Chern character
+      bounds.
 
     If both `s` and `b` are different from None, then `b` is ignored.
 
@@ -943,6 +951,12 @@ def walls_left(v, var, s=None, b=None):
     smaller than the slope of v.
 
     ALGORITHM:
+
+    WARNING:
+
+    If ``bounds`` is None, then a new instance of it is created. If you use a
+    lot of wall computations, it might be wise to create an instance manually
+    once and keep passing it as a parameter.
 
     TESTS::
 
@@ -997,6 +1011,9 @@ def walls_left(v, var, s=None, b=None):
     else:
         v = Element(v[0:3])
 
+    if bounds is None:
+        bounds = Bounds(var)
+
     # First we determine s if necessary and check the input.
     if s is None:
         if b is None:
@@ -1031,7 +1048,7 @@ def walls_left(v, var, s=None, b=None):
         r = m.denominator()
         c = m.numerator()
         while r <= r_max:
-            d = var.floor(r, c, c ** 2 / 2 / r)
+            d = bounds.ch_max(r, c)
             w = Element([r, c, d])
             u = v - w
             current_wall = wall(v, w)
@@ -1039,7 +1056,7 @@ def walls_left(v, var, s=None, b=None):
                 if ((u[0] > 0 and current_wall.s <= mu(u)) or
                         u[0] == 0 or
                         (u[0] < 0 and current_wall.s >= mu(u))):
-                    if delta(u) >= 0:
+                    if bounds.satisfies_bounds(*u):
                         if current_wall in walls.keys():
                             walls[current_wall].add(w)
                         else:
@@ -1054,7 +1071,7 @@ def walls_left(v, var, s=None, b=None):
     return walls
 
 
-def walls_right(v, var, s=None, b=None):
+def walls_right(v, var, s=None, b=None, bounds=None):
     r"""
     Computes walls right of the vertical wall in tilt stability.
 
@@ -1065,12 +1082,19 @@ def walls_right(v, var, s=None, b=None):
     :math:`\beta^{-}(v)` is rational, it computes all walls to the left of the
     vertical wall.
 
+    If `bounds` is None, then we will simply use the Bogomolov inequality to
+    bound the second Chern characters of destabilizing subobjects. For more
+    sophisticated bounds, one can use a different custom `Bounds` class. See
+    the documentation for the `bounds` module for more details.
+
     INPUT:
 
     - ``v`` -- Element in the numerical Chow ring.
     - ``var`` -- Variety.
     - ``s`` -- rational number or None (default: `None`).
     - ``b`` -- rational number or None (default: `None`).
+    - ``bounds`` -- Instance of bounds class that specifies Chern character
+      bounds.
 
     If both `s` and `b` are different from None, then `b` is ignored.
 
@@ -1132,15 +1156,18 @@ def walls_right(v, var, s=None, b=None):
         sage: tilt.walls_right(Element((3, -1, -1/2)), var) == output
         True
     """
+    if bounds is None:
+        bounds = Bounds(var)
+
     if s is None:
         if b is None:
-            walls_dual = walls_left(v.dual(), var)
+            walls_dual = walls_left(v.dual(), var, bounds=bounds)
         else:
-            walls_dual = walls_left(v.dual(), var, None, -b)
+            walls_dual = walls_left(v.dual(), var, None, -b, bounds)
     elif b is None:
-        walls_dual = walls_left(v.dual(), var, -s)
+        walls_dual = walls_left(v.dual(), var, -s, bounds=bounds)
     else:
-        walls_dual = walls_left(v.dual(), var, -s, -b)
+        walls_dual = walls_left(v.dual(), var, -s, -b, bounds)
 
     walls = {}
     for key, val in walls_dual.items():
@@ -1152,7 +1179,7 @@ def walls_right(v, var, s=None, b=None):
     return walls
 
 
-def walls_torsion(v, var, p=None, b=None):
+def walls_torsion(v, var, p=None, b=None, bounds=None):
     r"""
     Compute walls for v in tilt stability if v[0] == 0.
 
@@ -1162,12 +1189,19 @@ def walls_torsion(v, var, p=None, b=None):
     If both `b` and `p` are None it computes all walls to the left of
     the vertical wall.
 
+    If `bounds` is None, then we will simply use the Bogomolov inequality to
+    bound the second Chern characters of destabilizing subobjects. For more
+    sophisticated bounds, one can use a different custom `Bounds` class. See
+    the documentation for the `bounds` module for more details.
+
     INPUT:
 
     - ``v`` -- Element in the numerical Chow ring.
     - ``var`` -- Variety.
     - ``p`` -- rational number or None (default: `None`).
     - ``b`` -- rational number or None (default: `None`).
+    - ``bounds`` -- Instance of bounds class that specifies Chern character
+      bounds.
 
     If both `p` and `b` are different from None, then `b` is ignored. If
     `p < 0`, then the function assumes p is 0.
@@ -1239,8 +1273,11 @@ def walls_torsion(v, var, p=None, b=None):
     elif v[1] == 0:
         return {}
 
+    if bounds is None:
+        bounds = Bounds(var)
+
     if len(v) > 3:
-        return walls_torsion(Element(v[0:3]), var, p, b)
+        return walls_torsion(Element(v[0:3]), var, p, b, bounds)
 
     # Determine p if necessary.
     if p is None:
@@ -1276,12 +1313,12 @@ def walls_torsion(v, var, p=None, b=None):
         r = m.denominator()
         c = m.numerator()
         while r <= r_max:
-            d = var.floor(r, c, c ** 2 / 2 / r)
+            d = bounds.ch_max(r, c)
             w = Element((r, c, d))
             u = v - w
             current_wall = wall(v, w)
             while min_wall <= current_wall and current_wall.p > 0:
-                if s >= mu(u) and delta(u) >= 0:
+                if s >= mu(u) and bounds.satisfies_bounds(*u):
                     if current_wall in walls.keys():
                         walls[current_wall].add(w)
                     else:
@@ -1296,7 +1333,7 @@ def walls_torsion(v, var, p=None, b=None):
     return walls
 
 
-def walls_vertical(v, var):
+def walls_vertical(v, var, bounds=None):
     r"""
     Computes vertical walls for `v` in tilt stability.
 
@@ -1309,12 +1346,19 @@ def walls_vertical(v, var):
     would not numerically destabilize a sheaf with class `-v` in
     Gieseker stability, then `w` is in the set. If it does, then
     `v + w` would numerically destabilize a sheaf with class `-v` in
-    Gieseker stability and the `-v - w` is added to the set.
+    Gieseker stability and `-v - w` is added to the set.
+
+    If `bounds` is None, then we will simply use the Bogomolov inequality to
+    bound the second Chern characters of destabilizing subobjects. For more
+    sophisticated bounds, one can use a different custom `Bounds` class. See
+    the documentation for the `bounds` module for more details.
 
     INPUT:
 
     - ``v`` -- Element in the numerical Chow ring.
     - ``var`` -- Variety.
+    - ``bounds`` -- Instance of bounds class that specifies Chern character
+      bounds.
 
     ALGORITHM:
 
@@ -1373,18 +1417,40 @@ def walls_vertical(v, var):
     else:
         v = Element(v[0:3])
 
+    if bounds is None:
+        bounds = Bounds(var)
+
     walls = set()
-    for n in range(1, floor(v[0] / mu(v).denominator()) + 1):
-        s = mu(v).denominator() * n
-        x = mu(v).numerator() * n
-        y = v[2] - v[1] ** 2 / 2 / v[0] + x ** 2 / 2 / s
-        y = var.floor(s, x, y)
-        y_max = x ** 2 / 2 / s
-        while y <= y_max:
-            w = Element((s, x, y))
-            if delta(w) / s ** 2 <= delta(v) / v[0] ** 2:
+    for n in range(1, gcd(v[0], v[1]) + 1):
+        r = mu(v).denominator() * n
+        c = mu(v).numerator() * n
+        d = bounds.ch_max(r, c)
+        w = Element((r, c, d))
+        u = v - w
+        if r == v[0]:
+            while d >= v[2] - v[1] ** 2 / 2 / v[0] + c ** 2 / 2 / r:
                 walls.add(-w)
-            y += var.gens[2]
+                d -= var.gens[2]
+                w = Element((r, c, d))
+        else:
+            while bounds.satisfies_bounds(*u):
+                if delta(w) / r ** 2 <= delta(v) / v[0] ** 2:
+                    walls.add(-w)
+                d -= var.gens[2]
+                w = Element((r, c, d))
+                u = v - w
+
+    # for n in range(1, gcd(v[0], v[1]) + 1):
+    #     s = mu(v).denominator() * n
+    #     x = mu(v).numerator() * n
+    #     y = v[2] - v[1] ** 2 / 2 / v[0] + x ** 2 / 2 / s
+    #     y = var.floor(s, x, y)
+    #     y_max = bounds.ch_max(s, x)
+    #     while y <= y_max:
+    #         w = Element((s, x, y))
+    #         if delta(w) / s ** 2 <= delta(v) / v[0] ** 2:
+    #             walls.add(-w)
+    #         y += var.gens[2]
 
     return walls
 

@@ -7,7 +7,6 @@ EXAMPLES::
 
 .. TODO::
     - Add examples.
-    - Write Bounds class
     - Write BoundsFromFile class
 """
 
@@ -31,7 +30,7 @@ EXAMPLES::
 # noinspection PyUnresolvedReferences
 import sage.all
 # noinspection PyUnresolvedReferences
-from sage.all import infinity
+from sage.rings.infinity import infinity
 # noinspection PyUnresolvedReferences
 from sage.structure.all import SageObject
 
@@ -146,7 +145,7 @@ class Bounds(SageObject):
 
         INPUT:
 
-        - ``args`` -- list of the first Chern character up to i - 1.
+        - ``args`` -- list of the first Chern characters up to i - 1.
 
         WARNING:
 
@@ -197,7 +196,7 @@ class Bounds(SageObject):
 
         INPUT:
 
-        - ``args`` -- list of the first Chern character up to i - 1.
+        - ``args`` -- list of the first Chern characters up to i - 1.
 
         WARNING:
 
@@ -239,6 +238,70 @@ class Bounds(SageObject):
             return -infinity
         elif len(args) == 2:
             return self.bogomolov_min(args[0], args[1])
+        else:
+            raise NotImplementedError('Third Chern character or higher.')
+
+    def satisfies_bounds(self, *args):
+        r"""
+        For a list of Chern characters checks whether the last one satisfies
+        the bounds of this class for the previous values.
+
+        INPUT:
+        - ``args`` -- list of Chern characters
+
+        WARNING:
+
+        This basic implementation only works up to the second Chern character.
+        It simply uses the Bogomolov inequality. For more advanced
+        functionality check classes derived from this one. It also does not
+        check whether the inputs are valid, e.g., fractional ranks are
+        probably a bad idea to input.
+
+        TESTS::
+
+            sage: from stability_conditions import *
+
+            sage: X = p(2)
+            sage: bounds = varieties.bounds.Bounds(X)
+            sage: bounds.satisfies_bounds(1)
+            True
+            sage: bounds.satisfies_bounds(1)
+            True
+            sage: bounds.satisfies_bounds(1, 2)
+            True
+            sage: bounds.satisfies_bounds(1, 0, 1)
+            False
+            sage: bounds.satisfies_bounds(1, 0, 0)
+            True
+            sage: bounds.satisfies_bounds(1, 0, -1)
+            True
+            sage: bounds.satisfies_bounds(3, 7, 13/2)
+            True
+            sage: bounds.satisfies_bounds(-3, 7, -9/2)
+            True
+            sage: bounds.satisfies_bounds(10, 10, 6)
+            False
+
+            sage: X = Variety(3, [1, 1, 1/2, 1/6], [1, 0, 0, 0])
+            sage: bounds = varieties.bounds.Bounds(X)
+            sage: bounds.satisfies_bounds(-2, 1, 1/2)
+            True
+            sage: bounds.satisfies_bounds(1, 2, 3, 4)
+            Traceback (most recent call last):
+            ...
+            NotImplementedError: Third Chern character or higher.
+        """
+        if len(args) <= 2:
+            return True
+        if len(args) == 3:
+            if args[2] >= self.ch_min(args[0], args[1]):
+                if args[2] <= self.ch_max(args[0], args[1]):
+                    return True
+                else:
+                    return False
+            else:
+                return False
+
         else:
             raise NotImplementedError('Third Chern character or higher.')
 

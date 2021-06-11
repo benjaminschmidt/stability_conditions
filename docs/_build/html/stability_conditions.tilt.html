@@ -913,7 +913,7 @@ equation of the wall.</p>
 
 <dl class="py function">
 <dt id="stability_conditions.tilt.walls_left">
-<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">walls_left</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">var</span></em>, <em class="sig-param"><span class="n">s</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">b</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#walls_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.walls_left" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">walls_left</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">var</span></em>, <em class="sig-param"><span class="n">s</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">b</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">bounds</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#walls_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.walls_left" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes walls left of the vertical wall in tilt stability.</p>
 <p>This function assumes v[0] != 0. It computes those walls for <cite>v</cite>
 that are larger than or equal to the numerical wall with center
@@ -921,12 +921,18 @@ that are larger than or equal to the numerical wall with center
 the vertical ray <span class="math notranslate nohighlight">\(\beta = b\)</span>. If both <cite>b</cite> and <cite>s</cite> are None and
 <span class="math notranslate nohighlight">\(\beta^{-}(v)\)</span> is rational, it computes all walls to the left of the
 vertical wall.</p>
+<p>If <cite>bounds</cite> is None, then we will simply use the Bogomolov inequality to
+bound the second Chern characters of destabilizing subobjects. For more
+sophisticated bounds, one can use a different custom <cite>Bounds</cite> class. See
+the documentation for the <cite>bounds</cite> module for more details.</p>
 <p>INPUT:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> – Element in the numerical Chow ring.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">var</span></code> – Variety.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">s</span></code> – rational number or None (default: <cite>None</cite>).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> – rational number or None (default: <cite>None</cite>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bounds</span></code> – Instance of bounds class that specifies Chern character
+bounds.</p></li>
 </ul>
 <p>If both <cite>s</cite> and <cite>b</cite> are different from None, then <cite>b</cite> is ignored.</p>
 <p>OUTPUT: Returns a dictionary where keys are TiltWall objects and the
@@ -934,6 +940,10 @@ items are sets of those potentially destabilizing semistable
 subobjects or quotients which have positive rank and whose slope is
 smaller than the slope of v.</p>
 <p>ALGORITHM:</p>
+<p>WARNING:</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">bounds</span></code> is None, then a new instance of it is created. If you use a
+lot of wall computations, it might be wise to create an instance manually
+once and keep passing it as a parameter.</p>
 <p>TESTS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sage</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">stability_conditions</span> <span class="k">import</span> <span class="o">*</span>
 
@@ -983,7 +993,7 @@ smaller than the slope of v.</p>
 
 <dl class="py function">
 <dt id="stability_conditions.tilt.walls_right">
-<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">walls_right</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">var</span></em>, <em class="sig-param"><span class="n">s</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">b</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#walls_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.walls_right" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">walls_right</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">var</span></em>, <em class="sig-param"><span class="n">s</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">b</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">bounds</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#walls_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.walls_right" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes walls right of the vertical wall in tilt stability.</p>
 <p>This function assumes v[0] != 0. It computes those walls for <cite>-v</cite>
 that are larger than or equal to the numerical wall with center
@@ -991,12 +1001,18 @@ that are larger than or equal to the numerical wall with center
 the vertical ray <span class="math notranslate nohighlight">\(\beta = b\)</span>. If both <cite>b</cite> and <cite>s</cite> are None and
 <span class="math notranslate nohighlight">\(\beta^{-}(v)\)</span> is rational, it computes all walls to the left of the
 vertical wall.</p>
+<p>If <cite>bounds</cite> is None, then we will simply use the Bogomolov inequality to
+bound the second Chern characters of destabilizing subobjects. For more
+sophisticated bounds, one can use a different custom <cite>Bounds</cite> class. See
+the documentation for the <cite>bounds</cite> module for more details.</p>
 <p>INPUT:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> – Element in the numerical Chow ring.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">var</span></code> – Variety.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">s</span></code> – rational number or None (default: <cite>None</cite>).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> – rational number or None (default: <cite>None</cite>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bounds</span></code> – Instance of bounds class that specifies Chern character
+bounds.</p></li>
 </ul>
 <p>If both <cite>s</cite> and <cite>b</cite> are different from None, then <cite>b</cite> is ignored.</p>
 <p>OUTPUT: Returns a dictionary where keys are TiltWall objects and the
@@ -1059,19 +1075,25 @@ smaller than the slope of -v.</p>
 
 <dl class="py function">
 <dt id="stability_conditions.tilt.walls_torsion">
-<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">walls_torsion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">var</span></em>, <em class="sig-param"><span class="n">p</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">b</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#walls_torsion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.walls_torsion" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">walls_torsion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">var</span></em>, <em class="sig-param"><span class="n">p</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">b</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">bounds</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#walls_torsion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.walls_torsion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute walls for v in tilt stability if v[0] == 0.</p>
 <p>This function computes those walls for <cite>v</cite> that are larger than or
 equal to the numerical wall with radius squared <cite>p</cite>. If <cite>p</cite> is None,
 it computes those walls that intersect the vertical ray <span class="math notranslate nohighlight">\(\beta = b\)</span>.
 If both <cite>b</cite> and <cite>p</cite> are None it computes all walls to the left of
 the vertical wall.</p>
+<p>If <cite>bounds</cite> is None, then we will simply use the Bogomolov inequality to
+bound the second Chern characters of destabilizing subobjects. For more
+sophisticated bounds, one can use a different custom <cite>Bounds</cite> class. See
+the documentation for the <cite>bounds</cite> module for more details.</p>
 <p>INPUT:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> – Element in the numerical Chow ring.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">var</span></code> – Variety.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">p</span></code> – rational number or None (default: <cite>None</cite>).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> – rational number or None (default: <cite>None</cite>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bounds</span></code> – Instance of bounds class that specifies Chern character
+bounds.</p></li>
 </ul>
 <p>If both <cite>p</cite> and <cite>b</cite> are different from None, then <cite>b</cite> is ignored. If
 <cite>p &lt; 0</cite>, then the function assumes p is 0.</p>
@@ -1134,7 +1156,7 @@ subobjects or quotients which have positive rank.</p>
 
 <dl class="py function">
 <dt id="stability_conditions.tilt.walls_vertical">
-<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">walls_vertical</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">var</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#walls_vertical"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.walls_vertical" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">stability_conditions.tilt.</code><code class="sig-name descname">walls_vertical</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v</span></em>, <em class="sig-param"><span class="n">var</span></em>, <em class="sig-param"><span class="n">bounds</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/stability_conditions/tilt.html#walls_vertical"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#stability_conditions.tilt.walls_vertical" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes vertical walls for <cite>v</cite> in tilt stability.</p>
 <p>This function assumes v[0] != 0.</p>
 <p>OUTPUT: Returns a set of potentially destabilizing semistable
@@ -1144,11 +1166,17 @@ set. Assume that both <cite>w</cite> and <cite>-v - w</cite> have negative rank.
 would not numerically destabilize a sheaf with class <cite>-v</cite> in
 Gieseker stability, then <cite>w</cite> is in the set. If it does, then
 <cite>v + w</cite> would numerically destabilize a sheaf with class <cite>-v</cite> in
-Gieseker stability and the <cite>-v - w</cite> is added to the set.</p>
+Gieseker stability and <cite>-v - w</cite> is added to the set.</p>
+<p>If <cite>bounds</cite> is None, then we will simply use the Bogomolov inequality to
+bound the second Chern characters of destabilizing subobjects. For more
+sophisticated bounds, one can use a different custom <cite>Bounds</cite> class. See
+the documentation for the <cite>bounds</cite> module for more details.</p>
 <p>INPUT:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">v</span></code> – Element in the numerical Chow ring.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">var</span></code> – Variety.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bounds</span></code> – Instance of bounds class that specifies Chern character
+bounds.</p></li>
 </ul>
 <p>ALGORITHM:</p>
 <p>TESTS:</p>

@@ -161,7 +161,6 @@
 
 <span class="sd">.. TODO::</span>
 <span class="sd">    - Add examples.</span>
-<span class="sd">    - Write Bounds class</span>
 <span class="sd">    - Write BoundsFromFile class</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
@@ -185,7 +184,7 @@
 <span class="c1"># noinspection PyUnresolvedReferences</span>
 <span class="kn">import</span> <span class="nn">sage.all</span>
 <span class="c1"># noinspection PyUnresolvedReferences</span>
-<span class="kn">from</span> <span class="nn">sage.all</span> <span class="k">import</span> <span class="n">infinity</span>
+<span class="kn">from</span> <span class="nn">sage.rings.infinity</span> <span class="k">import</span> <span class="n">infinity</span>
 <span class="c1"># noinspection PyUnresolvedReferences</span>
 <span class="kn">from</span> <span class="nn">sage.structure.all</span> <span class="k">import</span> <span class="n">SageObject</span>
 
@@ -300,7 +299,7 @@
 
 <span class="sd">        INPUT:</span>
 
-<span class="sd">        - ``args`` -- list of the first Chern character up to i - 1.</span>
+<span class="sd">        - ``args`` -- list of the first Chern characters up to i - 1.</span>
 
 <span class="sd">        WARNING:</span>
 
@@ -351,7 +350,7 @@
 
 <span class="sd">        INPUT:</span>
 
-<span class="sd">        - ``args`` -- list of the first Chern character up to i - 1.</span>
+<span class="sd">        - ``args`` -- list of the first Chern characters up to i - 1.</span>
 
 <span class="sd">        WARNING:</span>
 
@@ -393,6 +392,70 @@
             <span class="k">return</span> <span class="o">-</span><span class="n">infinity</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bogomolov_min</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Third Chern character or higher.&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Bounds.satisfies_bounds"><a class="viewcode-back" href="../../../stability_conditions.varieties.bounds.html#stability_conditions.varieties.bounds.Bounds.satisfies_bounds">[docs]</a>    <span class="k">def</span> <span class="nf">satisfies_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        For a list of Chern characters checks whether the last one satisfies</span>
+<span class="sd">        the bounds of this class for the previous values.</span>
+
+<span class="sd">        INPUT:</span>
+<span class="sd">        - ``args`` -- list of Chern characters</span>
+
+<span class="sd">        WARNING:</span>
+
+<span class="sd">        This basic implementation only works up to the second Chern character.</span>
+<span class="sd">        It simply uses the Bogomolov inequality. For more advanced</span>
+<span class="sd">        functionality check classes derived from this one. It also does not</span>
+<span class="sd">        check whether the inputs are valid, e.g., fractional ranks are</span>
+<span class="sd">        probably a bad idea to input.</span>
+
+<span class="sd">        TESTS::</span>
+
+<span class="sd">            sage: from stability_conditions import *</span>
+
+<span class="sd">            sage: X = p(2)</span>
+<span class="sd">            sage: bounds = varieties.bounds.Bounds(X)</span>
+<span class="sd">            sage: bounds.satisfies_bounds(1)</span>
+<span class="sd">            True</span>
+<span class="sd">            sage: bounds.satisfies_bounds(1)</span>
+<span class="sd">            True</span>
+<span class="sd">            sage: bounds.satisfies_bounds(1, 2)</span>
+<span class="sd">            True</span>
+<span class="sd">            sage: bounds.satisfies_bounds(1, 0, 1)</span>
+<span class="sd">            False</span>
+<span class="sd">            sage: bounds.satisfies_bounds(1, 0, 0)</span>
+<span class="sd">            True</span>
+<span class="sd">            sage: bounds.satisfies_bounds(1, 0, -1)</span>
+<span class="sd">            True</span>
+<span class="sd">            sage: bounds.satisfies_bounds(3, 7, 13/2)</span>
+<span class="sd">            True</span>
+<span class="sd">            sage: bounds.satisfies_bounds(-3, 7, -9/2)</span>
+<span class="sd">            True</span>
+<span class="sd">            sage: bounds.satisfies_bounds(10, 10, 6)</span>
+<span class="sd">            False</span>
+
+<span class="sd">            sage: X = Variety(3, [1, 1, 1/2, 1/6], [1, 0, 0, 0])</span>
+<span class="sd">            sage: bounds = varieties.bounds.Bounds(X)</span>
+<span class="sd">            sage: bounds.satisfies_bounds(-2, 1, 1/2)</span>
+<span class="sd">            True</span>
+<span class="sd">            sage: bounds.satisfies_bounds(1, 2, 3, 4)</span>
+<span class="sd">            Traceback (most recent call last):</span>
+<span class="sd">            ...</span>
+<span class="sd">            NotImplementedError: Third Chern character or higher.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_min</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="k">if</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_max</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                    <span class="k">return</span> <span class="kc">True</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Third Chern character or higher.&#39;</span><span class="p">)</span></div></div>
 
