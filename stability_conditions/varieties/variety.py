@@ -634,23 +634,75 @@ class Variety(SageObject):
         """
         return "Variety(%d, %s, %s)" % (self.dim, self.gens, self.td)
 
-    def o(self, m):
-        r"""
-        Returns the Chern character of the line bundle :math:`\mathcal{O}(mH)`.
+    # noinspection Duplicates
+    def ceil(self, *args):
+        r"""Rounds up Chern characters.
+
+        Let n = len(args) - 1 and assume that for some object :math:`E` we
+        have :math:`\operatorname{ch}_i(E) = args[i]` for all `i` in between
+        `0` and `n - 1`. This method then returns the smallest rational number
+        :math:`x > args[n]` such that :math:`\operatorname{ch}_n(E) = x` is
+        a possible value.
+
+        Basically, this function simply rounds up based on the
+        fact that Chern classes are integral.
+
+        INPUT:
+
+        - ``args`` -- list of rational numbers with length smaller than or
+          equal to the dimension of the variety plus one.
+
+        WARNING:
+
+        It is not checked whether the values in args are valid inputs.
 
         TESTS::
 
             sage: from stability_conditions import *
 
             sage: X = Variety(2, [1, 1, 1], [1, 3/2, 1])
-            sage: X.o(-5)
-            (1, -5, 25/2)
+            sage: X.ceil(1, 2, 3, 4)
+            Traceback (most recent call last):
+            ...
+            IndexError: Too many arguments given the dimension of the variety.
 
-            sage: X = Variety(3, [1, 1, 1, 1], [1, 2, 11/6, 1])
-            sage: X.o(3)
-            (1, 3, 9/2, 9/2)
+            sage: X = Variety(2, [1, 1, 1], [1, 3/2, 1])
+            sage: X.ceil()
+            Traceback (most recent call last):
+            ...
+            IndexError: There has to be at least one argument.
+
+            sage: X = Variety(2, [1, 1, 1], [1, 3/2, 1])
+            sage: X.ceil(2, -1, 0)
+            1/2
+
+            sage: X = Variety(3, [1, 1, 1/2, 1/6], [1, 0, 0, 0])
+            sage: X.ceil(1, 0, 0, 1/6)
+            1/6
+            sage: X.ceil(1, 0, 0, 1/7)
+            1/6
+            sage: X.ceil(1, 0, 0, 1/13)
+            1/12
         """
-        return o(m, self.dim)
+        if len(args) > self.dim + 1:
+            raise IndexError("Too many arguments given the dimension of the "
+                             "variety.")
+
+        if len(args) == 0:
+            raise IndexError("There has to be at least one argument.")
+
+        v = Element(args)
+        j = len(args) - 1  # i-th Chern character has to be rounded
+
+        if j == 0:
+            return floor(args[0])
+        else:
+            c = list(v.c().vec)
+            if j % 2 == 0:
+                c[j] = floor(c[j] / self.gens[j]) * self.gens[j]
+            else:  # if j % 2 == 1
+                c[j] = ceil(c[j] / self.gens[j]) * self.gens[j]
+            return Element(c).ch(j)
 
     def chi(self, v, w=None):
         r"""
@@ -699,63 +751,7 @@ class Variety(SageObject):
         else:
             return (v.dual()*w*self.td)[self.dim]/self.gens[self.dim]
 
-    def valid(self, v):
-        r"""Checks whether the Element v could occur as a Chern character.
-
-        This method returns True if the rank, the Euler characteristic
-        :math:`\chi(v)`, and the Chern classes corresponding to
-        :math:`v = \operatorname{ch}(E)` are all integral.
-
-        TESTS::
-
-            sage: from stability_conditions import *
-
-            sage: X = Variety(2, [1, 1, 1], [1, 3/2, 1])
-            sage: v = Element([1, 1, 1/2])
-            sage: X.valid(v)
-            True
-            sage: v = Element([1, 1, 1])
-            sage: X.valid(v)
-            False
-            sage: v = Element([1, 0, 1/6])
-            sage: X.valid(v)
-            False
-
-            sage: X = Variety(3, [1, 1, 1, 1], [1, 2, 11/6, 1])
-            sage: v = Element([1, 1, 1/2, 1/6])
-            sage: X.valid(v)
-            True
-            sage: v = Element([2, -1, -1/2, 1/3])
-            sage: X.valid(v)
-            False
-            sage: v = Element([2, -1, -1/2, -1/6])
-            sage: X.valid(v)
-            True
-            sage: v = Element([3/2, -1, -1/2, 1/3])
-            sage: X.valid(v)
-            False
-
-            sage: X = Variety(3, [1, 1, 1/2, 1/6], [1, 0, 0, 0])
-            sage: v = Element([1, -1, 1/2, -1/3])
-            sage: X.valid(v)
-            True
-            sage: v = Element([1, -1, 1/3, 0])
-            sage: X.valid(v)
-            False
-        """
-        if v[0].denominator() != 1:
-            return False
-
-        if self.chi(v).denominator() != 1:
-            return False
-
-        c = v.c()
-        for j in range(len(v)):
-            if (c[j]/self.gens[j]).denominator() != 1:
-                return False
-
-        return True
-
+    # noinspection Duplicates
     def floor(self, *args):
         r"""Rounds down Chern characters.
 
@@ -828,6 +824,81 @@ class Variety(SageObject):
     # def _latex(self):
     #     pass
 
+    def o(self, m):
+        r"""
+        Returns the Chern character of the line bundle :math:`\mathcal{O}(mH)`.
+
+        TESTS::
+
+            sage: from stability_conditions import *
+
+            sage: X = Variety(2, [1, 1, 1], [1, 3/2, 1])
+            sage: X.o(-5)
+            (1, -5, 25/2)
+
+            sage: X = Variety(3, [1, 1, 1, 1], [1, 2, 11/6, 1])
+            sage: X.o(3)
+            (1, 3, 9/2, 9/2)
+        """
+        return o(m, self.dim)
+
+    def valid(self, v):
+        r"""Checks whether the Element v could occur as a Chern character.
+
+        This method returns True if the rank, the Euler characteristic
+        :math:`\chi(v)`, and the Chern classes corresponding to
+        :math:`v = \operatorname{ch}(E)` are all integral.
+
+        TESTS::
+
+            sage: from stability_conditions import *
+
+            sage: X = Variety(2, [1, 1, 1], [1, 3/2, 1])
+            sage: v = Element([1, 1, 1/2])
+            sage: X.valid(v)
+            True
+            sage: v = Element([1, 1, 1])
+            sage: X.valid(v)
+            False
+            sage: v = Element([1, 0, 1/6])
+            sage: X.valid(v)
+            False
+
+            sage: X = Variety(3, [1, 1, 1, 1], [1, 2, 11/6, 1])
+            sage: v = Element([1, 1, 1/2, 1/6])
+            sage: X.valid(v)
+            True
+            sage: v = Element([2, -1, -1/2, 1/3])
+            sage: X.valid(v)
+            False
+            sage: v = Element([2, -1, -1/2, -1/6])
+            sage: X.valid(v)
+            True
+            sage: v = Element([3/2, -1, -1/2, 1/3])
+            sage: X.valid(v)
+            False
+
+            sage: X = Variety(3, [1, 1, 1/2, 1/6], [1, 0, 0, 0])
+            sage: v = Element([1, -1, 1/2, -1/3])
+            sage: X.valid(v)
+            True
+            sage: v = Element([1, -1, 1/3, 0])
+            sage: X.valid(v)
+            False
+        """
+        if v[0].denominator() != 1:
+            return False
+
+        if self.chi(v).denominator() != 1:
+            return False
+
+        c = v.c()
+        for j in range(len(v)):
+            if (c[j]/self.gens[j]).denominator() != 1:
+                return False
+
+        return True
+
 
 def ch(v, b):
     r"""
@@ -869,7 +940,7 @@ def o(m, n):
 
     TESTS::
 
-        sage: from stability_conditions.varieties import o
+        sage: from stability_conditions.varieties.variety import o
 
         sage: o(-5, 2)
         (1, -5, 25/2)

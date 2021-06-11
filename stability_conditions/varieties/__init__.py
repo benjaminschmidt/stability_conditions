@@ -35,8 +35,4 @@ EXAMPLES::
 # ****************************************************************************
 
 from . import p3
-from .variety import Element
-from .variety import Variety
-from .variety import ch
-from .variety import o
-from .variety import p
+from . import bounds
