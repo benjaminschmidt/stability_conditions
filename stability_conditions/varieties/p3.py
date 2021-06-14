@@ -30,19 +30,22 @@ EXAMPLES::
 # noinspection PyUnresolvedReferences
 import sage.all
 # noinspection PyUnresolvedReferences
-from sage.all import ceil, Integer, Rational, RR, SageObject, SR, var
+from sage.all import ceil, Expression, infinity, Integer, Rational, RR
+# noinspection PyUnresolvedReferences
+from sage.all import SageObject, SR, var
+
+import json
 
 from .bounds import Bounds
-from .variety import Element
-import json
+from .variety import Element, o, p
 
 
 class BoundsP3(Bounds):
     r"""
     Manages explicit Chern character bounds saved in a file.
     """
-    def __init__(self, var, data_json=None):
-        super().__init__(var)
+    def __init__(self, data_json=None):
+        super().__init__(p(3))
         if data_json is None:
             # Max ch2 values.
             self.ch2 = {(Integer(1), Integer(0)): Rational(0)}
@@ -102,70 +105,6 @@ class BoundsP3(Bounds):
                                                  Rational(v[2]),
                                                  Rational(v[3]))))
 
-    def _ch2_max(self, r, c):
-        if r == 0:
-            return super().ch_max(r, c)
-        n = ceil(c/r)
-        if (r, c - n * r) in self.ch2.keys():
-            dNew = self.ch2[(r, c - n * r)]
-        else:
-            self._findch2Max(r, c - n * r)
-            dNew = self.ch2[(r, c - n * r)]
-        v = Element((r, c - n * r, dNew))
-        return (v * O(n, 2))[2]
-
-    def _ch3_max(self, r, c):
-        pass
-        # if r == 0:
-        #     try:
-        #         len(d)  # If it works, we assume d is a polynomial, not a number.
-        #         if c != 1:
-        #             raise ValueError("This bound is not of polynomial form.")
-        #         else:
-        #             return Fraction(1, 24) + d ** 2 / 2
-        #     except TypeError:
-        #         c = Fraction(c)
-        #         d = Fraction(d)
-        #         f = -(d + c ** 2 / 2) % c
-        #         epsilon = f / 2 * (c - f - 1 + f / c)
-        #         return c ** 3 / 24 + d ** 2 / 2 / c - epsilon
-        # elif r < 0:
-        #     return self.ch3Max(-r, c, -d)
-        #
-        # n = ceil(Fraction(c, r))
-        # if n != 0:
-        #     # Tensor v with O(-n)
-        #     eNew = self.ch3Max(r, c - n * r, Fraction(n ** 2 * r, 2) - c * n + d)
-        #     return Fraction(n ** 3 * r, 6) - Fraction(c * n ** 2, 2) + d * n + eNew
-        #
-        # try:
-        #     len(d)  # If it works, we assume d is a polynomial, not a number.
-        #     if (r, c) in self.ch2General.keys():
-        #         return self.ch3[(r, c)](d)
-        #     else:
-        #         self._findch3Max(r, c)
-        #         return self.ch3[(r, c)](d)
-        # except TypeError:
-        #     if (r, c) in self.ch2General.keys():
-        #         if d <= self.ch2General[(r, c)]:
-        #             return self.ch3[(r, c)](d)
-        #     if d > self.bogomolov(r, c):
-        #         raise ValueError("Negative discriminant.")
-        #     elif (r, c, d) in self.ch3Special.keys():
-        #         return self.ch3Special[(r, c, d)]
-        #     else:
-        #         # The remaining case means either (r, c, d) is invalid or
-        #         # has not been computed yet.
-        #         self._findch3Max(r, c, d)
-        #         return self.ch3Special[(r, c, d)]
-
-    def _ch2_min(self, r, c, d):
-        if r == 0:
-            return super().ch_min(r, c)
-
-    def _ch3_min(self, r, c, d):
-        pass
-
     def json(self):
         """
         Convertes the class into JSON data.
@@ -202,9 +141,9 @@ class BoundsP3(Bounds):
         if len(args) <= 1 or len(args) >= 4:
             return super().ch_max(*args)
         elif len(args) == 2:
-            return self._ch2_max(args[0], args[1])
+            return self.ch2_max(args[0], args[1])
         elif len(args) == 3:
-            return self._ch3_max(args[0], args[1])
+            return self.ch3_max(args[0], args[1], args[2])
         else:
             raise ValueError()
 
@@ -212,8 +151,67 @@ class BoundsP3(Bounds):
         if len(args) <= 1 or len(args) >= 4:
             return super().ch_min(*args)
         elif len(args) == 2:
-            return self._ch2_min(args[0], args[1])
+            return self.ch2_min(args[0], args[1])
         elif len(args) == 3:
-            return self._ch3_min(args[0], args[1])
+            return -infinity
         else:
             raise ValueError()
+
+    def ch2_max(self, r, c):
+        if r == 0:
+            return infinity
+        elif r < 0:
+            return infinity
+
+        # Now we know r > 0.
+        n = ceil(c / r)
+        if (r, c - n * r) in self.ch2.keys():
+            d_new = self.ch2[(r, c - n * r)]
+            v = Element((r, c - n * r, d_new))
+            return (v * o(n, 2))[2]
+        else:
+            return self.bogomolov_max(r, c)
+
+    def ch2_min(self, r, c):
+        return -self._ch2_max(-r, c)
+
+    def ch3_max(self, r, c, d=var('d', domain=RR)):
+        if r == 0:
+            if type(d) == Expression:
+                if c != 1:
+                    raise ValueError("This bound is not of polynomial form.")
+                else:
+                    return Integer(1)/Integer(24) + d ** 2 / 2
+            else:
+                f = Integer(-(d + c ** 2 / 2)) % c
+                epsilon = f / 2 * (c - f - 1 + f / c)
+                return c ** 3 / 24 + d ** 2 / 2 / c - epsilon
+        elif r < 0:
+            return self._ch3_max(-r, c, -d)
+
+        n = ceil(c / r)
+        if n != 0:
+            # Tensor v with O(-n).
+            v = Element((r, c, d))*o(-n, 2)
+            e_new = self.ch3_max(v[0], v[1], v[2])
+            # Tensor back.
+            w = Element((v[0], v[1], v[2], e_new))*o(n, 3)
+            return w[3]
+
+        if type(d) == Expression:
+            if (r, c) in self.ch2_general.keys():
+                return self.ch3[(r, c)]
+            else:
+                raise IndexError('This bound is unknown.')
+        else:
+            if (r, c) in self.ch2_general.keys():
+                if d <= self.ch2_general[(r, c)]:
+                    return self.ch3[(r, c)]
+            if d > self.ch2_max(r, c):
+                raise ValueError("There is no such object.")
+            elif (r, c, d) in self.ch3_special.keys():
+                return self.ch3_special[(r, c, d)]
+            else:
+                # The remaining case means either (r, c, d) is invalid or
+                # has not been computed yet.
+                raise IndexError('This bound is unknown.')
