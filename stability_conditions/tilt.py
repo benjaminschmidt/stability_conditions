@@ -37,19 +37,9 @@ EXAMPLES::
 # noinspection PyUnresolvedReferences
 import sage.all
 # noinspection PyUnresolvedReferences
-from sage.arith.misc import gcd
+from sage.all import floor, gcd, i, imag_part, infinity, Integer, QQ
 # noinspection PyUnresolvedReferences
-from sage.functions.other import floor, imag_part, real_part, sqrt
-# noinspection PyUnresolvedReferences
-from sage.rings.infinity import infinity
-# noinspection PyUnresolvedReferences
-from sage.rings.all import Integer
-# noinspection PyUnresolvedReferences
-from sage.rings.rational_field import QQ
-# noinspection PyUnresolvedReferences
-from sage.structure.all import SageObject
-# noinspection PyUnresolvedReferences
-from sage.symbolic.all import i
+from sage.all import real_part, SageObject, sqrt
 
 from .library import previous_farey
 from .slope import delta, mu
@@ -369,7 +359,6 @@ class TiltWall(SageObject):
         """
         return self < other or self == other
 
-    # noinspection DuplicatedCode
     def __lt__(self, other):
         r"""
         Checks whether this wall is strictly contained in the wall `other`.
@@ -422,7 +411,9 @@ class TiltWall(SageObject):
             return not other.is_empty
         elif other.is_empty:
             return False
-        elif self.is_vertical:
+
+        # At this point no wall is empty.
+        if self.is_vertical:
             return False
         elif other.is_vertical:
             if self.s == other.s:
@@ -433,16 +424,18 @@ class TiltWall(SageObject):
             elif self.s < other.s:
                 # Need to check whether self.s + sqrt(self.p) <= other.s
                 return self.p <= (other.s - self.s) ** 2
-        elif self.s == other.s:
+
+        # At this point no wall is empty or vertical.
+        if self.s == other.s:
             return self.p < other.p
-        elif self.s > other.s:
+        disc = (other.p - self.s ** 2 - other.s ** 2 - self.p +
+                2 * self.s * other.s) / (2 * self.s - 2 * other.s)
+        if self.s > other.s:
             # In this case self.s + sqrt(self.p) < other.s + sqrt(other.p) is
             # the only thing to check, since it implies
             # self.s - sqrt(self.p) > other.s - sqrt(other.p).
             # Some basic math on inequalities allows us to compare without
             # computing square roots as follows:
-            disc = (other.p - self.s ** 2 - other.s ** 2 - self.p +
-                    2 * self.s * other.s) / (2 * self.s - 2 * other.s)
             if disc < 0:
                 return False
             else:
@@ -453,9 +446,7 @@ class TiltWall(SageObject):
             # self.s + sqrt(self.p) < other.s + sqrt(other.p).
             # Some basic math on inequalities allows us to compare without
             # computing square roots as follows:
-            disc = (other.p - self.s ** 2 - other.s ** 2 - self.p +
-                    2 * self.s * other.s) / (2 * other.s - 2 * self.s)
-            if disc < 0:
+            if disc > 0:
                 return False
             else:
                 return self.p <= disc ** 2

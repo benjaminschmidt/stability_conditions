@@ -30,11 +30,7 @@ EXAMPLES::
 # noinspection PyUnresolvedReferences
 import sage.all
 # noinspection PyUnresolvedReferences
-from sage.functions.other import imag_part, real_part
-# noinspection PyUnresolvedReferences
-from sage.symbolic.all import i
-# noinspection PyUnresolvedReferences
-from sage.rings.infinity import infinity
+from sage.all import i, imag_part, infinity, real_part
 
 
 def delta(v, w=None):

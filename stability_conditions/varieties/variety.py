@@ -38,11 +38,7 @@ EXAMPLES::
 # noinspection PyUnresolvedReferences
 import sage.all
 # noinspection PyUnresolvedReferences
-from sage.functions.other import ceil, factorial, floor
-# noinspection PyUnresolvedReferences
-from sage.rings.all import Integer
-# noinspection PyUnresolvedReferences
-from sage.structure.all import SageObject
+from sage.all import ceil, factorial, floor, Integer, SageObject
 
 
 class Element(SageObject):

@@ -22,11 +22,7 @@ Collections of short functions required in stability computations.
 # noinspection PyUnresolvedReferences
 import sage.all
 # noinspection PyUnresolvedReferences
-from sage.arith.misc import xgcd
-# noinspection PyUnresolvedReferences
-from sage.functions.other import floor
-# noinspection PyUnresolvedReferences
-from sage.rings.all import Integer
+from sage.all import floor, Integer, xgcd
 
 
 def previous_farey(x, n):

@@ -30,9 +30,7 @@ EXAMPLES::
 # noinspection PyUnresolvedReferences
 import sage.all
 # noinspection PyUnresolvedReferences
-from sage.rings.infinity import infinity
-# noinspection PyUnresolvedReferences
-from sage.structure.all import SageObject
+from sage.all import infinity, SageObject
 
 
 class Bounds(SageObject):
@@ -304,10 +302,3 @@ class Bounds(SageObject):
 
         else:
             raise NotImplementedError('Third Chern character or higher.')
-
-
-class BoundsFromFile(Bounds):
-    r"""
-        Manages explicit Chern character bounds saved in a file.
-    """
-    pass

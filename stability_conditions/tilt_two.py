@@ -32,15 +32,7 @@ EXAMPLES::
 # noinspection PyUnresolvedReferences
 import sage.all
 # noinspection PyUnresolvedReferences
-from sage.calculus.functional import expand
-# noinspection PyUnresolvedReferences
-from sage.functions.other import imag_part, real_part
-# noinspection PyUnresolvedReferences
-from sage.symbolic.all import i
-# noinspection PyUnresolvedReferences
-from sage.rings.all import Integer
-# noinspection PyUnresolvedReferences
-from sage.rings.infinity import infinity
+from sage.all import expand, i, imag_part, infinity, Integer, real_part
 
 from .slope import delta
 from .varieties.variety import ch
