@@ -179,14 +179,14 @@ class Bounds(SageObject):
             sage: bounds.ch_max(1, 2, 3)
             Traceback (most recent call last):
             ...
-            NotImplementedError: Third Chern character or higher.
+            NotImplementedError: Chern character is not implemented.
         """
         if len(args) <= 1:
             return infinity
         elif len(args) == 2:
             return self.bogomolov_max(args[0], args[1])
         else:
-            raise NotImplementedError('Third Chern character or higher.')
+            raise NotImplementedError('Chern character is not implemented.')
 
     def ch_min(self, *args):
         r"""
@@ -230,14 +230,14 @@ class Bounds(SageObject):
             sage: bounds.ch_min(1, 2, 3)
             Traceback (most recent call last):
             ...
-            NotImplementedError: Third Chern character or higher.
+            NotImplementedError: Chern character is not implemented.
         """
         if len(args) <= 1:
             return -infinity
         elif len(args) == 2:
             return self.bogomolov_min(args[0], args[1])
         else:
-            raise NotImplementedError('Third Chern character or higher.')
+            raise NotImplementedError('Chern character is not implemented.')
 
     def satisfies_bounds(self, *args):
         r"""
@@ -287,18 +287,9 @@ class Bounds(SageObject):
             sage: bounds.satisfies_bounds(1, 2, 3, 4)
             Traceback (most recent call last):
             ...
-            NotImplementedError: Third Chern character or higher.
+            NotImplementedError: Chern character is not implemented.
         """
-        if len(args) <= 2:
-            return True
-        if len(args) == 3:
-            if args[2] >= self.ch_min(args[0], args[1]):
-                if args[2] <= self.ch_max(args[0], args[1]):
-                    return True
-                else:
-                    return False
-            else:
-                return False
-
-        else:
-            raise NotImplementedError('Third Chern character or higher.')
+        if args[-1] >= self.ch_min(*args[:-1]):
+            if args[-1] <= self.ch_max(*args[:-1]):
+                return True
+        return False
