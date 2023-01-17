@@ -31,7 +31,7 @@ import sage.all
 # noinspection PyUnresolvedReferences
 from sage.functions.other import imag_part, real_part
 # noinspection PyUnresolvedReferences
-from sage.symbolic.all import i
+from sage.symbolic.constants import I
 # noinspection PyUnresolvedReferences
 from sage.rings.infinity import infinity
 
@@ -116,4 +116,4 @@ def z(v):
         sage: slope.z(Element([-5, 1/2, 4, 3/2]))
         -5*I - 1/2
     """
-    return -v[1] + i*v[0]
+    return -v[1] + I*v[0]

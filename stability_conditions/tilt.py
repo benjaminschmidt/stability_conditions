@@ -48,7 +48,7 @@ from sage.rings.rational_field import QQ
 # noinspection PyUnresolvedReferences
 from sage.structure.all import SageObject
 # noinspection PyUnresolvedReferences
-from sage.symbolic.all import i
+from sage.symbolic.constants import I
 
 from .library import previous_farey
 from .slope import delta, mu
@@ -1415,4 +1415,4 @@ def z(v, a, b):
         True
     """
     twisted_ch = ch(v, b)
-    return -twisted_ch[2] + a ** 2 / 2 * twisted_ch[0] + i * twisted_ch[1]
+    return -twisted_ch[2] + a ** 2 / 2 * twisted_ch[0] + I * twisted_ch[1]
