@@ -1,4 +1,4 @@
-# Stability Conditions (v0.1.2)
+# Stability Conditions (v0.1.3)
 
 Sage library for computations with (very weak) Bridgeland stability conditions.
 
