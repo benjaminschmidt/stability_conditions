@@ -36,7 +36,7 @@ from sage.calculus.functional import expand
 # noinspection PyUnresolvedReferences
 from sage.functions.other import imag_part, real_part
 # noinspection PyUnresolvedReferences
-from sage.symbolic.all import i
+from sage.symbolic.constants import I
 # noinspection PyUnresolvedReferences
 from sage.rings.all import Integer
 # noinspection PyUnresolvedReferences
@@ -202,4 +202,4 @@ def z(v, a, b, s):
     """
     twisted_ch = ch(v, b)
     return (-twisted_ch[3] + (Integer(1)/Integer(6) + s)*a**2*twisted_ch[1]
-            + i*(twisted_ch[2] - a ** 2 / 2 * twisted_ch[0]))
+            + I*(twisted_ch[2] - a ** 2 / 2 * twisted_ch[0]))
